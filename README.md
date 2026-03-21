@@ -1,9 +1,4 @@
 # games.virtuallaunch.pro
-Here’s the README updated with **Stripe integration** included:
-
----
-
-# games.virtuallaunch.pro
 
 A collection of self-contained browser mini-games for tax professionals. Each game is a standalone **JS module** that can be embedded on any page via a simple `<script>` tag and connects to your Worker backend for **token balances, payouts, and tracking**.
 
@@ -153,7 +148,3 @@ fetch('https://games.virtuallaunch.pro/api/create-checkout-session', {
 Games are fully **drop-in** with secure token tracking and optional Stripe purchases. `tax-spin-wheel.js` is the first example module ready to deploy.
 
 ---
-
-I can also draft a **complete `tax-spin-wheel.js` file** that includes **animations, token deduction, pop-ups, scoreboard, and Stripe checkout integration** so you could deploy it immediately.
-
-Do you want me to create that full example next?
