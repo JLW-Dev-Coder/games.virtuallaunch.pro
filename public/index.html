@@ -1,0 +1,699 @@
+<!-- public/index.html -->
+
+<!doctype html>
+<html lang="en" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TaxPlay Pro</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+  <script src="/_sdk/element_sdk.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&amp;family=JetBrains+Mono:wght@400;600&amp;display=swap" rel="stylesheet">
+  <style>
+    html, body { height: 100%; margin: 0; }
+    * { font-family: 'Outfit', sans-serif; }
+    .mono { font-family: 'JetBrains Mono', monospace; }
+
+    @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-12px)} }
+    @keyframes floatSlow { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
+    @keyframes spin-slow { from{transform:rotate(0deg)} to{transform:rotate(360deg)} }
+    @keyframes pulse-glow { 0%,100%{filter:drop-shadow(0 0 8px rgba(255,215,0,0.6))} 50%{filter:drop-shadow(0 0 20px rgba(255,215,0,1))} }
+    @keyframes shimmer { 0%{background-position:-200% 0} 100%{background-position:200% 0} }
+    @keyframes neon-flicker { 0%,100%{opacity:1} 92%{opacity:1} 93%{opacity:0.7} 94%{opacity:1} 96%{opacity:0.8} 97%{opacity:1} }
+    @keyframes slide-up { from{opacity:0;transform:translateY(30px)} to{opacity:1;transform:translateY(0)} }
+    @keyframes coin-bounce { 0%,100%{transform:translateY(0) rotateY(0deg)} 25%{transform:translateY(-6px) rotateY(90deg)} 50%{transform:translateY(0) rotateY(180deg)} 75%{transform:translateY(-3px) rotateY(270deg)} }
+    @keyframes rain { 0%{transform:translateY(-100%) rotate(0deg);opacity:0} 10%{opacity:1} 90%{opacity:1} 100%{transform:translateY(800%) rotate(360deg);opacity:0} }
+
+    .float { animation: float 3s ease-in-out infinite; }
+    .float-slow { animation: floatSlow 4s ease-in-out infinite; }
+    .float-d1 { animation-delay: 0.5s; }
+    .float-d2 { animation-delay: 1s; }
+    .float-d3 { animation-delay: 1.5s; }
+    .spin-slow { animation: spin-slow 12s linear infinite; }
+    .pulse-glow { animation: pulse-glow 2s ease-in-out infinite; }
+    .neon-flicker { animation: neon-flicker 4s ease-in-out infinite; }
+    .slide-up { animation: slide-up 0.8s ease-out both; }
+    .slide-up-d1 { animation-delay: 0.15s; }
+    .slide-up-d2 { animation-delay: 0.3s; }
+    .slide-up-d3 { animation-delay: 0.45s; }
+    .coin-bounce { animation: coin-bounce 3s ease-in-out infinite; }
+
+    .shimmer-btn {
+      background: linear-gradient(110deg, #c41e3a 0%, #e8446d 25%, #ffd700 50%, #e8446d 75%, #c41e3a 100%);
+      background-size: 200% 100%;
+      animation: shimmer 3s linear infinite;
+    }
+
+    .neon-border {
+      box-shadow: 0 0 15px rgba(255,215,0,0.3), inset 0 0 15px rgba(255,215,0,0.05);
+      border: 1px solid rgba(255,215,0,0.3);
+    }
+
+    .neon-text {
+      text-shadow: 0 0 10px rgba(255,215,0,0.8), 0 0 30px rgba(255,215,0,0.4);
+    }
+
+    .glass {
+      background: rgba(255,255,255,0.05);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .money-rain span {
+      position: absolute;
+      font-size: 1.2rem;
+      opacity: 0;
+      animation: rain 6s linear infinite;
+      pointer-events: none;
+    }
+
+    .hero-grid {
+      background-image:
+        linear-gradient(rgba(255,215,0,0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,215,0,0.05) 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+
+    .card-hover { transition: transform 0.3s, box-shadow 0.3s; }
+    .card-hover:hover { transform: translateY(-6px); box-shadow: 0 0 30px rgba(255,215,0,0.2); }
+
+    .star-btn { color: rgba(255,255,255,0.3); transition: all 0.2s; }
+    .star-btn.selected { color: #ffd700; background-color: rgba(255,215,0,0.15) !important; }
+  </style>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: { dark: '#1a0a10', deep: '#2a0f1e', red: '#c41e3a', pink: '#e8446d', gold: '#ffd700', 'gold-dim': '#b8960f' }
+          }
+        }
+      }
+    }
+  </script>
+  <style>body { box-sizing: border-box; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+ <body class="h-full">
+  <div id="app-wrapper" class="w-full h-full overflow-auto" style="background:#1a0a10;">
+   <!-- Money Rain Background -->
+   <div class="money-rain fixed inset-0 overflow-hidden pointer-events-none z-0" id="moneyRain"></div><!-- HERO SECTION -->
+   <header class="relative w-full hero-grid overflow-hidden" style="background: linear-gradient(160deg, #1a0a10 0%, #2a0f1e 30%, #1a0a10 70%, #0d0508 100%);">
+    <!-- Decorative orbs -->
+    <div class="absolute top-10 left-10 w-64 h-64 rounded-full opacity-20 blur-3xl" style="background:#c41e3a;"></div>
+    <div class="absolute bottom-10 right-10 w-80 h-80 rounded-full opacity-15 blur-3xl" style="background:#e8446d;"></div>
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 rounded-full opacity-10 blur-3xl" style="background:#ffd700;"></div>
+    <div class="relative z-10 max-w-6xl mx-auto px-6 py-16 md:py-24">
+     <!-- Nav -->
+     <nav class="flex items-center justify-between mb-16 slide-up">
+      <div class="flex items-center gap-2">
+       <div class="w-10 h-10 rounded-lg flex items-center justify-center shimmer-btn">
+        <span class="text-white font-bold text-lg">T</span>
+       </div><span id="nav-brand" class="text-white font-bold text-xl tracking-tight">TaxPlay<span class="text-brand-gold">Pro</span></span>
+      </div>
+      <div class="hidden md:flex items-center gap-8 text-sm">
+       <a href="#tokens" class="text-gray-400 hover:text-brand-gold transition-colors">How It Works</a> <a href="#proof" class="text-gray-400 hover:text-brand-gold transition-colors">Testimonials</a> <a href="#footer" class="text-gray-400 hover:text-brand-gold transition-colors">Contact</a>
+      </div>
+     </nav>
+     <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
+      <!-- Left: Text -->
+      <div class="flex-1 text-center lg:text-left">
+       <div class="slide-up">
+        <span class="inline-block mono text-xs tracking-widest uppercase px-3 py-1 rounded-full mb-6" style="background:rgba(255,215,0,0.15);color:#ffd700;border:1px solid rgba(255,215,0,0.3);">🎮 For Tax Professionals</span>
+       </div>
+       <h1 id="hero-headline" class="text-4xl md:text-5xl lg:text-6xl font-900 text-white leading-tight mb-6 slide-up slide-up-d1">Add Mini-Games.<br><span class="neon-text" style="color:#ffd700;">Earn Passive Income.</span></h1>
+       <p id="hero-sub" class="text-lg md:text-xl text-gray-400 leading-relaxed mb-10 max-w-lg mx-auto lg:mx-0 slide-up slide-up-d2">Transform your tax practice website into an engagement powerhouse. Clients play, you earn — it's that simple.</p>
+       <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start slide-up slide-up-d3">
+        <button id="cta-btn" class="shimmer-btn text-white font-bold text-lg px-8 py-4 rounded-xl hover:scale-105 transition-transform shadow-lg shadow-brand-red/30"> Get Started Free → </button> <button class="glass text-white font-medium px-8 py-4 rounded-xl hover:bg-white/10 transition-colors flex items-center justify-center gap-2"> <i data-lucide="play-circle" class="w-5 h-5"></i> Watch Demo </button>
+       </div>
+       <div class="flex items-center gap-6 mt-8 justify-center lg:justify-start text-sm text-gray-500 slide-up slide-up-d3">
+        <span class="flex items-center gap-1"><i data-lucide="check-circle" class="w-4 h-4 text-brand-gold"></i> No coding</span> <span class="flex items-center gap-1"><i data-lucide="check-circle" class="w-4 h-4 text-brand-gold"></i> Stripe integrated</span> <span class="flex items-center gap-1"><i data-lucide="check-circle" class="w-4 h-4 text-brand-gold"></i> IRS compliant</span>
+       </div>
+      </div><!-- Right: Illustration -->
+      <div class="flex-1 flex justify-center relative">
+       <div class="relative w-80 h-80 md:w-96 md:h-96">
+        <!-- Main screen/laptop SVG -->
+        <svg class="w-full h-full float" viewbox="0 0 400 400" fill="none">
+         <!-- Laptop body --> <rect x="60" y="80" width="280" height="200" rx="12" fill="#2a0f1e" stroke="#ffd700" stroke-width="1.5" opacity="0.9" /> <rect x="75" y="95" width="250" height="170" rx="6" fill="#1a0a10" /> <!-- Screen content: form lines --> <rect x="95" y="115" width="80" height="8" rx="2" fill="#c41e3a" opacity="0.7" /> <rect x="95" y="133" width="120" height="6" rx="2" fill="#e8446d" opacity="0.4" /> <rect x="95" y="149" width="100" height="6" rx="2" fill="#e8446d" opacity="0.3" /> <rect x="95" y="165" width="140" height="6" rx="2" fill="#e8446d" opacity="0.2" /> <!-- Game controller icon on screen --> <circle cx="270" cy="180" r="30" fill="#c41e3a" opacity="0.3" /> <text x="270" y="186" text-anchor="middle" font-size="24" fill="#ffd700">
+          🎮
+         </text> <!-- 1040 form badge --> <rect x="90" y="195" width="55" height="25" rx="4" fill="#ffd700" opacity="0.9" /> <text x="117" y="212" text-anchor="middle" font-size="11" font-weight="bold" fill="#1a0a10" font-family="JetBrains Mono">
+          1040
+         </text> <!-- Dollar sign --> <text x="165" y="215" font-size="18" fill="#ffd700" opacity="0.8">
+          $$$
+         </text> <!-- Laptop base --> <path d="M40 280 L60 280 L60 290 Q60 300 70 300 L330 300 Q340 300 340 290 L340 280 L360 280 L360 290 Q360 310 340 310 L60 310 Q40 310 40 290 Z" fill="#2a0f1e" stroke="#ffd700" stroke-width="0.8" opacity="0.7" /> <!-- Neon glow line under screen --> <line x1="100" y1="275" x2="300" y2="275" stroke="#ffd700" stroke-width="2" opacity="0.6" />
+        </svg><!-- Floating elements around illustration -->
+        <div class="absolute -top-2 -left-2 float float-d1 pulse-glow">
+         <div class="w-14 h-14 rounded-xl flex items-center justify-center text-2xl" style="background:rgba(196,30,58,0.8);border:1px solid rgba(255,215,0,0.4);">
+          🧮
+         </div>
+        </div>
+        <div class="absolute top-8 -right-4 float-slow float-d2">
+         <div class="w-12 h-12 rounded-full flex items-center justify-center text-xl coin-bounce" style="background:linear-gradient(135deg,#ffd700,#b8960f);box-shadow:0 0 15px rgba(255,215,0,0.5);">
+          $
+         </div>
+        </div>
+        <div class="absolute bottom-20 -left-6 float float-d3">
+         <div class="w-11 h-11 rounded-lg flex items-center justify-center text-lg" style="background:rgba(232,68,109,0.7);border:1px solid rgba(255,255,255,0.15);">
+          📊
+         </div>
+        </div>
+        <div class="absolute -bottom-2 right-4 float-slow float-d1">
+         <div class="w-10 h-10 rounded-lg flex items-center justify-center text-lg neon-border" style="background:rgba(26,10,16,0.9);">
+          🎯
+         </div>
+        </div>
+        <div class="absolute top-1/2 -right-8 float float-d2 pulse-glow">
+         <div class="w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold mono" style="background:rgba(255,215,0,0.2);color:#ffd700;border:1px solid rgba(255,215,0,0.5);">
+          W2
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </header><!-- STATS BAR -->
+   <section class="w-full py-8" style="background:linear-gradient(90deg,rgba(196,30,58,0.15),rgba(255,215,0,0.1),rgba(196,30,58,0.15));border-top:1px solid rgba(255,215,0,0.1);border-bottom:1px solid rgba(255,215,0,0.1);">
+    <div class="max-w-5xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+     <div>
+      <div class="text-2xl md:text-3xl font-800 neon-text" style="color:#ffd700;">
+       2,400+
+      </div>
+      <div class="text-xs text-gray-500 mt-1 uppercase tracking-wider">
+       Tax Pros Onboard
+      </div>
+     </div>
+     <div>
+      <div class="text-2xl md:text-3xl font-800 text-brand-pink">
+       $1.2M
+      </div>
+      <div class="text-xs text-gray-500 mt-1 uppercase tracking-wider">
+       Tokens Sold
+      </div>
+     </div>
+     <div>
+      <div class="text-2xl md:text-3xl font-800 text-white">
+       98%
+      </div>
+      <div class="text-xs text-gray-500 mt-1 uppercase tracking-wider">
+       Satisfaction Rate
+      </div>
+     </div>
+     <div>
+      <div class="text-2xl md:text-3xl font-800 text-brand-gold">
+       50K+
+      </div>
+      <div class="text-xs text-gray-500 mt-1 uppercase tracking-wider">
+       Games Played
+      </div>
+     </div>
+    </div>
+   </section><!-- TOKEN SYSTEM -->
+   <section id="tokens" class="w-full py-20" style="background:#1a0a10;">
+    <div class="max-w-6xl mx-auto px-6">
+     <div class="text-center mb-16">
+      <span class="inline-block mono text-xs tracking-widest uppercase px-3 py-1 rounded-full mb-4" style="background:rgba(232,68,109,0.15);color:#e8446d;border:1px solid rgba(232,68,109,0.3);">💰 Token Economy</span>
+      <h2 id="token-title" class="text-3xl md:text-4xl font-800 text-white mb-4">How Tokens Work</h2>
+      <p class="text-gray-500 max-w-xl mx-auto">A seamless three-step system that turns your website visitors into revenue.</p>
+     </div>
+     <div class="grid md:grid-cols-3 gap-8">
+      <!-- Buy -->
+      <div class="glass rounded-2xl p-8 card-hover relative overflow-hidden group">
+       <div class="absolute top-0 right-0 w-20 h-20 rounded-bl-full opacity-20 group-hover:opacity-40 transition-opacity" style="background:#ffd700;"></div>
+       <div class="w-16 h-16 rounded-2xl flex items-center justify-center mb-6 text-3xl" style="background:linear-gradient(135deg,rgba(255,215,0,0.2),rgba(255,215,0,0.05));border:1px solid rgba(255,215,0,0.3);">
+        <span class="coin-bounce inline-block">🪙</span>
+       </div>
+       <div class="mono text-xs text-brand-gold mb-2 tracking-wider">
+        STEP 01
+       </div>
+       <h3 class="text-xl font-700 text-white mb-3">Buy Tokens</h3>
+       <p class="text-gray-400 text-sm leading-relaxed">Visitors purchase tokens through secure Stripe checkout. Multiple bundles available — from casual to power player.</p>
+       <div class="mt-6 flex items-center gap-2 text-xs text-gray-600">
+        <i data-lucide="shield-check" class="w-3.5 h-3.5 text-brand-gold"></i> Stripe secured
+       </div>
+      </div><!-- Play -->
+      <div class="glass rounded-2xl p-8 card-hover relative overflow-hidden group" style="border-color:rgba(232,68,109,0.2);">
+       <div class="absolute top-0 right-0 w-20 h-20 rounded-bl-full opacity-20 group-hover:opacity-40 transition-opacity" style="background:#e8446d;"></div>
+       <div class="w-16 h-16 rounded-2xl flex items-center justify-center mb-6 text-3xl" style="background:linear-gradient(135deg,rgba(232,68,109,0.2),rgba(232,68,109,0.05));border:1px solid rgba(232,68,109,0.3);">
+        <span class="float inline-block">🎮</span>
+       </div>
+       <div class="mono text-xs text-brand-pink mb-2 tracking-wider">
+        STEP 02
+       </div>
+       <h3 class="text-xl font-700 text-white mb-3">Play Games</h3>
+       <p class="text-gray-400 text-sm leading-relaxed">Tax-themed mini-games that are genuinely fun. Trivia, puzzle, and strategy games that keep clients engaged.</p>
+       <div class="mt-6 flex items-center gap-2 text-xs text-gray-600">
+        <i data-lucide="gamepad-2" class="w-3.5 h-3.5 text-brand-pink"></i> 12+ games available
+       </div>
+      </div><!-- Win -->
+      <div class="glass rounded-2xl p-8 card-hover relative overflow-hidden group" style="border-color:rgba(196,30,58,0.2);">
+       <div class="absolute top-0 right-0 w-20 h-20 rounded-bl-full opacity-20 group-hover:opacity-40 transition-opacity" style="background:#c41e3a;"></div>
+       <div class="w-16 h-16 rounded-2xl flex items-center justify-center mb-6 text-3xl" style="background:linear-gradient(135deg,rgba(196,30,58,0.2),rgba(196,30,58,0.05));border:1px solid rgba(196,30,58,0.3);">
+        <span class="pulse-glow inline-block">🏆</span>
+       </div>
+       <div class="mono text-xs text-brand-red mb-2 tracking-wider">
+        STEP 03
+       </div>
+       <h3 class="text-xl font-700 text-white mb-3">Win &amp; Earn</h3>
+       <p class="text-gray-400 text-sm leading-relaxed">Players win rewards. You earn a percentage of every token spent. Revenue flows automatically to your account.</p>
+       <div class="mt-6 flex items-center gap-2 text-xs text-gray-600">
+        <i data-lucide="trending-up" class="w-3.5 h-3.5 text-brand-red"></i> Avg. $840/mo earned
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- FEATURES STRIP -->
+   <section class="w-full py-16" style="background:linear-gradient(180deg,#2a0f1e,#1a0a10);">
+    <div class="max-w-5xl mx-auto px-6">
+     <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+      <div class="text-center p-4">
+       <div class="w-12 h-12 mx-auto rounded-xl flex items-center justify-center mb-3 neon-border" style="background:rgba(26,10,16,0.9);">
+        <i data-lucide="code" class="w-5 h-5 text-brand-gold"></i>
+       </div>
+       <div class="text-white font-600 text-sm">
+        Copy &amp; Paste Setup
+       </div>
+       <div class="text-gray-600 text-xs mt-1">
+        One embed code
+       </div>
+      </div>
+      <div class="text-center p-4">
+       <div class="w-12 h-12 mx-auto rounded-xl flex items-center justify-center mb-3 neon-border" style="background:rgba(26,10,16,0.9);">
+        <i data-lucide="smartphone" class="w-5 h-5 text-brand-pink"></i>
+       </div>
+       <div class="text-white font-600 text-sm">
+        Mobile Ready
+       </div>
+       <div class="text-gray-600 text-xs mt-1">
+        Works everywhere
+       </div>
+      </div>
+      <div class="text-center p-4">
+       <div class="w-12 h-12 mx-auto rounded-xl flex items-center justify-center mb-3 neon-border" style="background:rgba(26,10,16,0.9);">
+        <i data-lucide="bar-chart-3" class="w-5 h-5 text-brand-red"></i>
+       </div>
+       <div class="text-white font-600 text-sm">
+        Real-Time Analytics
+       </div>
+       <div class="text-gray-600 text-xs mt-1">
+        Track earnings live
+       </div>
+      </div>
+      <div class="text-center p-4">
+       <div class="w-12 h-12 mx-auto rounded-xl flex items-center justify-center mb-3 neon-border" style="background:rgba(26,10,16,0.9);">
+        <i data-lucide="palette" class="w-5 h-5 text-brand-gold"></i>
+       </div>
+       <div class="text-white font-600 text-sm">
+        Custom Branding
+       </div>
+       <div class="text-gray-600 text-xs mt-1">
+        Match your firm
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- SOCIAL PROOF -->
+   <section id="proof" class="w-full py-20" style="background:#1a0a10;">
+    <div class="max-w-4xl mx-auto px-6">
+     <div class="text-center mb-12">
+      <span class="inline-block mono text-xs tracking-widest uppercase px-3 py-1 rounded-full mb-4" style="background:rgba(255,215,0,0.15);color:#ffd700;border:1px solid rgba(255,215,0,0.3);">⭐ Social Proof</span>
+      <h2 class="text-3xl md:text-4xl font-800 text-white">Trusted by Tax Professionals</h2>
+     </div>
+     <div class="grid md:grid-cols-2 gap-8" id="testimonials-container">
+      <div class="glass rounded-2xl p-8 card-hover">
+       <div class="flex gap-1 mb-4">
+        <span class="text-brand-gold">★</span><span class="text-brand-gold">★</span><span class="text-brand-gold">★</span><span class="text-brand-gold">★</span><span class="text-brand-gold">★</span>
+       </div>
+       <p id="testimonial-1" class="text-gray-300 text-sm leading-relaxed mb-6 italic">"My clients actually look forward to visiting my website now. I've earned over $3,200 in passive income in just 4 months. It's like having a side business that runs itself."</p>
+       <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold" style="background:linear-gradient(135deg,#c41e3a,#e8446d);color:white;">
+         SR
+        </div>
+        <div>
+         <div id="testimonial-author-1" class="text-white font-600 text-sm">
+          Sarah Rodriguez, CPA
+         </div>
+         <div class="text-gray-600 text-xs">
+          Rodriguez Tax Services, Miami
+         </div>
+        </div>
+       </div>
+      </div>
+      <div class="glass rounded-2xl p-8 card-hover">
+       <div class="flex gap-1 mb-4">
+        <span class="text-brand-gold">★</span><span class="text-brand-gold">★</span><span class="text-brand-gold">★</span><span class="text-brand-gold">★</span><span class="text-brand-gold">★</span>
+       </div>
+       <p class="text-gray-300 text-sm leading-relaxed mb-6 italic">"Setup took 5 minutes. The token system is brilliant — clients buy bundles and keep coming back. My site engagement is up 300%. Best decision I made this year."</p>
+       <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold" style="background:linear-gradient(135deg,#ffd700,#b8960f);color:#1a0a10;">
+         MK
+        </div>
+        <div>
+         <div class="text-white font-600 text-sm">
+          Marcus Kim, EA
+         </div>
+         <div class="text-gray-600 text-xs">
+          Kim &amp; Associates, Austin
+         </div>
+        </div>
+       </div>
+      </div>
+      <div class="glass rounded-2xl p-8 card-hover flex flex-col items-center justify-center text-center md:col-span-2 md:max-w-sm md:mx-auto">
+       <div class="w-14 h-14 rounded-full flex items-center justify-center mb-4" style="background:rgba(255,215,0,0.1);border:2px dashed rgba(255,215,0,0.3);"><i data-lucide="star" class="w-6 h-6 text-brand-gold"></i>
+       </div>
+       <h3 class="text-lg font-700 text-white mb-2">Be the First to Review</h3>
+       <p class="text-gray-500 text-sm mb-6">Share your experience with TaxPlay Pro and help others discover the power of gamified tax engagement.</p><button id="review-toggle-btn" class="text-brand-gold font-600 text-sm hover:text-white transition-colors flex items-center gap-2"> <i data-lucide="plus" class="w-4 h-4"></i> Add Your Review </button>
+      </div>
+     </div><!-- Review Form Modal -->
+     <div id="review-form-modal" class="fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4 z-50 hidden">
+      <div class="glass rounded-2xl p-8 max-w-md w-full">
+       <div class="flex items-center justify-between mb-6">
+        <h3 class="text-2xl font-700 text-white">Share Your Review</h3><button id="review-close-btn" class="text-gray-500 hover:text-white transition-colors"> <i data-lucide="x" class="w-5 h-5"></i> </button>
+       </div>
+       <form id="review-form" class="space-y-4">
+        <div><label for="review-name" class="block text-white text-sm font-600 mb-2">Name</label> <input type="text" id="review-name" placeholder="Your name" class="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-2 text-white placeholder-gray-600 focus:outline-none focus:border-brand-gold transition-colors" required>
+        </div>
+        <div><label for="review-title" class="block text-white text-sm font-600 mb-2">Title/Firm</label> <input type="text" id="review-title" placeholder="e.g., CPA at Smith &amp; Co." class="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-2 text-white placeholder-gray-600 focus:outline-none focus:border-brand-gold transition-colors" required>
+        </div>
+        <div><label for="review-rating" class="block text-white text-sm font-600 mb-2">Rating</label>
+         <div class="flex gap-2"><button type="button" class="star-btn w-10 h-10 rounded-lg flex items-center justify-center text-lg hover:bg-white/10 transition-colors" data-rating="1">★</button> <button type="button" class="star-btn w-10 h-10 rounded-lg flex items-center justify-center text-lg hover:bg-white/10 transition-colors" data-rating="2">★</button> <button type="button" class="star-btn w-10 h-10 rounded-lg flex items-center justify-center text-lg hover:bg-white/10 transition-colors" data-rating="3">★</button> <button type="button" class="star-btn w-10 h-10 rounded-lg flex items-center justify-center text-lg hover:bg-white/10 transition-colors" data-rating="4">★</button> <button type="button" class="star-btn w-10 h-10 rounded-lg flex items-center justify-center text-lg hover:bg-white/10 transition-colors selected" data-rating="5">★</button>
+         </div><input type="hidden" id="review-rating-value" value="5">
+        </div>
+        <div><label for="review-text" class="block text-white text-sm font-600 mb-2">Your Review</label> <textarea id="review-text" placeholder="Share your experience..." rows="4" class="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-2 text-white placeholder-gray-600 focus:outline-none focus:border-brand-gold transition-colors resize-none" required></textarea>
+        </div>
+        <div class="flex gap-3 pt-4"><button type="button" id="review-cancel-btn" class="flex-1 px-4 py-2 rounded-lg border border-white/20 text-white font-600 hover:bg-white/5 transition-colors">Cancel</button> <button type="submit" class="flex-1 px-4 py-2 rounded-lg font-600 text-white transition-colors" style="background:linear-gradient(135deg,#c41e3a,#e8446d);"><span id="submit-text">Submit Review</span></button>
+        </div>
+       </form>
+      </div>
+     </div>
+    </div>
+   </section><!-- CTA BANNER -->
+   <section class="w-full py-16" style="background:linear-gradient(135deg,#2a0f1e 0%,#3d1528 50%,#2a0f1e 100%);border-top:1px solid rgba(255,215,0,0.1);border-bottom:1px solid rgba(255,215,0,0.1);">
+    <div class="max-w-3xl mx-auto px-6 text-center">
+     <div class="text-5xl mb-6 neon-flicker">
+      🎰
+     </div>
+     <h2 class="text-3xl md:text-4xl font-800 text-white mb-4">Ready to Gamify Your Practice?</h2>
+     <p class="text-gray-400 mb-8 max-w-lg mx-auto">Join 2,400+ tax professionals already earning passive income. Setup takes under 5 minutes.</p><button id="cta-btn-2" class="shimmer-btn text-white font-bold text-lg px-10 py-4 rounded-xl hover:scale-105 transition-transform shadow-lg shadow-brand-red/30"> Start Earning Today → </button>
+     <p class="text-gray-600 text-xs mt-4">Free tier available • No credit card required</p>
+    </div>
+   </section><!-- FOOTER -->
+   <footer id="footer" class="w-full py-12" style="background:#0d0508;border-top:1px solid rgba(255,255,255,0.05);">
+    <div class="max-w-6xl mx-auto px-6">
+     <div class="grid md:grid-cols-4 gap-8 mb-10">
+      <div>
+       <div class="flex items-center gap-2 mb-4">
+        <div class="w-8 h-8 rounded-lg flex items-center justify-center shimmer-btn"><span class="text-white font-bold text-sm">T</span>
+        </div><span id="footer-brand" class="text-white font-bold">TaxPlay<span style="color:#ffd700;">Pro</span></span>
+       </div>
+       <p class="text-gray-600 text-xs leading-relaxed">The premier mini-game platform built exclusively for tax professionals and financial services.</p>
+      </div>
+      <div>
+       <h4 class="text-white font-600 text-sm mb-3">Product</h4>
+       <div class="space-y-2 text-xs text-gray-500">
+        <div class="hover:text-brand-gold transition-colors cursor-pointer">
+         Features
+        </div>
+        <div class="hover:text-brand-gold transition-colors cursor-pointer">
+         Pricing
+        </div>
+        <div class="hover:text-brand-gold transition-colors cursor-pointer">
+         Game Library
+        </div>
+        <div class="hover:text-brand-gold transition-colors cursor-pointer">
+         API Docs
+        </div>
+       </div>
+      </div>
+      <div>
+       <h4 class="text-white font-600 text-sm mb-3">Company</h4>
+       <div class="space-y-2 text-xs text-gray-500">
+        <div class="hover:text-brand-gold transition-colors cursor-pointer">
+         About
+        </div>
+        <div class="hover:text-brand-gold transition-colors cursor-pointer">
+         Blog
+        </div>
+        <div class="hover:text-brand-gold transition-colors cursor-pointer">
+         Careers
+        </div>
+        <div class="hover:text-brand-gold transition-colors cursor-pointer">
+         Contact
+        </div>
+       </div>
+      </div>
+      <div>
+       <h4 class="text-white font-600 text-sm mb-3">Legal</h4>
+       <div class="space-y-2 text-xs text-gray-500">
+        <div class="hover:text-brand-gold transition-colors cursor-pointer">
+         Privacy Policy
+        </div>
+        <div class="hover:text-brand-gold transition-colors cursor-pointer">
+         Terms of Service
+        </div>
+        <div class="hover:text-brand-gold transition-colors cursor-pointer">
+         Compliance
+        </div>
+        <div class="hover:text-brand-gold transition-colors cursor-pointer">
+         Cookie Policy
+        </div>
+       </div>
+      </div>
+     </div>
+     <div class="flex flex-col md:flex-row items-center justify-between pt-8" style="border-top:1px solid rgba(255,255,255,0.05);">
+      <div class="text-gray-700 text-xs mb-4 md:mb-0" id="footer-copy">
+       © 2025 TaxPlay Pro. All rights reserved.
+      </div>
+      <div class="flex items-center gap-4">
+       <div class="flex items-center gap-2 text-xs text-gray-600">
+        <span>Powered by</span>
+        <svg width="50" height="20" viewbox="0 0 50 20"><rect width="50" height="20" rx="3" fill="#635bff" opacity="0.8" /><text x="25" y="14" text-anchor="middle" font-size="10" fill="white" font-weight="bold" font-family="sans-serif">
+          Stripe
+         </text>
+        </svg>
+       </div>
+       <div class="flex gap-3">
+        <div class="w-8 h-8 rounded-full glass flex items-center justify-center cursor-pointer hover:bg-white/10 transition-colors"><i data-lucide="twitter" class="w-3.5 h-3.5 text-gray-500"></i>
+        </div>
+        <div class="w-8 h-8 rounded-full glass flex items-center justify-center cursor-pointer hover:bg-white/10 transition-colors"><i data-lucide="linkedin" class="w-3.5 h-3.5 text-gray-500"></i>
+        </div>
+        <div class="w-8 h-8 rounded-full glass flex items-center justify-center cursor-pointer hover:bg-white/10 transition-colors"><i data-lucide="mail" class="w-3.5 h-3.5 text-gray-500"></i>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </footer>
+  </div>
+  <script>
+  // Money rain
+  const rainContainer = document.getElementById('moneyRain');
+  const symbols = ['$','💰','🪙','¢','💵','$','$','🪙'];
+  for(let i = 0; i < 15; i++){
+    const span = document.createElement('span');
+    span.textContent = symbols[i % symbols.length];
+    span.style.left = Math.random()*100 + '%';
+    span.style.animationDelay = Math.random()*8 + 's';
+    span.style.animationDuration = (5 + Math.random()*5) + 's';
+    span.style.fontSize = (0.8 + Math.random()*0.8) + 'rem';
+    span.style.opacity = '0';
+    rainContainer.appendChild(span);
+  }
+
+  // Review form modal
+  const reviewToggleBtn = document.getElementById('review-toggle-btn');
+  const reviewCloseBtn = document.getElementById('review-close-btn');
+  const reviewCancelBtn = document.getElementById('review-cancel-btn');
+  const reviewFormModal = document.getElementById('review-form-modal');
+  const reviewForm = document.getElementById('review-form');
+  const starBtns = document.querySelectorAll('.star-btn');
+  const reviewRatingValue = document.getElementById('review-rating-value');
+
+  reviewToggleBtn.addEventListener('click', () => {
+    reviewFormModal.classList.remove('hidden');
+  });
+
+  reviewCloseBtn.addEventListener('click', () => {
+    reviewFormModal.classList.add('hidden');
+    reviewForm.reset();
+    starBtns.forEach(btn => btn.classList.remove('selected'));
+    starBtns[4].classList.add('selected');
+    reviewRatingValue.value = '5';
+  });
+
+  reviewCancelBtn.addEventListener('click', () => {
+    reviewFormModal.classList.add('hidden');
+    reviewForm.reset();
+    starBtns.forEach(btn => btn.classList.remove('selected'));
+    starBtns[4].classList.add('selected');
+    reviewRatingValue.value = '5';
+  });
+
+  reviewFormModal.addEventListener('click', (e) => {
+    if(e.target === reviewFormModal){
+      reviewFormModal.classList.add('hidden');
+      reviewForm.reset();
+      starBtns.forEach(btn => btn.classList.remove('selected'));
+      starBtns[4].classList.add('selected');
+      reviewRatingValue.value = '5';
+    }
+  });
+
+  starBtns.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      starBtns.forEach(b => b.classList.remove('selected'));
+      btn.classList.add('selected');
+      reviewRatingValue.value = btn.dataset.rating;
+    });
+  });
+
+  reviewForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const name = document.getElementById('review-name').value;
+    const title = document.getElementById('review-title').value;
+    const rating = reviewRatingValue.value;
+    const text = document.getElementById('review-text').value;
+    const submitBtn = reviewForm.querySelector('button[type="submit"]');
+    const submitText = document.getElementById('submit-text');
+    
+    submitBtn.disabled = true;
+    submitText.textContent = 'Submitting...';
+
+    // Simulate submission delay
+    setTimeout(() => {
+      // Create initials for avatar
+      const initials = name.split(' ').map(n => n[0]).join('').toUpperCase().slice(0, 2);
+      const colors = ['linear-gradient(135deg,#c41e3a,#e8446d)', 'linear-gradient(135deg,#ffd700,#b8960f)', 'linear-gradient(135deg,#e8446d,#c41e3a)'];
+      const randomColor = colors[Math.floor(Math.random() * colors.length)];
+
+      const stars = '★'.repeat(parseInt(rating)) + '☆'.repeat(5 - parseInt(rating));
+      
+      const newTestimonial = document.createElement('div');
+      newTestimonial.className = 'glass rounded-2xl p-8 card-hover';
+      newTestimonial.innerHTML = `
+        <div class="flex gap-1 mb-4">${stars.split('').map(s => `<span class="text-brand-gold">${s}</span>`).join('')}</div>
+        <p class="text-gray-300 text-sm leading-relaxed mb-6 italic">"${text}"</p>
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold" style="background:${randomColor};color:white;">
+            ${initials}
+          </div>
+          <div>
+            <div class="text-white font-600 text-sm">${name}</div>
+            <div class="text-gray-600 text-xs">${title}</div>
+          </div>
+        </div>
+      `;
+      
+      const container = document.getElementById('testimonials-container');
+      const placeholder = container.querySelector('div:last-child');
+      if(placeholder) placeholder.remove();
+      container.insertBefore(newTestimonial, container.children[2]);
+      
+      reviewFormModal.classList.add('hidden');
+      reviewForm.reset();
+      starBtns.forEach(btn => btn.classList.remove('selected'));
+      starBtns[4].classList.add('selected');
+      reviewRatingValue.value = '5';
+      submitBtn.disabled = false;
+      submitText.textContent = 'Submit Review';
+    }, 1000);
+  });
+
+  // Smooth scroll
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      e.preventDefault();
+      const el = document.querySelector(a.getAttribute('href'));
+      if(el) el.scrollIntoView({behavior:'smooth'});
+    });
+  });
+
+  // Element SDK
+  const defaultConfig = {
+    background_color: '#1a0a10',
+    surface_color: '#2a0f1e',
+    text_color: '#ffffff',
+    primary_action_color: '#c41e3a',
+    secondary_action_color: '#ffd700',
+    font_family: 'Outfit',
+    font_size: 16,
+    hero_headline: 'Add Mini-Games. Earn Passive Income.',
+    hero_subheadline: 'Transform your tax practice website into an engagement powerhouse. Clients play, you earn — it\'s that simple.',
+    cta_button_text: 'Get Started Free →',
+    token_section_title: 'How Tokens Work',
+    testimonial_quote: 'My clients actually look forward to visiting my website now. I\'ve earned over $3,200 in passive income in just 4 months. It\'s like having a side business that runs itself.',
+    testimonial_author: 'Sarah Rodriguez, CPA',
+    footer_company: 'TaxPlay Pro'
+  };
+
+  function applyConfig(config) {
+    const c = {...defaultConfig, ...config};
+    const font = c.font_family || defaultConfig.font_family;
+    const base = c.font_size || defaultConfig.font_size;
+    const baseFallback = `${font}, 'Outfit', sans-serif`;
+
+    document.body.style.fontFamily = baseFallback;
+
+    // Headline
+    const hl = document.getElementById('hero-headline');
+    if(hl){
+      const parts = c.hero_headline.split('.');
+      hl.innerHTML = parts.length > 1
+        ? `${parts[0]}.<br><span class="neon-text" style="color:${c.secondary_action_color};">${parts.slice(1).join('.').trim()}</span>`
+        : c.hero_headline;
+      hl.style.fontSize = `${base * 3.5}px`;
+    }
+    const sub = document.getElementById('hero-sub');
+    if(sub){ sub.textContent = c.hero_subheadline; sub.style.fontSize = `${base * 1.2}px`; }
+
+    const cta = document.getElementById('cta-btn');
+    if(cta){ cta.textContent = c.cta_button_text; }
+    const cta2 = document.getElementById('cta-btn-2');
+    if(cta2){ cta2.textContent = c.cta_button_text.replace('Get Started Free','Start Earning Today'); }
+
+    const tt = document.getElementById('token-title');
+    if(tt){ tt.textContent = c.token_section_title; }
+
+    const t1 = document.getElementById('testimonial-1');
+    if(t1){ t1.textContent = `"${c.testimonial_quote}"`; }
+    const ta1 = document.getElementById('testimonial-author-1');
+    if(ta1){ ta1.textContent = c.testimonial_author; }
+
+    const fc = document.getElementById('footer-copy');
+    if(fc){ fc.textContent = `© 2025 ${c.footer_company}. All rights reserved.`; }
+
+    // Colors on key elements
+    document.getElementById('app-wrapper').style.background = c.background_color;
+  }
+
+  window.elementSdk.init({
+    defaultConfig,
+    onConfigChange: async (config) => applyConfig(config),
+    mapToCapabilities: (config) => ({
+      recolorables: [
+        { get:()=>config.background_color||defaultConfig.background_color, set:(v)=>{config.background_color=v;window.elementSdk.setConfig({background_color:v})} },
+        { get:()=>config.surface_color||defaultConfig.surface_color, set:(v)=>{config.surface_color=v;window.elementSdk.setConfig({surface_color:v})} },
+        { get:()=>config.text_color||defaultConfig.text_color, set:(v)=>{config.text_color=v;window.elementSdk.setConfig({text_color:v})} },
+        { get:()=>config.primary_action_color||defaultConfig.primary_action_color, set:(v)=>{config.primary_action_color=v;window.elementSdk.setConfig({primary_action_color:v})} },
+        { get:()=>config.secondary_action_color||defaultConfig.secondary_action_color, set:(v)=>{config.secondary_action_color=v;window.elementSdk.setConfig({secondary_action_color:v})} }
+      ],
+      borderables: [],
+      fontEditable: { get:()=>config.font_family||defaultConfig.font_family, set:(v)=>{config.font_family=v;window.elementSdk.setConfig({font_family:v})} },
+      fontSizeable: { get:()=>config.font_size||defaultConfig.font_size, set:(v)=>{config.font_size=v;window.elementSdk.setConfig({font_size:v})} }
+    }),
+    mapToEditPanelValues: (config) => new Map([
+      ['hero_headline', config.hero_headline || defaultConfig.hero_headline],
+      ['hero_subheadline', config.hero_subheadline || defaultConfig.hero_subheadline],
+      ['cta_button_text', config.cta_button_text || defaultConfig.cta_button_text],
+      ['token_section_title', config.token_section_title || defaultConfig.token_section_title],
+      ['testimonial_quote', config.testimonial_quote || defaultConfig.testimonial_quote],
+      ['testimonial_author', config.testimonial_author || defaultConfig.testimonial_author],
+      ['footer_company', config.footer_company || defaultConfig.footer_company]
+    ])
+  });
+
+  lucide.createIcons();
+</script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9e00be64b61c27c9',t:'MTc3NDEzNTgxOS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
