@@ -579,16 +579,29 @@
  </head>
  <body>
   <div id="app-wrapper" class="w-full h-full overflow-auto" style="background:#1a0a10;"><!-- Header -->
-   <header class="sticky top-0 z-40 w-full border-b border-brand-gold/20 bg-gradient-to-r from-brand-dark via-brand-deep to-brand-dark backdrop-blur-md">
-    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between"><!-- Logo --> <a href="/index.html" class="flex items-center gap-3 hover:opacity-90 transition">
-      <div class="w-10 h-10 rounded-lg flex items-center justify-center shimmer-btn"><span class="text-white font-bold text-lg">VLP</span>
-      </div>
-      <div class="flex flex-col leading-tight"><span class="font-semibold tracking-tight text-white text-sm">Games.Virtual Launch Pro</span> <span class="text-xs text-slate-400">Game Platform for Tax Pros</span>
-      </div></a> <!-- Nav Menu -->
-     <nav class="hidden md:flex items-center gap-8"><a href="/index.html#features" class="text-sm font-medium text-slate-300 hover:text-brand-gold transition">Features</a> <a href="/index.html#how-it-works" class="text-sm font-medium text-slate-300 hover:text-brand-gold transition">How It Works</a> <a href="/reviews.html" class="text-sm font-medium text-slate-300 hover:text-brand-gold transition">Reviews</a> <a href="/support.html" class="text-sm font-medium text-slate-300 hover:text-brand-gold transition">Support</a>
-     </nav><!-- CTA Button --> <a href="/onboarding.html"> <button class="px-6 py-2.5 bg-gradient-to-r from-brand-red to-brand-pink hover:from-brand-pink hover:to-brand-red text-white font-semibold text-sm rounded-lg transition-all duration-200 transform hover:scale-105 shadow-lg shadow-brand-red/30 active:scale-95"> Get Started </button> </a>
-    </div>
-   </header>
+
+  <!-- Header -->
+  <header class="sticky top-0 z-40 w-full border-b" style="border-color:rgba(255,215,0,0.1);background:linear-gradient(90deg,#1a0a10,#2a1520,#1a0a10);backdrop-filter:blur(16px);">
+   <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+    <!-- Logo --> <a href="/index.html" class="flex items-center gap-3 hover:opacity-90 transition">
+     <div class="w-10 h-10 rounded-lg flex items-center justify-center" style="background:linear-gradient(135deg,#c41e3a,#e8446d);">
+      <span class="text-white font-bold text-lg">VLP</span>
+     </div>
+     <div class="flex flex-col leading-tight">
+      <span class="font-semibold tracking-tight text-white text-sm">Games.Virtual Launch Pro</span> <span class="text-xs" style="color:rgba(255,255,255,0.4);">Game Platform for Tax Pros</span>
+     </div></a> 
+    <!-- Nav Menu -->
+    <nav class="hidden md:flex items-center gap-8">
+     <a href="/index.html#features" class="text-sm font-medium" style="color:rgba(255,255,255,0.65);transition:color 0.2s;" onmouseover="this.style.color='#ffd700'" onmouseout="this.style.color='rgba(255,255,255,0.65)'">Features</a> 
+     <a href="/index.html#howitworks" class="text-sm font-medium" style="color:rgba(255,255,255,0.65);transition:color 0.2s;" onmouseover="this.style.color='#ffd700'" onmouseout="this.style.color='rgba(255,255,255,0.65)'">How It Works</a> 
+     <a href="/index.html#proof" class="text-sm font-medium" style="color:rgba(255,255,255,0.65);transition:color 0.2s;" onmouseover="this.style.color='#ffd700'" onmouseout="this.style.color='rgba(255,255,255,0.65)'">Reviews</a> 
+     <a href="/support.html" class="text-sm font-medium" style="color:rgba(255,255,255,0.65);transition:color 0.2s;" onmouseover="this.style.color='#ffd700'" onmouseout="this.style.color='rgba(255,255,255,0.65)'">Support</a>
+    </nav>
+    <!-- CTA Button --> 
+    <button onclick="window.location.href='onboarding.html';" class="px-6 py-2.5 font-semibold text-sm rounded-lg transition-all duration-200 transform text-white relative z-10" style="background:linear-gradient(135deg,#c41e3a,#e8446d);box-shadow:0 4px 15px rgba(196,30,58,0.3);" onmouseover="this.style.transform='translateY(-2px);scale(1.05)'" onmouseout="this.style.transform='translateY(0);scale(1)'"> Get Started </button>
+   </div>
+  </header>  
+
    <section class="hero-section">
     <div class="hero-icon">
      <i data-lucide="help-circle" style="width: 50px; height: 50px;"></i>
