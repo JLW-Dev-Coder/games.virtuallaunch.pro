@@ -1,12 +1,3 @@
-Here’s the **fully revised README** for `games.virtuallaunch.pro`, updated with:
-
-* **Free tier + subscription tiers**
-* **Tax pro–focused positioning** for embedding games
-* **Slogans/market features**
-* **Full Stripe pricing config example**
-
----
-
 # games.virtuallaunch.pro
 
 A collection of self-contained browser mini-games for tax professionals. Each game is a standalone **JS module** that can be embedded on any page via a simple `<script>` tag and connects to your Worker backend for **token balances, payouts, and tracking**.
@@ -34,6 +25,56 @@ Each game lives in its own file, e.g., `tax-spin-wheel.js`.
 <script src="https://games.virtuallaunch.pro/games/tax-spin-wheel.js" data-client-id="CLIENT123"></script>
 ```
 
+
+```
+│   README.md
+│   wrangler.toml
+│   
+├───contracts
+│       onboarding.contract.json
+│       price-free.json
+│       price-tier-1.json
+│       price-tier-2.json
+│       price-tier-3.json
+│       product.json
+│       token.contract.json
+│
+├───games
+├───public
+│   │   index.html
+│   │   onboarding.html
+│   │   operator.html
+│   │   reviews.html
+│   │   success.html
+│   │   support.html
+│   │
+│   └───games
+│       │   audit-escape-room.html
+│       │   capital-gains-climb.html
+│       │   deduction-dash.html
+│       │   irs-fact-or-fiction.html
+│       │   refund-rush.html
+│       │   tax-match-mania.html
+│       │   tax-spin-wheel.html
+│       │   tax-trivia.html
+│       │   tax-word-search.html
+│       │
+│       └───js
+│               audit-escape-room.js
+│               capital-gains-climb.js
+│               deduction-dash.js
+│               irs-fact-or-fiction.js
+│               refund-rush.js
+│               tax-match-mania.js
+│               tax-spin-wheel.js
+│               tax-trivia.js
+│               tax-word-search.js
+│
+└───workers
+    └───src
+
+
+```
 ---
 
 ## 2. Token Integration
@@ -114,12 +155,13 @@ fetch('https://games.virtuallaunch.pro/api/create-checkout-session', {
 
 ## 6. Pricing Tiers
 
-| Tier Name          | Price      | What’s Included                                                                                           |
-| ------------------ | ---------- | --------------------------------------------------------------------------------------------------------- |
-| **Starter Spin**   | Free       | 2 games, 50 tokens/month, leaderboard visibility, basic tax tips                                          |
-| **Tax Apprentice** | $9/mo      | Full standard games, 500 tokens/month, monthly leaderboard updates                                        |
-| **Tax Strategist** | $19/mo     | All games, advanced games, 1,500 tokens/month, progress tracking, monthly tax tips                        |
-| **Firm Navigator** | $39/mo | Firm-wide access, analytics dashboard, leaderboard for teams, priority support, token allotments per user |
+| Tier Name                   | Price  | What’s Included                                                                              |
+| --------------------------- | ------ | -------------------------------------------------------------------------------------------- |
+| **Tax Play Starter**        | Free   | 1 game, 50 tokens/month                                                                      |
+| **Tax Play Apprentice**     | $9/mo  | 3 games, 500 tokens/month                                                                    |
+| **Tax Play Strategist**     | $19/mo | 5 games, 1,500 tokens/month                                                                  |
+| **Tax Play Navigator** | $39/mo | All games, 750 token/month |
+
 
 **Stripe Pricing Example (cents for Stripe API):**
 
@@ -169,5 +211,3 @@ Games are **drop-in**, fully interactive, mobile-friendly, and designed to help 
 `tax-spin-wheel.js` is the first example module ready to deploy.
 
 ---
-
-Do you want me to **also create a “Quick Embed Snippets” section** showing **all 10 games with example `<script>` tags** for operators to copy directly?

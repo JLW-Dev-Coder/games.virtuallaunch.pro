@@ -1,0 +1,674 @@
+<!doctype html>
+<html lang="en" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Virtual Launch Pro – Onboarding</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+  <script src="/_sdk/element_sdk.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&amp;family=JetBrains+Mono:wght@400;600&amp;display=swap" rel="stylesheet">
+  <script>
+tailwind.config = {
+  theme: {
+    extend: {
+      fontFamily: {
+        outfit: ['Outfit', 'sans-serif'],
+        mono: ['JetBrains Mono', 'monospace']
+      }
+    }
+  }
+}
+</script>
+  <style>
+html, body { height: 100%; margin: 0; }
+
+/* Floating blobs */
+.blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.25;
+  pointer-events: none;
+  animation: blobFloat 8s ease-in-out infinite alternate;
+}
+.blob-1 { width: 300px; height: 300px; background: #c41e3a; top: 5%; left: -5%; animation-delay: 0s; }
+.blob-2 { width: 250px; height: 250px; background: #e8446d; top: 30%; right: -8%; animation-delay: 2s; }
+.blob-3 { width: 200px; height: 200px; background: #ffd700; top: 60%; left: 10%; animation-delay: 4s; opacity: 0.12; }
+.blob-4 { width: 280px; height: 280px; background: #c41e3a; bottom: 5%; right: 5%; animation-delay: 1s; }
+
+@keyframes blobFloat {
+  0% { transform: translate(0, 0) scale(1); }
+  100% { transform: translate(30px, -20px) scale(1.1); }
+}
+
+/* Glass card */
+.glass {
+  background: rgba(255,255,255,0.04);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255,255,255,0.08);
+}
+.glass-gold {
+  background: rgba(255,215,0,0.04);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255,215,0,0.15);
+}
+
+/* Gradient button */
+.btn-primary {
+  background: linear-gradient(135deg, #c41e3a, #e8446d);
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(196,30,58,0.4);
+}
+.btn-primary::after {
+  content: '';
+  position: absolute;
+  top: -50%; left: -50%;
+  width: 200%; height: 200%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.12), transparent);
+  animation: shimmer 3s infinite;
+}
+@keyframes shimmer {
+  0% { transform: translateX(-100%) rotate(25deg); }
+  100% { transform: translateX(100%) rotate(25deg); }
+}
+
+.btn-secondary {
+  background: transparent;
+  border: 1.5px solid #ffd700;
+  color: #ffd700;
+  transition: background 0.2s, transform 0.2s;
+}
+.btn-secondary:hover {
+  background: rgba(255,215,0,0.1);
+  transform: translateY(-1px);
+}
+
+/* Step slide-up */
+.step-section {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.step-section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Game card hover */
+.game-card {
+  transition: transform 0.25s, border-color 0.25s, box-shadow 0.25s;
+  cursor: pointer;
+}
+.game-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(232,68,109,0.25);
+}
+.game-card.selected {
+  border-color: #ffd700 !important;
+  box-shadow: 0 0 20px rgba(255,215,0,0.2);
+}
+.game-card.locked {
+  opacity: 0.35;
+  pointer-events: none;
+}
+
+/* Tier card */
+.tier-card {
+  transition: transform 0.25s, box-shadow 0.25s;
+  cursor: pointer;
+}
+.tier-card:hover { transform: translateY(-4px); }
+.tier-card.selected-tier {
+  border-color: #ffd700 !important;
+  box-shadow: 0 0 30px rgba(255,215,0,0.15);
+}
+
+/* Progress bar fill */
+.progress-fill {
+  transition: width 1s ease;
+}
+
+/* Stepper dot */
+.step-dot {
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  transition: background 0.3s, color 0.3s, box-shadow 0.3s;
+}
+.step-dot.active {
+  background: linear-gradient(135deg, #c41e3a, #e8446d);
+  color: white;
+  box-shadow: 0 0 16px rgba(196,30,58,0.5);
+}
+.step-dot.completed {
+  background: #ffd700;
+  color: #1a0a10;
+}
+.step-dot.inactive {
+  background: rgba(255,255,255,0.08);
+  color: rgba(255,255,255,0.3);
+}
+.step-line {
+  height: 2px;
+  flex: 1;
+  background: rgba(255,255,255,0.08);
+  position: relative;
+}
+.step-line-fill {
+  height: 100%;
+  background: #ffd700;
+  transition: width 0.5s ease;
+}
+
+/* Input styling */
+.form-input {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  color: #fff;
+  font-family: 'Outfit', sans-serif;
+  transition: border-color 0.2s;
+}
+.form-input:focus {
+  outline: none;
+  border-color: #ffd700;
+  box-shadow: 0 0 0 2px rgba(255,215,0,0.15);
+}
+.form-input::placeholder { color: rgba(255,255,255,0.3); }
+
+/* Stat card animation */
+@keyframes countUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+.stat-animate { animation: countUp 0.6s ease forwards; }
+</style>
+  <style>body { box-sizing: border-box; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+ <body class="h-full overflow-auto font-outfit" style="background:#1a0a10; color:#fff;">
+  <!-- Header -->
+  <header class="sticky top-0 z-40 w-full border-b" style="border-color:rgba(255,215,0,0.1);background:linear-gradient(90deg,#1a0a10,#2a1520,#1a0a10);backdrop-filter:blur(16px);">
+   <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+    <!-- Logo --> <a href="#" class="flex items-center gap-3 hover:opacity-90 transition">
+     <div class="w-10 h-10 rounded-lg flex items-center justify-center" style="background:linear-gradient(135deg,#c41e3a,#e8446d);">
+      <span class="text-white font-bold text-lg">VLP</span>
+     </div>
+     <div class="flex flex-col leading-tight">
+      <span class="font-semibold tracking-tight text-white text-sm">Games.Virtual Launch Pro</span> <span class="text-xs" style="color:rgba(255,255,255,0.4);">Game Platform for Tax Pros</span>
+     </div></a> <!-- Nav Menu -->
+    <nav class="hidden md:flex items-center gap-8">
+     <a href="#" class="text-sm font-medium" style="color:rgba(255,255,255,0.65);transition:color 0.2s;" onmouseover="this.style.color='#ffd700'" onmouseout="this.style.color='rgba(255,255,255,0.65)'">Features</a> <a href="#" class="text-sm font-medium" style="color:rgba(255,255,255,0.65);transition:color 0.2s;" onmouseover="this.style.color='#ffd700'" onmouseout="this.style.color='rgba(255,255,255,0.65)'">How It Works</a> <a href="#" class="text-sm font-medium" style="color:rgba(255,255,255,0.65);transition:color 0.2s;" onmouseover="this.style.color='#ffd700'" onmouseout="this.style.color='rgba(255,255,255,0.65)'">Reviews</a> <a href="#" class="text-sm font-medium" style="color:rgba(255,255,255,0.65);transition:color 0.2s;" onmouseover="this.style.color='#ffd700'" onmouseout="this.style.color='rgba(255,255,255,0.65)'">Support</a>
+    </nav><!-- CTA Button --> <button class="px-6 py-2.5 font-semibold text-sm rounded-lg transition-all duration-200 transform text-white relative z-10" style="background:linear-gradient(135deg,#c41e3a,#e8446d);box-shadow:0 4px 15px rgba(196,30,58,0.3);" onmouseover="this.style.transform='translateY(-2px);scale(1.05)'" onmouseout="this.style.transform='translateY(0);scale(1)'"> Get Started </button>
+   </div>
+  </header>
+  <div id="app" class="relative w-full min-h-full overflow-hidden"><!-- Blobs -->
+   <div class="blob blob-1"></div>
+   <div class="blob blob-2"></div>
+   <div class="blob blob-3"></div>
+   <div class="blob blob-4"></div>
+   <div class="relative z-10 max-w-5xl mx-auto px-4 py-10 sm:px-6 lg:px-8"><!-- Header -->
+    <header class="text-center mb-10">
+     <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-gold mb-5" style="font-size:13px; color:#ffd700;"><i data-lucide="sparkles" style="width:14px;height:14px;"></i> <span class="font-mono font-semibold tracking-wide">ONBOARDING</span>
+     </div>
+     <h1 id="mainTitle" class="text-3xl sm:text-5xl font-extrabold leading-tight mb-3" style="background:linear-gradient(135deg,#fff 40%,#ffd700);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">Welcome to Virtual Launch Pro</h1>
+     <p id="mainSubtitle" class="text-base sm:text-lg" style="color:rgba(255,255,255,0.55);">Complete these 4 steps to go live</p>
+    </header><!-- Stepper -->
+    <nav class="flex items-center justify-center gap-0 mb-12 px-4 max-w-md mx-auto" id="stepper" aria-label="Onboarding steps">
+     <div class="step-dot active" data-step="1">
+      1
+     </div>
+     <div class="step-line">
+      <div class="step-line-fill" style="width:0%"></div>
+     </div>
+     <div class="step-dot inactive" data-step="2">
+      2
+     </div>
+     <div class="step-line">
+      <div class="step-line-fill" style="width:0%"></div>
+     </div>
+     <div class="step-dot inactive" data-step="3">
+      3
+     </div>
+     <div class="step-line">
+      <div class="step-line-fill" style="width:0%"></div>
+     </div>
+     <div class="step-dot inactive" data-step="4">
+      4
+     </div>
+    </nav><!-- STEP 1: Choose Your Tier -->
+    <section id="step1" class="step-section visible mb-8">
+     <div class="text-center mb-8">
+      <h2 class="text-2xl sm:text-3xl font-bold mb-2">Your Current Tier</h2>
+      <p style="color:rgba(255,255,255,0.5);">Enter your reference number then click Continue</p>
+     </div>
+     <div class="max-w-sm mx-auto mb-8">
+      <div class="glass-gold rounded-xl p-4"><label class="block text-sm font-semibold mb-2" style="color:rgba(255,255,255,0.7);">Reference Number</label> <input type="text" id="refNumber" class="form-input w-full rounded-lg px-4 py-3 text-sm" placeholder="e.g., REF-123456" required oninput="validateStep1()">
+      </div>
+     </div>
+     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5" id="tierGrid"><!-- Starter -->
+      <div class="tier-card glass rounded-2xl p-6 text-center" data-tier="starter" data-games="1" onclick="selectTier(this)">
+       <div class="w-14 h-14 rounded-xl mx-auto mb-4 flex items-center justify-center" style="background:rgba(255,215,0,0.1);">
+        <i data-lucide="zap" style="width:28px;height:28px;color:#ffd700;"></i>
+       </div>
+       <h3 class="text-xl font-bold mb-1">Starter</h3>
+       <p class="font-mono text-sm mb-3" style="color:#ffd700;">Free</p>
+       <p class="text-sm mb-4" style="color:rgba(255,255,255,0.45);">1 game, 50 tokens/mo</p>
+       <ul class="text-left text-sm space-y-2 mb-5" style="color:rgba(255,255,255,0.5);">
+        <li class="flex items-center gap-2"><i data-lucide="check" style="width:14px;height:14px;color:#ffd700;"></i>1 game included</li>
+        <li class="flex items-center gap-2"><i data-lucide="check" style="width:14px;height:14px;color:#ffd700;"></i>50 tokens monthly</li>
+        <li class="flex items-center gap-2"><i data-lucide="check" style="width:14px;height:14px;color:#ffd700;"></i>Basic support</li>
+       </ul>
+       <div class="btn-secondary rounded-lg py-2 px-4 text-sm font-semibold">
+        Select Starter
+       </div>
+      </div><!-- Apprentice -->
+      <div class="tier-card glass rounded-2xl p-6 text-center" data-tier="apprentice" data-games="3" onclick="selectTier(this)">
+       <div class="w-14 h-14 rounded-xl mx-auto mb-4 flex items-center justify-center" style="background:rgba(232,68,109,0.15);">
+        <i data-lucide="flame" style="width:28px;height:28px;color:#e8446d;"></i>
+       </div>
+       <h3 class="text-xl font-bold mb-1">Apprentice</h3>
+       <p class="font-mono text-sm mb-3" style="color:#ffd700;">$9/mo</p>
+       <p class="text-sm mb-4" style="color:rgba(255,255,255,0.45);">3 games, 500 tokens/mo</p>
+       <ul class="text-left text-sm space-y-2 mb-5" style="color:rgba(255,255,255,0.5);">
+        <li class="flex items-center gap-2"><i data-lucide="check" style="width:14px;height:14px;color:#ffd700;"></i>3 games included</li>
+        <li class="flex items-center gap-2"><i data-lucide="check" style="width:14px;height:14px;color:#ffd700;"></i>500 tokens monthly</li>
+        <li class="flex items-center gap-2"><i data-lucide="check" style="width:14px;height:14px;color:#ffd700;"></i>Email support</li>
+       </ul>
+       <div class="btn-secondary rounded-lg py-2 px-4 text-sm font-semibold">
+        Select Apprentice
+       </div>
+      </div><!-- Strategist -->
+      <div class="tier-card glass rounded-2xl p-6 text-center relative" data-tier="strategist" data-games="5" onclick="selectTier(this)" style="border-color:rgba(232,68,109,0.3);">
+       <div class="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-0.5 rounded-full text-xs font-bold" style="background:linear-gradient(135deg,#c41e3a,#e8446d);color:#fff;">
+        POPULAR
+       </div>
+       <div class="w-14 h-14 rounded-xl mx-auto mb-4 flex items-center justify-center" style="background:rgba(232,68,109,0.15);">
+        <i data-lucide="trending-up" style="width:28px;height:28px;color:#e8446d;"></i>
+       </div>
+       <h3 class="text-xl font-bold mb-1">Strategist</h3>
+       <p class="font-mono text-sm mb-3" style="color:#ffd700;">$19/mo</p>
+       <p class="text-sm mb-4" style="color:rgba(255,255,255,0.45);">5 games, 1,500 tokens/mo</p>
+       <ul class="text-left text-sm space-y-2 mb-5" style="color:rgba(255,255,255,0.5);">
+        <li class="flex items-center gap-2"><i data-lucide="check" style="width:14px;height:14px;color:#ffd700;"></i>5 games included</li>
+        <li class="flex items-center gap-2"><i data-lucide="check" style="width:14px;height:14px;color:#ffd700;"></i>1,500 tokens monthly</li>
+        <li class="flex items-center gap-2"><i data-lucide="check" style="width:14px;height:14px;color:#ffd700;"></i>Priority support</li>
+       </ul>
+       <div class="btn-primary rounded-lg py-2 px-4 text-sm font-semibold text-white relative z-10">
+        Select Strategist
+       </div>
+      </div><!-- Firm Navigator -->
+      <div class="tier-card glass rounded-2xl p-6 text-center" data-tier="firmnavigator" data-games="12" onclick="selectTier(this)">
+       <div class="w-14 h-14 rounded-xl mx-auto mb-4 flex items-center justify-center" style="background:rgba(255,215,0,0.1);">
+        <i data-lucide="crown" style="width:28px;height:28px;color:#ffd700;"></i>
+       </div>
+       <h3 class="text-xl font-bold mb-1">Firm Navigator</h3>
+       <p class="font-mono text-sm mb-3" style="color:#ffd700;">$39/mo</p>
+       <p class="text-sm mb-4" style="color:rgba(255,255,255,0.45);">All games, 750 tokens/mo</p>
+       <ul class="text-left text-sm space-y-2 mb-5" style="color:rgba(255,255,255,0.5);">
+        <li class="flex items-center gap-2"><i data-lucide="check" style="width:14px;height:14px;color:#ffd700;"></i>All games included</li>
+        <li class="flex items-center gap-2"><i data-lucide="check" style="width:14px;height:14px;color:#ffd700;"></i>750 tokens monthly</li>
+        <li class="flex items-center gap-2"><i data-lucide="check" style="width:14px;height:14px;color:#ffd700;"></i>Dedicated support</li>
+       </ul>
+       <div class="btn-secondary rounded-lg py-2 px-4 text-sm font-semibold">
+        Select Firm Navigator
+       </div>
+      </div>
+     </div>
+     <div class="text-center mt-6"><button id="step1Next" class="btn-primary rounded-xl py-3 px-10 font-bold text-white relative z-10 opacity-40 pointer-events-none" onclick="goToStep(2)">Continue <i data-lucide="arrow-right" style="width:16px;height:16px;display:inline;vertical-align:middle;margin-left:4px;"></i></button>
+     </div>
+    </section><!-- STEP 2: Pick Your Games -->
+    <section id="step2" class="step-section mb-8" style="display:none;">
+     <div class="text-center mb-8">
+      <h2 class="text-2xl sm:text-3xl font-bold mb-2">Pick Your Games</h2>
+      <p id="gameSubtext" style="color:rgba(255,255,255,0.5);">Select up to <span id="maxGamesLabel">4</span> games for your tier</p>
+     </div>
+     <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4" id="gameGrid"></div>
+     <div class="text-center mt-2 mb-4"><span id="gameCounter" class="font-mono text-sm" style="color:#ffd700;">0 / 4 selected</span>
+     </div>
+     <div class="flex justify-center gap-3 mt-4"><button class="btn-secondary rounded-xl py-3 px-8 font-semibold" onclick="goToStep(1)"><i data-lucide="arrow-left" style="width:16px;height:16px;display:inline;vertical-align:middle;margin-right:4px;"></i> Back</button> <button id="step2Next" class="btn-primary rounded-xl py-3 px-10 font-bold text-white relative z-10 opacity-40 pointer-events-none" onclick="goToStep(3)">Continue <i data-lucide="arrow-right" style="width:16px;height:16px;display:inline;vertical-align:middle;margin-left:4px;"></i></button>
+     </div>
+    </section><!-- STEP 3: Set Payout Details -->
+    <section id="step3" class="step-section mb-8" style="display:none;">
+     <div class="text-center mb-8">
+      <h2 class="text-2xl sm:text-3xl font-bold mb-2">Set Payout Details</h2>
+      <p style="color:rgba(255,255,255,0.5);">Where should we send your affiliate earnings?</p>
+     </div>
+     <div class="glass-gold rounded-2xl p-6 sm:p-8 max-w-lg mx-auto">
+      <form id="payoutForm" onsubmit="handlePayout(event)">
+       <div class="mb-5"><label class="block text-sm font-semibold mb-1.5" style="color:rgba(255,255,255,0.7);">Full Name</label> <input type="text" class="form-input w-full rounded-lg px-4 py-3 text-sm" placeholder="Jane Doe" required>
+       </div>
+       <div class="mb-5"><label class="block text-sm font-semibold mb-1.5" style="color:rgba(255,255,255,0.7);">Email Address</label> <input type="email" class="form-input w-full rounded-lg px-4 py-3 text-sm" placeholder="jane@example.com" required>
+       </div>
+       <div class="mb-5"><label class="block text-sm font-semibold mb-1.5" style="color:rgba(255,255,255,0.7);">Payout Method</label> <select class="form-input w-full rounded-lg px-4 py-3 text-sm" required> <option value="">Select method</option> <option>PayPal</option> <option>Stripe Connect</option> <option>Bank Transfer</option> <option>Crypto Wallet</option> </select>
+       </div>
+       <div class="mb-6"><label class="block text-sm font-semibold mb-1.5" style="color:rgba(255,255,255,0.7);">Account ID / Wallet Address</label> <input type="text" class="form-input w-full rounded-lg px-4 py-3 text-sm font-mono" placeholder="your-id@paypal.com" required>
+       </div>
+       <div class="flex gap-3"><button type="button" class="btn-secondary rounded-xl py-3 px-6 font-semibold flex-1" onclick="goToStep(2)"><i data-lucide="arrow-left" style="width:16px;height:16px;display:inline;vertical-align:middle;margin-right:4px;"></i> Back</button> <button type="submit" class="btn-primary rounded-xl py-3 px-6 font-bold text-white relative z-10 flex-1">Save &amp; Continue <i data-lucide="arrow-right" style="width:16px;height:16px;display:inline;vertical-align:middle;margin-left:4px;"></i></button>
+       </div>
+      </form>
+      <p class="text-center mt-4 text-xs" style="color:rgba(255,255,255,0.3);"><i data-lucide="shield-check" style="width:12px;height:12px;display:inline;vertical-align:middle;margin-right:3px;"></i> Your payout info is encrypted and secure</p>
+     </div>
+    </section><!-- STEP 4: Launch & Engage -->
+    <section id="step4" class="step-section mb-8" style="display:none;">
+     <div class="text-center mb-8">
+      <h2 class="text-2xl sm:text-3xl font-bold mb-2">Launch &amp; Engage</h2>
+      <p style="color:rgba(255,255,255,0.5);">You're ready! Here's your engagement dashboard preview</p>
+     </div><!-- Embed preview -->
+     <div class="glass rounded-2xl p-6 sm:p-8 mb-6 max-w-2xl mx-auto">
+      <div class="flex items-center gap-3 mb-5">
+       <div class="flex gap-1.5">
+        <div class="w-3 h-3 rounded-full" style="background:#c41e3a;"></div>
+        <div class="w-3 h-3 rounded-full" style="background:#ffd700;"></div>
+        <div class="w-3 h-3 rounded-full" style="background:#22c55e;"></div>
+       </div>
+       <div class="flex-1 rounded-lg px-3 py-1.5 text-xs font-mono" style="background:rgba(255,255,255,0.05);color:rgba(255,255,255,0.4);">
+        https://yoursite.com/games
+       </div>
+      </div>
+      <div class="rounded-xl p-5" style="background:rgba(255,255,255,0.03);border:1px dashed rgba(255,255,255,0.1);">
+       <div class="text-center">
+        <p class="font-mono text-xs mb-2" style="color:rgba(255,255,255,0.35);">&lt;script src="games.virtuallaunch.pro/embed.js"&gt;&lt;/script&gt;</p>
+        <div class="grid grid-cols-3 gap-2 max-w-xs mx-auto mt-3">
+         <div class="rounded-lg p-3 text-center" style="background:rgba(232,68,109,0.15);">
+          <span class="text-2xl">🎰</span>
+          <p class="text-xs mt-1" style="color:rgba(255,255,255,0.5);">Slots</p>
+         </div>
+         <div class="rounded-lg p-3 text-center" style="background:rgba(255,215,0,0.1);">
+          <span class="text-2xl">🎯</span>
+          <p class="text-xs mt-1" style="color:rgba(255,255,255,0.5);">Darts</p>
+         </div>
+         <div class="rounded-lg p-3 text-center" style="background:rgba(196,30,58,0.15);">
+          <span class="text-2xl">🃏</span>
+          <p class="text-xs mt-1" style="color:rgba(255,255,255,0.5);">Cards</p>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div><!-- Stats -->
+     <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-2xl mx-auto mb-6">
+      <div class="glass rounded-xl p-4 text-center stat-animate">
+       <p class="text-2xl font-bold" style="color:#ffd700;">2,400</p>
+       <p class="text-xs mt-1" style="color:rgba(255,255,255,0.4);">Tokens Earned</p>
+      </div>
+      <div class="glass rounded-xl p-4 text-center stat-animate" style="animation-delay:0.15s;">
+       <p class="text-2xl font-bold" style="color:#e8446d;">89%</p>
+       <p class="text-xs mt-1" style="color:rgba(255,255,255,0.4);">Engagement</p>
+      </div>
+      <div class="glass rounded-xl p-4 text-center stat-animate" style="animation-delay:0.3s;">
+       <p class="text-2xl font-bold" style="color:#ffd700;">🏆 12</p>
+       <p class="text-xs mt-1" style="color:rgba(255,255,255,0.4);">Trophies</p>
+      </div>
+      <div class="glass rounded-xl p-4 text-center stat-animate" style="animation-delay:0.45s;">
+       <p class="text-2xl font-bold" style="color:#22c55e;">$340</p>
+       <p class="text-xs mt-1" style="color:rgba(255,255,255,0.4);">Payout Ready</p>
+      </div>
+     </div><!-- Progress bars -->
+     <div class="glass rounded-xl p-5 max-w-2xl mx-auto mb-8">
+      <h3 class="font-bold text-sm mb-4" style="color:rgba(255,255,255,0.6);">Engagement Metrics</h3>
+      <div class="space-y-3">
+       <div>
+        <div class="flex justify-between text-xs mb-1">
+         <span style="color:rgba(255,255,255,0.5);">Player Retention</span><span class="font-mono" style="color:#ffd700;">78%</span>
+        </div>
+        <div class="w-full h-2 rounded-full" style="background:rgba(255,255,255,0.06);">
+         <div class="progress-fill h-full rounded-full" style="width:78%;background:linear-gradient(90deg,#c41e3a,#e8446d);"></div>
+        </div>
+       </div>
+       <div>
+        <div class="flex justify-between text-xs mb-1">
+         <span style="color:rgba(255,255,255,0.5);">Session Duration</span><span class="font-mono" style="color:#ffd700;">92%</span>
+        </div>
+        <div class="w-full h-2 rounded-full" style="background:rgba(255,255,255,0.06);">
+         <div class="progress-fill h-full rounded-full" style="width:92%;background:linear-gradient(90deg,#ffd700,#ffaa00);"></div>
+        </div>
+       </div>
+       <div>
+        <div class="flex justify-between text-xs mb-1">
+         <span style="color:rgba(255,255,255,0.5);">Conversion Rate</span><span class="font-mono" style="color:#ffd700;">64%</span>
+        </div>
+        <div class="w-full h-2 rounded-full" style="background:rgba(255,255,255,0.06);">
+         <div class="progress-fill h-full rounded-full" style="width:64%;background:linear-gradient(90deg,#c41e3a,#ffd700);"></div>
+        </div>
+       </div>
+      </div>
+     </div>
+     <div class="text-center"><button id="ctaButton" class="btn-primary rounded-2xl py-4 px-14 text-lg font-extrabold text-white relative z-10" onclick="handleLaunch()"> <i data-lucide="rocket" style="width:20px;height:20px;display:inline;vertical-align:middle;margin-right:6px;"></i> <span id="ctaLabel">Go Live Instantly</span> </button>
+      <p class="mt-3 text-xs" style="color:rgba(255,255,255,0.3);">Your games will be live within seconds</p>
+     </div><!-- Success overlay -->
+     <div id="successOverlay" class="hidden fixed inset-0 z-50 flex items-center justify-center" style="background:rgba(26,10,16,0.9);">
+      <div class="text-center">
+       <div class="text-7xl mb-4">
+        🚀
+       </div>
+       <h2 class="text-3xl font-extrabold mb-2" style="color:#ffd700;">You're Live!</h2>
+       <p style="color:rgba(255,255,255,0.5);">Your games are now embedded and earning.</p>
+      </div>
+     </div>
+    </section>
+   </div><!-- FOOTER -->
+   <footer id="footer" class="w-full py-12" style="background:#0d0508;border-top:1px solid rgba(255,255,255,0.05);">
+    <div class="max-w-6xl mx-auto px-6">
+     <div class="grid md:grid-cols-4 gap-8 mb-12">
+      <div>
+       <a href="#" class="flex items-center gap-3 hover:opacity-90 transition mb-4">
+        <div class="w-10 h-10 rounded-lg flex items-center justify-center" style="background:linear-gradient(135deg,#c41e3a,#e8446d);"><span class="text-white font-bold text-sm">VLP</span>
+        </div>
+        <div class="flex flex-col leading-tight"><span id="footer-brand" class="font-semibold tracking-tight text-white text-sm">Games.Virtual Launch Pro</span> <span class="text-xs text-gray-500">Game Platform for Tax Pros</span>
+        </div></a>
+       <p class="text-xs text-gray-500">Connecting tax professionals with passive income opportunities through engaging mini-games.</p>
+      </div>
+      <div>
+       <h3 class="font-semibold text-gray-200 mb-4 text-sm">Product</h3>
+       <ul class="space-y-2">
+        <li><a href="#games" class="text-xs text-gray-500 hover:text-yellow-300 transition">Games</a></li>
+        <li><a href="#howitworks" class="text-xs text-gray-500 hover:text-yellow-300 transition">How It Works</a></li>
+       </ul>
+      </div>
+      <div>
+       <h3 class="font-semibold text-gray-200 mb-4 text-sm">Company</h3>
+       <ul class="space-y-2">
+        <li><a href="#games" class="text-xs text-gray-500 hover:text-yellow-300 transition">Features</a></li>
+        <li><a href="#proof" class="text-xs text-gray-500 hover:text-yellow-300 transition">Reviews</a></li>
+        <li><a href="/support.html" class="text-xs text-gray-500 hover:text-yellow-300 transition">Support</a></li>
+       </ul>
+      </div>
+      <div>
+       <h3 class="font-semibold text-gray-200 mb-4 text-sm">Support</h3>
+       <ul class="space-y-2">
+        <li><a href="mailto:support@virtuallaunch.pro" class="text-xs text-gray-500 hover:text-yellow-300 transition">support@virtuallaunch.pro</a></li>
+        <li><a href="tel:+16198005457" class="text-xs text-gray-500 hover:text-yellow-300 transition">619-800-5457</a></li>
+        <li><a href="https://t.me/virtuallaunchpro" class="text-xs text-gray-500 hover:text-yellow-300 transition">Live Chat</a></li>
+       </ul>
+      </div>
+     </div>
+     <div class="flex flex-col md:flex-row items-center justify-between pt-8" style="border-top:1px solid rgba(255,255,255,0.05);">
+      <p id="footer-copy" class="text-xs text-gray-600">© 2024 Virtual Launch Pro. All rights reserved.</p>
+      <p class="text-xs text-gray-600 mt-4 md:mt-0">Helping tax professionals build passive income with gamified client engagement.</p>
+     </div>
+    </div>
+   </footer>
+  </div>
+  <script>
+// State
+let currentStep = 1;
+let selectedTier = null;
+let maxGames = 0;
+let selectedGames = new Set();
+
+const GAMES = [
+  { id:'audit-escape-room', name:'Audit Escape Room', icon:'🔓' },
+  { id:'capital-gains-climb', name:'Capital Gains Climb', icon:'📈' },
+  { id:'deduction-dash', name:'Deduction Dash', icon:'💨' },
+  { id:'irs-fact-or-fiction', name:'IRS Fact or Fiction', icon:'❓' },
+  { id:'refund-rush', name:'Refund Rush', icon:'💰' },
+  { id:'tax-match-mania', name:'Tax Match Mania', icon:'🎯' },
+  { id:'tax-spin-wheel', name:'Tax Spin Wheel', icon:'🎡' },
+  { id:'tax-trivia', name:'Tax Trivia', icon:'🧠' },
+  { id:'tax-word-search', name:'Tax Word Search', icon:'🔍' },
+];
+
+function buildGameGrid() {
+  const grid = document.getElementById('gameGrid');
+  grid.innerHTML = '';
+  GAMES.forEach((g, i) => {
+    const locked = i >= maxGames;
+    const div = document.createElement('div');
+    div.className = `game-card glass rounded-xl p-4 text-center ${locked ? 'locked' : ''}`;
+    div.dataset.id = g.id;
+    div.innerHTML = `<span class="text-3xl block mb-2">${g.icon}</span><p class="text-sm font-semibold">${g.name}</p>${locked ? '<p class="text-xs mt-1 font-mono" style="color:rgba(255,255,255,0.25);">🔒 Upgrade</p>' : ''}`;
+    if (!locked) div.onclick = () => toggleGame(g.id, div);
+    grid.appendChild(div);
+  });
+  lucide.createIcons();
+}
+
+function toggleGame(id, el) {
+  if (selectedGames.has(id)) {
+    selectedGames.delete(id);
+    el.classList.remove('selected');
+  } else {
+    if (selectedGames.size >= maxGames) return;
+    selectedGames.add(id);
+    el.classList.add('selected');
+  }
+  document.getElementById('gameCounter').textContent = `${selectedGames.size} / ${maxGames} selected`;
+  const btn = document.getElementById('step2Next');
+  if (selectedGames.size > 0) { btn.classList.remove('opacity-40','pointer-events-none'); }
+  else { btn.classList.add('opacity-40','pointer-events-none'); }
+}
+
+function selectTier(el) {
+  document.querySelectorAll('.tier-card').forEach(c => c.classList.remove('selected-tier'));
+  el.classList.add('selected-tier');
+  selectedTier = el.dataset.tier;
+  maxGames = parseInt(el.dataset.games);
+  selectedGames.clear();
+  validateStep1();
+}
+
+function validateStep1() {
+  const refNumber = document.getElementById('refNumber').value.trim();
+  const btn = document.getElementById('step1Next');
+  
+  if (selectedTier && refNumber) {
+    btn.classList.remove('opacity-40','pointer-events-none');
+  } else {
+    btn.classList.add('opacity-40','pointer-events-none');
+  }
+}
+
+function goToStep(step) {
+  // Hide current
+  const cur = document.getElementById('step' + currentStep);
+  cur.classList.remove('visible');
+  setTimeout(() => {
+    cur.style.display = 'none';
+    // Show next
+    const next = document.getElementById('step' + step);
+    next.style.display = '';
+    if (step === 2) {
+      document.getElementById('maxGamesLabel').textContent = maxGames;
+      buildGameGrid();
+    }
+    requestAnimationFrame(() => {
+      next.classList.add('visible');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+    currentStep = step;
+    updateStepper();
+  }, 300);
+}
+
+function updateStepper() {
+  const dots = document.querySelectorAll('.step-dot');
+  const lines = document.querySelectorAll('.step-line-fill');
+  dots.forEach((d, i) => {
+    const s = i + 1;
+    d.className = 'step-dot ' + (s < currentStep ? 'completed' : s === currentStep ? 'active' : 'inactive');
+    if (s < currentStep) d.innerHTML = '✓';
+    else d.textContent = s;
+  });
+  lines.forEach((l, i) => {
+    l.style.width = (i + 1 < currentStep) ? '100%' : '0%';
+  });
+}
+
+function handlePayout(e) {
+  e.preventDefault();
+  goToStep(4);
+}
+
+function handleLaunch() {
+  document.getElementById('successOverlay').classList.remove('hidden');
+  setTimeout(() => document.getElementById('successOverlay').classList.add('hidden'), 3000);
+}
+
+// Element SDK
+const defaultConfig = {
+  main_title: 'Welcome to Games.Virtual Launch Pro',
+  main_subtitle: 'Complete these 4 steps to go live',
+  cta_text: 'Go Live Instantly',
+  background_color: '#1a0a10',
+  accent_color: '#ffd700',
+  text_color: '#ffffff',
+  primary_action_color: '#c41e3a',
+  surface_color: '#2a1520',
+  font_family: 'Outfit',
+  font_size: 16
+};
+
+function applyConfig(config) {
+  const c = { ...defaultConfig, ...config };
+  document.getElementById('mainTitle').textContent = c.main_title;
+  document.getElementById('mainSubtitle').textContent = c.main_subtitle;
+  document.getElementById('ctaLabel').textContent = c.cta_text;
+
+  document.body.style.background = c.background_color;
+  document.body.style.color = c.text_color;
+  document.body.style.fontFamily = `${c.font_family}, Outfit, sans-serif`;
+
+  const baseSize = c.font_size || 16;
+  document.getElementById('mainTitle').style.fontSize = `${baseSize * 2.2}px`;
+  document.getElementById('mainSubtitle').style.fontSize = `${baseSize * 1.1}px`;
+}
+
+if (window.elementSdk) {
+  window.elementSdk.init({
+    defaultConfig,
+    onConfigChange: async (config) => applyConfig(config),
+    mapToCapabilities: (config) => ({
+      recolorables: [
+        { get: () => config.background_color || defaultConfig.background_color, set: (v) => { config.background_color = v; window.elementSdk.setConfig({ background_color: v }); } },
+        { get: () => config.surface_color || defaultConfig.surface_color, set: (v) => { config.surface_color = v; window.elementSdk.setConfig({ surface_color: v }); } },
+        { get: () => config.text_color || defaultConfig.text_color, set: (v) => { config.text_color = v; window.elementSdk.setConfig({ text_color: v }); } },
+        { get: () => config.primary_action_color || defaultConfig.primary_action_color, set: (v) => { config.primary_action_color = v; window.elementSdk.setConfig({ primary_action_color: v }); } },
+        { get: () => config.accent_color || defaultConfig.accent_color, set: (v) => { config.accent_color = v; window.elementSdk.setConfig({ accent_color: v }); } },
+      ],
+      borderables: [],
+      fontEditable: {
+        get: () => config.font_family || defaultConfig.font_family,
+        set: (v) => { config.font_family = v; window.elementSdk.setConfig({ font_family: v }); }
+      },
+      fontSizeable: {
+        get: () => config.font_size || defaultConfig.font_size,
+        set: (v) => { config.font_size = v; window.elementSdk.setConfig({ font_size: v }); }
+      }
+    }),
+    mapToEditPanelValues: (config) => new Map([
+      ['main_title', config.main_title || defaultConfig.main_title],
+      ['main_subtitle', config.main_subtitle || defaultConfig.main_subtitle],
+      ['cta_text', config.cta_text || defaultConfig.cta_text],
+    ])
+  });
+}
+
+lucide.createIcons();
+</script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9e02939117a727c9',t:'MTc3NDE1NTAzNi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
