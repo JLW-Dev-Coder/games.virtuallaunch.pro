@@ -153,7 +153,18 @@ fetch('https://games.virtuallaunch.pro/api/create-checkout-session', {
 
 ---
 
-## 6. Pricing Tiers
+---
+
+## 6. Adding New Games
+
+* Add a new JS module to `games/`
+* Register in `games/registry.js` (optional)
+* Use the same token + Stripe pattern
+* Keep each module **self-contained** for easy embedding
+
+---
+
+## 7. Pricing Tiers
 
 | Tier Name                   | Price  | What’s Included                                                                              |
 | --------------------------- | ------ | -------------------------------------------------------------------------------------------- |
@@ -176,17 +187,6 @@ fetch('https://games.virtuallaunch.pro/api/create-checkout-session', {
 }
 ```
 
----
-
-## 7. Adding New Games
-
-* Add a new JS module to `games/`
-* Register in `games/registry.js` (optional)
-* Use the same token + Stripe pattern
-* Keep each module **self-contained** for easy embedding
-
----
-
 ## 8. Marketable Features / Slogans (for tax pros)
 
 1. **Gamify Tax Learning** – Interactive, educational mini-games for clients
@@ -197,12 +197,30 @@ fetch('https://games.virtuallaunch.pro/api/create-checkout-session', {
 
 ---
 
-## 9. Getting Started
+## 9. Getting Started (client-facing)
 
-1. Include the game script in your page
-2. Set `data-client-id` for the client
-3. Make sure Worker backend routes `/api/use-tokens`, `/api/purchase-tokens`, `/api/create-checkout-session`, `/api/webhook` are live
-4. Launch instantly with full token tracking, Stripe purchases, and scoreboard support
+### How It Works
+Four simple steps to integrate games into your platform and start earning revenue.
+
+#### 1. Choose Your Tier
+Pick a subscription plan that fits your practice. Each tier determines how many games you can display and the token allocation for play. 
+
+Free, Starter, Pro, or Enterprise
+
+#### 2. Pick Your Games
+Mix and match from the available mini-games. Higher tiers unlock more games to embed or play on your site.
+
+9 games available with new games in development
+
+#### 3. Set Payout Details
+Add your affiliate payout details so you earn when clients play your games. Configure how and where you want to receive revenue.
+
+Secure setup
+
+#### 4. Launch & Engage
+Embed the games on your site, track player progress, and watch engagement grow while educating clients on tax topics.
+
+Go live instantly
 
 ---
 
@@ -211,3 +229,10 @@ Games are **drop-in**, fully interactive, mobile-friendly, and designed to help 
 `tax-spin-wheel.js` is the first example module ready to deploy.
 
 ---
+
+## 10. Getting Started (Internal)
+
+1. Include the game script in your page
+2. Set `data-client-id` for the client
+3. Make sure Worker backend routes `/api/use-tokens`, `/api/purchase-tokens`, `/api/create-checkout-session`, `/api/webhook` are live
+4. Launch instantly with full token tracking, Stripe purchases, and scoreboard support

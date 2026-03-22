@@ -12,60 +12,167 @@
   <link rel="icon" href="https://virtuallaunch.pro/assets/favicon.ico" sizes="any">
   <link rel="icon" type="image/svg+xml" href="https://virtuallaunch.pro/assets/favicon.svg">
   <link rel="apple-touch-icon" href="https://virtuallaunch.pro/assets/favicon.ico">
+  
   <style>
 html, body { height: 100%; margin: 0; }
 * { font-family: 'Outfit', sans-serif; }
 
-.wheel-container { position: relative; display: inline-block; }
+@keyframes glow-pulse { 0%,100% { box-shadow: 0 0 20px rgba(240,192,64,0.6), 0 0 40px rgba(240,192,64,0.3); } 50% { box-shadow: 0 0 30px rgba(240,192,64,0.8), 0 0 60px rgba(240,192,64,0.5); } }
+@keyframes neon-flicker { 0%,18%,22%,25%,54%,56%,100% { box-shadow: 0 0 10px rgba(255,0,255,0.7), inset 0 0 10px rgba(255,0,255,0.3); } 20%,24%,55% { box-shadow: 0 0 5px rgba(255,0,255,0.3), inset 0 0 5px rgba(255,0,255,0.1); } }
+@keyframes orbit-glow { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+@keyframes pulse-glow { 0%,100% { opacity: 0.4; } 50% { opacity: 1; } }
+
+.wheel-container { 
+  position: relative; 
+  display: inline-block; 
+  filter: drop-shadow(0 0 60px rgba(240,192,64,0.5));
+}
+
+.wheel-glow-ring {
+  position: absolute; 
+  top: 50%; 
+  left: 50%; 
+  transform: translate(-50%, -50%);
+  width: 540px; 
+  height: 540px; 
+  border: 3px solid rgba(240,192,64,0.3);
+  border-radius: 50%;
+  animation: glow-pulse 3s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.wheel-glow-ring-2 {
+  position: absolute; 
+  top: 50%; 
+  left: 50%; 
+  transform: translate(-50%, -50%);
+  width: 600px; 
+  height: 600px; 
+  border: 1px dashed rgba(240,192,64,0.15);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+@keyframes twinkle-light { 
+  0%, 10% { opacity: 0.3; } 
+  15%, 85% { opacity: 1; } 
+  90%, 100% { opacity: 0.3; } 
+}
+
+.roulette-light {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 12px currentColor, inset 0 0 8px rgba(255,255,255,0.4);
+  animation: twinkle-light 0.8s ease-in-out infinite;
+}
+
 .wheel-pointer {
-  position: absolute; top: -18px; left: 50%; transform: translateX(-50%);
-  width: 0; height: 0; border-left: 18px solid transparent; border-right: 18px solid transparent;
-  border-top: 36px solid #1a1a2e; z-index: 10; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.4));
+  position: absolute; 
+  top: -28px; 
+  left: 50%; 
+  transform: translateX(-50%);
+  width: 0; 
+  height: 0; 
+  border-left: 22px solid transparent; 
+  border-right: 22px solid transparent;
+  border-top: 44px solid #f0c040; 
+  z-index: 10; 
+  filter: drop-shadow(0 0 15px rgba(240,192,64,0.8));
 }
 
 .spin-btn {
-  position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
-  z-index: 10; border-radius: 50%; width: 80px; height: 80px;
-  display: flex; align-items: center; justify-content: center;
-  font-weight: 900; font-size: 14px; letter-spacing: 1px; cursor: pointer;
-  transition: transform 0.15s, box-shadow 0.15s; border: 4px solid rgba(255,255,255,0.3);
+  position: absolute; 
+  top: 50%; 
+  left: 50%; 
+  transform: translate(-50%, -50%);
+  z-index: 10; 
+  border-radius: 50%; 
+  width: 100px; 
+  height: 100px;
+  display: flex; 
+  align-items: center; 
+  justify-content: center;
+  font-weight: 900; 
+  font-size: 18px; 
+  letter-spacing: 1.5px; 
+  cursor: pointer;
+  transition: transform 0.15s, filter 0.15s; 
+  border: 5px solid rgba(255,255,255,0.4);
+  animation: glow-pulse 2.5s ease-in-out infinite;
 }
-.spin-btn:hover:not(:disabled) { transform: translate(-50%, -50%) scale(1.08); }
-.spin-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+.spin-btn:hover:not(:disabled) { 
+  transform: translate(-50%, -50%) scale(1.12);
+  filter: drop-shadow(0 0 25px rgba(255,165,0,0.8));
+}
+.spin-btn:disabled { 
+  opacity: 0.5; 
+  cursor: not-allowed;
+  animation: none;
+}
 
 .modal-overlay {
-  position: fixed; inset: 0; background: rgba(0,0,0,0.6); backdrop-filter: blur(6px);
-  display: flex; align-items: center; justify-content: center; z-index: 50;
-  opacity: 0; pointer-events: none; transition: opacity 0.3s;
+  position: fixed; 
+  inset: 0; 
+  background: rgba(0,0,0,0.8); 
+  backdrop-filter: blur(8px);
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  z-index: 50;
+  opacity: 0; 
+  pointer-events: none; 
+  transition: opacity 0.3s;
 }
-.modal-overlay.active { opacity: 1; pointer-events: all; }
+.modal-overlay.active { 
+  opacity: 1; 
+  pointer-events: all; 
+}
 .modal-card {
-  transform: scale(0.85); transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
-  max-width: 400px; width: 90%;
+  transform: scale(0.85); 
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+  max-width: 420px; 
+  width: 90%;
+  box-shadow: 0 0 50px rgba(240,192,64,0.4);
+  border: 2px solid rgba(240,192,64,0.3);
 }
-.modal-overlay.active .modal-card { transform: scale(1); }
+.modal-overlay.active .modal-card { 
+  transform: scale(1); 
+}
 
 .score-card {
-  backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.1);
+  backdrop-filter: blur(12px); 
+  border: 2px solid rgba(255,255,255,0.2);
+  box-shadow: inset 0 0 20px rgba(255,255,255,0.05);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.score-card:hover {
+  transform: translateY(-2px);
+  box-shadow: inset 0 0 30px rgba(255,255,255,0.1), 0 0 20px rgba(255,255,255,0.1);
 }
 
-@keyframes sparkle { 0%,100% { opacity: 0.3; transform: scale(0.8); } 50% { opacity: 1; transform: scale(1.2); } }
-.sparkle { animation: sparkle 1.5s ease-in-out infinite; }
-
-@keyframes confetti-fall {
-  0% { transform: translateY(-10px) rotate(0deg); opacity: 1; }
-  100% { transform: translateY(100px) rotate(720deg); opacity: 0; }
+.title-glow {
+  text-shadow: 0 0 20px rgba(240,192,64,0.8), 0 0 40px rgba(240,192,64,0.4);
+  letter-spacing: 2px;
 }
-</style>
+
+.glow-text {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+  </style>
   <style>body { box-sizing: border-box; }</style>
   <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
  </head>
  <body class="h-full overflow-auto" style="background: #0f0f23;">
   <div id="app" class="h-full w-full flex flex-col items-center" style="background: linear-gradient(135deg, #0f0f23 0%, #1a1a3e 50%, #0f0f23 100%);">
    <!-- Header / Scoreboard -->
-   <div class="w-full max-w-lg px-4 pt-6 pb-2">
-    <h1 id="gameTitle" class="text-center text-3xl font-black tracking-tight mb-4" style="color: #f0c040;">🎰 Tax Spin Wheel</h1>
-    <div class="flex gap-3 justify-center mb-4">
+   <div class="w-full max-w-lg px-4 pt-6 pb-24">
+    <h1 id="gameTitle" class="text-center text-4xl font-black tracking-tight mb-6 title-glow" style="color: #f0c040;">🎰 Tax Spin Wheel</h1>
+    <div class="flex gap-3 justify-center mb-8">
      <div class="score-card rounded-xl px-5 py-3 text-center" style="background: rgba(240,192,64,0.1);">
       <div class="text-xs font-semibold uppercase tracking-wider" style="color: #f0c040;">
        Tokens
@@ -92,24 +199,27 @@ html, body { height: 100%; margin: 0; }
      </div>
     </div>
    </div><!-- Wheel -->
-   <div class="wheel-container my-2">
+   <div class="wheel-container my-2 relative">
+    <div class="wheel-glow-ring-2"></div>
+    <div id="rouletteLights"></div>
+    <div class="wheel-glow-ring"></div>
     <div class="wheel-pointer"></div>
-    <canvas id="wheelCanvas" width="480" height="480"></canvas><button id="spinBtn" class="spin-btn" style="background: #f0c040; color: #1a1a2e;"> <span id="spinBtnText">SPIN!</span> </button>
-   </div>
-   <p class="text-xs mt-3 font-semibold" style="color: rgba(255,255,255,0.35);">Cost: 2 tokens per spin</p><!-- No tokens message -->
+    <canvas id="wheelCanvas" width="480" height="480"></canvas><button id="spinBtn" class="spin-btn" style="background: linear-gradient(135deg, #ffa500, #ff8800); color: #1a1a2e;"> <span id="spinBtnText">SPIN!</span> </button>
+   </div><!-- Cost message below wheel -->
+   <p class="mt-32 text-xs font-semibold glow-text" style="color: rgba(255,255,255,0.6);">💰 Each Spin Costs 2 Tokens 💰</p><!-- No tokens message -->
    <div id="noTokensMsg" class="hidden mt-4 px-6 py-3 rounded-xl text-center" style="background: rgba(255,80,80,0.15); color: #ff6b6b;">
     <p class="font-bold text-sm">Out of tokens! <button id="refillBtn" class="underline font-black" style="color: #f0c040;">Get 5 more</button></p>
    </div>
   </div><!-- Modal -->
   <div id="modal" class="modal-overlay" role="dialog" aria-modal="true">
-   <div class="modal-card rounded-2xl p-6 text-center" style="background: #1e1e3a; border: 1px solid rgba(255,255,255,0.1);">
-    <div id="modalEmoji" class="text-5xl mb-3"></div>
-    <h2 id="modalTitle" class="text-xl font-black mb-2" style="color: #f0c040;"></h2>
-    <p id="modalDesc" class="text-sm mb-1" style="color: rgba(255,255,255,0.7);"></p>
-    <div id="modalPoints" class="text-lg font-bold mb-4" style="color: #64dcb4;"></div>
-    <div id="modalLearnMore" class="hidden mb-4 p-3 rounded-xl text-left text-xs leading-relaxed" style="background: rgba(255,255,255,0.05); color: rgba(255,255,255,0.6);"></div>
-    <div class="flex gap-2 justify-center">
-     <button id="learnMoreBtn" class="hidden px-4 py-2 rounded-lg text-xs font-bold" style="background: rgba(180,140,255,0.2); color: #b48cff;"> <i data-lucide="book-open" style="width:14px;height:14px;display:inline;vertical-align:middle;"></i> Learn More </button> <button id="closeModal" class="px-6 py-2 rounded-lg text-sm font-bold" style="background: #f0c040; color: #1a1a2e;">OK</button>
+   <div class="modal-card rounded-2xl p-6 text-center" style="background: linear-gradient(135deg, #1e1e3a 0%, #2a2a4a 100%); border: 2px solid rgba(240,192,64,0.3);">
+    <div id="modalEmoji" class="text-6xl mb-3 animate-bounce"></div>
+    <h2 id="modalTitle" class="text-2xl font-black mb-2 title-glow" style="color: #f0c040;"></h2>
+    <p id="modalDesc" class="text-sm mb-1" style="color: rgba(255,255,255,0.8);"></p>
+    <div id="modalPoints" class="text-lg font-bold mb-4 glow-text" style="color: #64dcb4;"></div>
+    <div id="modalLearnMore" class="hidden mb-4 p-3 rounded-xl text-left text-xs leading-relaxed" style="background: rgba(100,220,180,0.1); color: rgba(255,255,255,0.7); border-left: 3px solid #64dcb4;"></div>
+    <div class="flex gap-2 justify-center flex-wrap">
+     <button id="learnMoreBtn" class="hidden px-4 py-2 rounded-lg text-xs font-bold" style="background: rgba(180,140,255,0.3); color: #b48cff; transition: all 0.2s;"> <i data-lucide="book-open" style="width:14px;height:14px;display:inline;vertical-align:middle;"></i> Learn More </button> <button id="closeModal" class="px-6 py-2 rounded-lg text-sm font-bold transition-all" style="background: linear-gradient(135deg, #ffa500, #ff8800); color: #1a1a2e;">OK</button>
     </div>
    </div>
   </div>
@@ -218,6 +328,31 @@ drawWheel(currentAngle);
 updateUI();
 lucide.createIcons();
 
+// Create roulette lights around the outer circle
+function createRouletteLights() {
+  const lightsContainer = document.getElementById('rouletteLights');
+  const lightColors = ['#ff1744', '#ff6d00', '#ffea00', '#00e676', '#00b0ff', '#b81dff', '#ff1744'];
+  const numLights = 24;
+  const radius = 300; // Distance from center
+  
+  for (let i = 0; i < numLights; i++) {
+    const angle = (i / numLights) * Math.PI * 2;
+    const x = Math.cos(angle) * radius;
+    const y = Math.sin(angle) * radius;
+    
+    const light = document.createElement('div');
+    light.className = 'roulette-light';
+    light.style.color = lightColors[i % lightColors.length];
+    light.style.left = 'calc(50% + ' + x + 'px)';
+    light.style.top = 'calc(50% + ' + y + 'px)';
+    light.style.animationDelay = (i * 0.05) + 's';
+    light.style.transform = `translate(-50%, -50%) translateZ(0)`;
+    lightsContainer.appendChild(light);
+  }
+}
+
+createRouletteLights();
+
 // Element SDK
 const defaultConfig = {
   game_title: "🎰 Tax Spin Wheel",
@@ -280,5 +415,5 @@ window.elementSdk.init({
   ])
 });
 </script>
- <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9e01eb1bb1e827c9',t:'MTc3NDE0ODEzNi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9e0787cb920327c9',t:'MTc3NDIwNjk4My4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
