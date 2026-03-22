@@ -1,0 +1,45 @@
+{
+  "object": {
+    "id": "prod_UBxWDlSZYDtA2m",
+    "object": "product",
+    "active": true,
+    "attributes": [],
+    "created": 1774138268,
+    "default_price": "price_1TDZbk9ROeyeXOqeZOXNz5ig",
+    "description": "These games are designed for tax pros to embed on their websites, boosting engagement, SEO visibility, and client interaction while gamifying tax learning.",
+    "images": [
+      "https://files.stripe.com/links/MDB8YWNjdF8xVDk5cGw5Uk9leWVYT3FlfGZsX2xpdmVfWEFmaU00WDdpVG1sSzFqNm1ENzMxN2N400Tw30oDE4"
+    ],
+    "livemode": true,
+    "marketing_features": [
+      {
+        "name": "Gamify Tax Learning"
+      },
+      {
+        "name": "Boost Taxpayer Engagement"
+      },
+      {
+        "name": "Increase Tax Practice SEO Visibility"
+      },
+      {
+        "name": "Flexible Access, Pay as You Grow"
+      },
+      {
+        "name": "Interactive Tax Fun Anywhere"
+      }
+    ],
+    "metadata": {},
+    "name": "Virtual Launch Pro — Tax Play Pro",
+    "package_dimensions": null,
+    "shippable": null,
+    "statement_descriptor": null,
+    "tax_code": "txcd_10000000",
+    "type": "service",
+    "unit_label": "membership",
+    "updated": 1774138268,
+    "url": null
+  },
+  "previous_attributes": {
+    "default_price": null
+  }
+}

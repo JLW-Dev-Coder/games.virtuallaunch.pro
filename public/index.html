@@ -94,46 +94,35 @@
   <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
  </head>
  <body class="h-full">
-  <div id="app-wrapper" class="w-full h-full overflow-auto" style="background:#1a0a10;">
-   <!-- Money Rain Background -->
+  <div id="app-wrapper" class="w-full h-full overflow-auto" style="background:#1a0a10;"><!-- Money Rain Background -->
    <div class="money-rain fixed inset-0 overflow-hidden pointer-events-none z-0" id="moneyRain"></div><!-- HERO SECTION -->
-   <header class="relative w-full hero-grid overflow-hidden" style="background: linear-gradient(160deg, #1a0a10 0%, #2a0f1e 30%, #1a0a10 70%, #0d0508 100%);">
-    <!-- Decorative orbs -->
+   <header class="relative w-full hero-grid overflow-hidden" style="background: linear-gradient(160deg, #1a0a10 0%, #2a0f1e 30%, #1a0a10 70%, #0d0508 100%);"><!-- Decorative orbs -->
     <div class="absolute top-10 left-10 w-64 h-64 rounded-full opacity-20 blur-3xl" style="background:#c41e3a;"></div>
     <div class="absolute bottom-10 right-10 w-80 h-80 rounded-full opacity-15 blur-3xl" style="background:#e8446d;"></div>
     <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 rounded-full opacity-10 blur-3xl" style="background:#ffd700;"></div>
-    <div class="relative z-10 max-w-6xl mx-auto px-6 py-16 md:py-24">
-     <!-- Nav -->
+    <div class="relative z-10 max-w-6xl mx-auto px-6 py-16 md:py-24"><!-- Nav -->
      <nav class="flex items-center justify-between mb-16 slide-up">
       <div class="flex items-center gap-2">
-       <div class="w-10 h-10 rounded-lg flex items-center justify-center shimmer-btn">
-        <span class="text-white font-bold text-lg">T</span>
+       <div class="w-10 h-10 rounded-lg flex items-center justify-center shimmer-btn"><span class="text-white font-bold text-lg">T</span>
        </div><span id="nav-brand" class="text-white font-bold text-xl tracking-tight">TaxPlay<span class="text-brand-gold">Pro</span></span>
       </div>
-      <div class="hidden md:flex items-center gap-8 text-sm">
-       <a href="#tokens" class="text-gray-400 hover:text-brand-gold transition-colors">How It Works</a> <a href="#proof" class="text-gray-400 hover:text-brand-gold transition-colors">Testimonials</a> <a href="#footer" class="text-gray-400 hover:text-brand-gold transition-colors">Contact</a>
+      <div class="hidden md:flex items-center gap-8 text-sm"><a href="#tokens" class="text-gray-400 hover:text-brand-gold transition-colors">How It Works</a> <a href="#proof" class="text-gray-400 hover:text-brand-gold transition-colors">Testimonials</a> <a href="#footer" class="text-gray-400 hover:text-brand-gold transition-colors">Contact</a>
       </div>
      </nav>
-     <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
-      <!-- Left: Text -->
+     <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-16"><!-- Left: Text -->
       <div class="flex-1 text-center lg:text-left">
-       <div class="slide-up">
-        <span class="inline-block mono text-xs tracking-widest uppercase px-3 py-1 rounded-full mb-6" style="background:rgba(255,215,0,0.15);color:#ffd700;border:1px solid rgba(255,215,0,0.3);">🎮 For Tax Professionals</span>
+       <div class="slide-up"><span class="inline-block mono text-xs tracking-widest uppercase px-3 py-1 rounded-full mb-6" style="background:rgba(255,215,0,0.15);color:#ffd700;border:1px solid rgba(255,215,0,0.3);">🎮 For Tax Professionals</span>
        </div>
        <h1 id="hero-headline" class="text-4xl md:text-5xl lg:text-6xl font-900 text-white leading-tight mb-6 slide-up slide-up-d1">Add Mini-Games.<br><span class="neon-text" style="color:#ffd700;">Earn Passive Income.</span></h1>
        <p id="hero-sub" class="text-lg md:text-xl text-gray-400 leading-relaxed mb-10 max-w-lg mx-auto lg:mx-0 slide-up slide-up-d2">Transform your tax practice website into an engagement powerhouse. Clients play, you earn — it's that simple.</p>
-       <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start slide-up slide-up-d3">
-        <button id="cta-btn" class="shimmer-btn text-white font-bold text-lg px-8 py-4 rounded-xl hover:scale-105 transition-transform shadow-lg shadow-brand-red/30"> Get Started Free → </button> <button class="glass text-white font-medium px-8 py-4 rounded-xl hover:bg-white/10 transition-colors flex items-center justify-center gap-2"> <i data-lucide="play-circle" class="w-5 h-5"></i> Watch Demo </button>
+       <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start slide-up slide-up-d3"><button id="cta-btn" class="shimmer-btn text-white font-bold text-lg px-8 py-4 rounded-xl hover:scale-105 transition-transform shadow-lg shadow-brand-red/30"> Get Started Free → </button> <button class="glass text-white font-medium px-8 py-4 rounded-xl hover:bg-white/10 transition-colors flex items-center justify-center gap-2"> <i data-lucide="play-circle" class="w-5 h-5"></i> Watch Demo </button>
        </div>
-       <div class="flex items-center gap-6 mt-8 justify-center lg:justify-start text-sm text-gray-500 slide-up slide-up-d3">
-        <span class="flex items-center gap-1"><i data-lucide="check-circle" class="w-4 h-4 text-brand-gold"></i> No coding</span> <span class="flex items-center gap-1"><i data-lucide="check-circle" class="w-4 h-4 text-brand-gold"></i> Stripe integrated</span> <span class="flex items-center gap-1"><i data-lucide="check-circle" class="w-4 h-4 text-brand-gold"></i> IRS compliant</span>
+       <div class="flex items-center gap-6 mt-8 justify-center lg:justify-start text-sm text-gray-500 slide-up slide-up-d3"><span class="flex items-center gap-1"><i data-lucide="check-circle" class="w-4 h-4 text-brand-gold"></i> No coding</span> <span class="flex items-center gap-1"><i data-lucide="check-circle" class="w-4 h-4 text-brand-gold"></i> Stripe integrated</span> <span class="flex items-center gap-1"><i data-lucide="check-circle" class="w-4 h-4 text-brand-gold"></i> IRS compliant</span>
        </div>
       </div><!-- Right: Illustration -->
       <div class="flex-1 flex justify-center relative">
-       <div class="relative w-80 h-80 md:w-96 md:h-96">
-        <!-- Main screen/laptop SVG -->
-        <svg class="w-full h-full float" viewbox="0 0 400 400" fill="none">
-         <!-- Laptop body --> <rect x="60" y="80" width="280" height="200" rx="12" fill="#2a0f1e" stroke="#ffd700" stroke-width="1.5" opacity="0.9" /> <rect x="75" y="95" width="250" height="170" rx="6" fill="#1a0a10" /> <!-- Screen content: form lines --> <rect x="95" y="115" width="80" height="8" rx="2" fill="#c41e3a" opacity="0.7" /> <rect x="95" y="133" width="120" height="6" rx="2" fill="#e8446d" opacity="0.4" /> <rect x="95" y="149" width="100" height="6" rx="2" fill="#e8446d" opacity="0.3" /> <rect x="95" y="165" width="140" height="6" rx="2" fill="#e8446d" opacity="0.2" /> <!-- Game controller icon on screen --> <circle cx="270" cy="180" r="30" fill="#c41e3a" opacity="0.3" /> <text x="270" y="186" text-anchor="middle" font-size="24" fill="#ffd700">
+       <div class="relative w-80 h-80 md:w-96 md:h-96"><!-- Main screen/laptop SVG -->
+        <svg class="w-full h-full float" viewbox="0 0 400 400" fill="none"><!-- Laptop body --> <rect x="60" y="80" width="280" height="200" rx="12" fill="#2a0f1e" stroke="#ffd700" stroke-width="1.5" opacity="0.9" /> <rect x="75" y="95" width="250" height="170" rx="6" fill="#1a0a10" /> <!-- Screen content: form lines --> <rect x="95" y="115" width="80" height="8" rx="2" fill="#c41e3a" opacity="0.7" /> <rect x="95" y="133" width="120" height="6" rx="2" fill="#e8446d" opacity="0.4" /> <rect x="95" y="149" width="100" height="6" rx="2" fill="#e8446d" opacity="0.3" /> <rect x="95" y="165" width="140" height="6" rx="2" fill="#e8446d" opacity="0.2" /> <!-- Game controller icon on screen --> <circle cx="270" cy="180" r="30" fill="#c41e3a" opacity="0.3" /> <text x="270" y="186" text-anchor="middle" font-size="24" fill="#ffd700">
           🎮
          </text> <!-- 1040 form badge --> <rect x="90" y="195" width="55" height="25" rx="4" fill="#ffd700" opacity="0.9" /> <text x="117" y="212" text-anchor="middle" font-size="11" font-weight="bold" fill="#1a0a10" font-family="JetBrains Mono">
           1040
@@ -209,53 +198,45 @@
    </section><!-- TOKEN SYSTEM -->
    <section id="tokens" class="w-full py-20" style="background:#1a0a10;">
     <div class="max-w-6xl mx-auto px-6">
-     <div class="text-center mb-16">
-      <span class="inline-block mono text-xs tracking-widest uppercase px-3 py-1 rounded-full mb-4" style="background:rgba(232,68,109,0.15);color:#e8446d;border:1px solid rgba(232,68,109,0.3);">💰 Token Economy</span>
+     <div class="text-center mb-16"><span class="inline-block mono text-xs tracking-widest uppercase px-3 py-1 rounded-full mb-4" style="background:rgba(232,68,109,0.15);color:#e8446d;border:1px solid rgba(232,68,109,0.3);">💰 Token Economy</span>
       <h2 id="token-title" class="text-3xl md:text-4xl font-800 text-white mb-4">How Tokens Work</h2>
       <p class="text-gray-500 max-w-xl mx-auto">A seamless three-step system that turns your website visitors into revenue.</p>
      </div>
-     <div class="grid md:grid-cols-3 gap-8">
-      <!-- Buy -->
+     <div class="grid md:grid-cols-3 gap-8"><!-- Buy -->
       <div class="glass rounded-2xl p-8 card-hover relative overflow-hidden group">
        <div class="absolute top-0 right-0 w-20 h-20 rounded-bl-full opacity-20 group-hover:opacity-40 transition-opacity" style="background:#ffd700;"></div>
-       <div class="w-16 h-16 rounded-2xl flex items-center justify-center mb-6 text-3xl" style="background:linear-gradient(135deg,rgba(255,215,0,0.2),rgba(255,215,0,0.05));border:1px solid rgba(255,215,0,0.3);">
-        <span class="coin-bounce inline-block">🪙</span>
+       <div class="w-16 h-16 rounded-2xl flex items-center justify-center mb-6 text-3xl" style="background:linear-gradient(135deg,rgba(255,215,0,0.2),rgba(255,215,0,0.05));border:1px solid rgba(255,215,0,0.3);"><span class="coin-bounce inline-block">🪙</span>
        </div>
        <div class="mono text-xs text-brand-gold mb-2 tracking-wider">
         STEP 01
        </div>
        <h3 class="text-xl font-700 text-white mb-3">Buy Tokens</h3>
        <p class="text-gray-400 text-sm leading-relaxed">Visitors purchase tokens through secure Stripe checkout. Multiple bundles available — from casual to power player.</p>
-       <div class="mt-6 flex items-center gap-2 text-xs text-gray-600">
-        <i data-lucide="shield-check" class="w-3.5 h-3.5 text-brand-gold"></i> Stripe secured
+       <div class="mt-6 flex items-center gap-2 text-xs text-gray-600"><i data-lucide="shield-check" class="w-3.5 h-3.5 text-brand-gold"></i> Stripe secured
        </div>
       </div><!-- Play -->
       <div class="glass rounded-2xl p-8 card-hover relative overflow-hidden group" style="border-color:rgba(232,68,109,0.2);">
        <div class="absolute top-0 right-0 w-20 h-20 rounded-bl-full opacity-20 group-hover:opacity-40 transition-opacity" style="background:#e8446d;"></div>
-       <div class="w-16 h-16 rounded-2xl flex items-center justify-center mb-6 text-3xl" style="background:linear-gradient(135deg,rgba(232,68,109,0.2),rgba(232,68,109,0.05));border:1px solid rgba(232,68,109,0.3);">
-        <span class="float inline-block">🎮</span>
+       <div class="w-16 h-16 rounded-2xl flex items-center justify-center mb-6 text-3xl" style="background:linear-gradient(135deg,rgba(232,68,109,0.2),rgba(232,68,109,0.05));border:1px solid rgba(232,68,109,0.3);"><span class="float inline-block">🎮</span>
        </div>
        <div class="mono text-xs text-brand-pink mb-2 tracking-wider">
         STEP 02
        </div>
        <h3 class="text-xl font-700 text-white mb-3">Play Games</h3>
        <p class="text-gray-400 text-sm leading-relaxed">Tax-themed mini-games that are genuinely fun. Trivia, puzzle, and strategy games that keep clients engaged.</p>
-       <div class="mt-6 flex items-center gap-2 text-xs text-gray-600">
-        <i data-lucide="gamepad-2" class="w-3.5 h-3.5 text-brand-pink"></i> 12+ games available
+       <div class="mt-6 flex items-center gap-2 text-xs text-gray-600"><i data-lucide="gamepad-2" class="w-3.5 h-3.5 text-brand-pink"></i> 12+ games available
        </div>
       </div><!-- Win -->
       <div class="glass rounded-2xl p-8 card-hover relative overflow-hidden group" style="border-color:rgba(196,30,58,0.2);">
        <div class="absolute top-0 right-0 w-20 h-20 rounded-bl-full opacity-20 group-hover:opacity-40 transition-opacity" style="background:#c41e3a;"></div>
-       <div class="w-16 h-16 rounded-2xl flex items-center justify-center mb-6 text-3xl" style="background:linear-gradient(135deg,rgba(196,30,58,0.2),rgba(196,30,58,0.05));border:1px solid rgba(196,30,58,0.3);">
-        <span class="pulse-glow inline-block">🏆</span>
+       <div class="w-16 h-16 rounded-2xl flex items-center justify-center mb-6 text-3xl" style="background:linear-gradient(135deg,rgba(196,30,58,0.2),rgba(196,30,58,0.05));border:1px solid rgba(196,30,58,0.3);"><span class="pulse-glow inline-block">🏆</span>
        </div>
        <div class="mono text-xs text-brand-red mb-2 tracking-wider">
         STEP 03
        </div>
        <h3 class="text-xl font-700 text-white mb-3">Win &amp; Earn</h3>
        <p class="text-gray-400 text-sm leading-relaxed">Players win rewards. You earn a percentage of every token spent. Revenue flows automatically to your account.</p>
-       <div class="mt-6 flex items-center gap-2 text-xs text-gray-600">
-        <i data-lucide="trending-up" class="w-3.5 h-3.5 text-brand-red"></i> Avg. $840/mo earned
+       <div class="mt-6 flex items-center gap-2 text-xs text-gray-600"><i data-lucide="trending-up" class="w-3.5 h-3.5 text-brand-red"></i> Avg. $840/mo earned
        </div>
       </div>
      </div>
@@ -265,8 +246,7 @@
     <div class="max-w-5xl mx-auto px-6">
      <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
       <div class="text-center p-4">
-       <div class="w-12 h-12 mx-auto rounded-xl flex items-center justify-center mb-3 neon-border" style="background:rgba(26,10,16,0.9);">
-        <i data-lucide="code" class="w-5 h-5 text-brand-gold"></i>
+       <div class="w-12 h-12 mx-auto rounded-xl flex items-center justify-center mb-3 neon-border" style="background:rgba(26,10,16,0.9);"><i data-lucide="code" class="w-5 h-5 text-brand-gold"></i>
        </div>
        <div class="text-white font-600 text-sm">
         Copy &amp; Paste Setup
@@ -276,8 +256,7 @@
        </div>
       </div>
       <div class="text-center p-4">
-       <div class="w-12 h-12 mx-auto rounded-xl flex items-center justify-center mb-3 neon-border" style="background:rgba(26,10,16,0.9);">
-        <i data-lucide="smartphone" class="w-5 h-5 text-brand-pink"></i>
+       <div class="w-12 h-12 mx-auto rounded-xl flex items-center justify-center mb-3 neon-border" style="background:rgba(26,10,16,0.9);"><i data-lucide="smartphone" class="w-5 h-5 text-brand-pink"></i>
        </div>
        <div class="text-white font-600 text-sm">
         Mobile Ready
@@ -287,8 +266,7 @@
        </div>
       </div>
       <div class="text-center p-4">
-       <div class="w-12 h-12 mx-auto rounded-xl flex items-center justify-center mb-3 neon-border" style="background:rgba(26,10,16,0.9);">
-        <i data-lucide="bar-chart-3" class="w-5 h-5 text-brand-red"></i>
+       <div class="w-12 h-12 mx-auto rounded-xl flex items-center justify-center mb-3 neon-border" style="background:rgba(26,10,16,0.9);"><i data-lucide="bar-chart-3" class="w-5 h-5 text-brand-red"></i>
        </div>
        <div class="text-white font-600 text-sm">
         Real-Time Analytics
@@ -298,8 +276,7 @@
        </div>
       </div>
       <div class="text-center p-4">
-       <div class="w-12 h-12 mx-auto rounded-xl flex items-center justify-center mb-3 neon-border" style="background:rgba(26,10,16,0.9);">
-        <i data-lucide="palette" class="w-5 h-5 text-brand-gold"></i>
+       <div class="w-12 h-12 mx-auto rounded-xl flex items-center justify-center mb-3 neon-border" style="background:rgba(26,10,16,0.9);"><i data-lucide="palette" class="w-5 h-5 text-brand-gold"></i>
        </div>
        <div class="text-white font-600 text-sm">
         Custom Branding
@@ -313,14 +290,12 @@
    </section><!-- SOCIAL PROOF -->
    <section id="proof" class="w-full py-20" style="background:#1a0a10;">
     <div class="max-w-4xl mx-auto px-6">
-     <div class="text-center mb-12">
-      <span class="inline-block mono text-xs tracking-widest uppercase px-3 py-1 rounded-full mb-4" style="background:rgba(255,215,0,0.15);color:#ffd700;border:1px solid rgba(255,215,0,0.3);">⭐ Social Proof</span>
+     <div class="text-center mb-12"><span class="inline-block mono text-xs tracking-widest uppercase px-3 py-1 rounded-full mb-4" style="background:rgba(255,215,0,0.15);color:#ffd700;border:1px solid rgba(255,215,0,0.3);">⭐ Social Proof</span>
       <h2 class="text-3xl md:text-4xl font-800 text-white">Trusted by Tax Professionals</h2>
      </div>
      <div class="grid md:grid-cols-2 gap-8" id="testimonials-container">
       <div class="glass rounded-2xl p-8 card-hover">
-       <div class="flex gap-1 mb-4">
-        <span class="text-brand-gold">★</span><span class="text-brand-gold">★</span><span class="text-brand-gold">★</span><span class="text-brand-gold">★</span><span class="text-brand-gold">★</span>
+       <div class="flex gap-1 mb-4"><span class="text-brand-gold">★</span><span class="text-brand-gold">★</span><span class="text-brand-gold">★</span><span class="text-brand-gold">★</span><span class="text-brand-gold">★</span>
        </div>
        <p id="testimonial-1" class="text-gray-300 text-sm leading-relaxed mb-6 italic">"My clients actually look forward to visiting my website now. I've earned over $3,200 in passive income in just 4 months. It's like having a side business that runs itself."</p>
        <div class="flex items-center gap-3">
@@ -338,8 +313,7 @@
        </div>
       </div>
       <div class="glass rounded-2xl p-8 card-hover">
-       <div class="flex gap-1 mb-4">
-        <span class="text-brand-gold">★</span><span class="text-brand-gold">★</span><span class="text-brand-gold">★</span><span class="text-brand-gold">★</span><span class="text-brand-gold">★</span>
+       <div class="flex gap-1 mb-4"><span class="text-brand-gold">★</span><span class="text-brand-gold">★</span><span class="text-brand-gold">★</span><span class="text-brand-gold">★</span><span class="text-brand-gold">★</span>
        </div>
        <p class="text-gray-300 text-sm leading-relaxed mb-6 italic">"Setup took 5 minutes. The token system is brilliant — clients buy bundles and keep coming back. My site engagement is up 300%. Best decision I made this year."</p>
        <div class="flex items-center gap-3">
@@ -357,7 +331,8 @@
        </div>
       </div>
       <div class="glass rounded-2xl p-8 card-hover flex flex-col items-center justify-center text-center md:col-span-2 md:max-w-sm md:mx-auto">
-       <div class="w-14 h-14 rounded-full flex items-center justify-center mb-4" style="background:rgba(255,215,0,0.1);border:2px dashed rgba(255,215,0,0.3);"><i data-lucide="star" class="w-6 h-6 text-brand-gold"></i>
+       <div class="w-14 h-14 rounded-full flex items-center justify-center mb-4" style="background:rgba(255,215,0,0.1);border:2px dashed rgba(255,215,0,0.3);">
+        <i data-lucide="star" class="w-6 h-6 text-brand-gold"></i>
        </div>
        <h3 class="text-lg font-700 text-white mb-2">Be the First to Review</h3>
        <p class="text-gray-500 text-sm mb-6">Share your experience with TaxPlay Pro and help others discover the power of gamified tax engagement.</p><button id="review-toggle-btn" class="text-brand-gold font-600 text-sm hover:text-white transition-colors flex items-center gap-2"> <i data-lucide="plus" class="w-4 h-4"></i> Add Your Review </button>
@@ -369,17 +344,23 @@
         <h3 class="text-2xl font-700 text-white">Share Your Review</h3><button id="review-close-btn" class="text-gray-500 hover:text-white transition-colors"> <i data-lucide="x" class="w-5 h-5"></i> </button>
        </div>
        <form id="review-form" class="space-y-4">
-        <div><label for="review-name" class="block text-white text-sm font-600 mb-2">Name</label> <input type="text" id="review-name" placeholder="Your name" class="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-2 text-white placeholder-gray-600 focus:outline-none focus:border-brand-gold transition-colors" required>
+        <div>
+         <label for="review-name" class="block text-white text-sm font-600 mb-2">Name</label> <input type="text" id="review-name" placeholder="Your name" class="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-2 text-white placeholder-gray-600 focus:outline-none focus:border-brand-gold transition-colors" required>
         </div>
-        <div><label for="review-title" class="block text-white text-sm font-600 mb-2">Title/Firm</label> <input type="text" id="review-title" placeholder="e.g., CPA at Smith &amp; Co." class="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-2 text-white placeholder-gray-600 focus:outline-none focus:border-brand-gold transition-colors" required>
+        <div>
+         <label for="review-title" class="block text-white text-sm font-600 mb-2">Title/Firm</label> <input type="text" id="review-title" placeholder="e.g., CPA at Smith &amp; Co." class="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-2 text-white placeholder-gray-600 focus:outline-none focus:border-brand-gold transition-colors" required>
         </div>
-        <div><label for="review-rating" class="block text-white text-sm font-600 mb-2">Rating</label>
-         <div class="flex gap-2"><button type="button" class="star-btn w-10 h-10 rounded-lg flex items-center justify-center text-lg hover:bg-white/10 transition-colors" data-rating="1">★</button> <button type="button" class="star-btn w-10 h-10 rounded-lg flex items-center justify-center text-lg hover:bg-white/10 transition-colors" data-rating="2">★</button> <button type="button" class="star-btn w-10 h-10 rounded-lg flex items-center justify-center text-lg hover:bg-white/10 transition-colors" data-rating="3">★</button> <button type="button" class="star-btn w-10 h-10 rounded-lg flex items-center justify-center text-lg hover:bg-white/10 transition-colors" data-rating="4">★</button> <button type="button" class="star-btn w-10 h-10 rounded-lg flex items-center justify-center text-lg hover:bg-white/10 transition-colors selected" data-rating="5">★</button>
+        <div>
+         <label for="review-rating" class="block text-white text-sm font-600 mb-2">Rating</label>
+         <div class="flex gap-2">
+          <button type="button" class="star-btn w-10 h-10 rounded-lg flex items-center justify-center text-lg hover:bg-white/10 transition-colors" data-rating="1">★</button> <button type="button" class="star-btn w-10 h-10 rounded-lg flex items-center justify-center text-lg hover:bg-white/10 transition-colors" data-rating="2">★</button> <button type="button" class="star-btn w-10 h-10 rounded-lg flex items-center justify-center text-lg hover:bg-white/10 transition-colors" data-rating="3">★</button> <button type="button" class="star-btn w-10 h-10 rounded-lg flex items-center justify-center text-lg hover:bg-white/10 transition-colors" data-rating="4">★</button> <button type="button" class="star-btn w-10 h-10 rounded-lg flex items-center justify-center text-lg hover:bg-white/10 transition-colors selected" data-rating="5">★</button>
          </div><input type="hidden" id="review-rating-value" value="5">
         </div>
-        <div><label for="review-text" class="block text-white text-sm font-600 mb-2">Your Review</label> <textarea id="review-text" placeholder="Share your experience..." rows="4" class="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-2 text-white placeholder-gray-600 focus:outline-none focus:border-brand-gold transition-colors resize-none" required></textarea>
+        <div>
+         <label for="review-text" class="block text-white text-sm font-600 mb-2">Your Review</label> <textarea id="review-text" placeholder="Share your experience..." rows="4" class="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-2 text-white placeholder-gray-600 focus:outline-none focus:border-brand-gold transition-colors resize-none" required></textarea>
         </div>
-        <div class="flex gap-3 pt-4"><button type="button" id="review-cancel-btn" class="flex-1 px-4 py-2 rounded-lg border border-white/20 text-white font-600 hover:bg-white/5 transition-colors">Cancel</button> <button type="submit" class="flex-1 px-4 py-2 rounded-lg font-600 text-white transition-colors" style="background:linear-gradient(135deg,#c41e3a,#e8446d);"><span id="submit-text">Submit Review</span></button>
+        <div class="flex gap-3 pt-4">
+         <button type="button" id="review-cancel-btn" class="flex-1 px-4 py-2 rounded-lg border border-white/20 text-white font-600 hover:bg-white/5 transition-colors">Cancel</button> <button type="submit" class="flex-1 px-4 py-2 rounded-lg font-600 text-white transition-colors" style="background:linear-gradient(135deg,#c41e3a,#e8446d);"><span id="submit-text">Submit Review</span></button>
         </div>
        </form>
       </div>
@@ -401,7 +382,8 @@
      <div class="grid md:grid-cols-4 gap-8 mb-10">
       <div>
        <div class="flex items-center gap-2 mb-4">
-        <div class="w-8 h-8 rounded-lg flex items-center justify-center shimmer-btn"><span class="text-white font-bold text-sm">T</span>
+        <div class="w-8 h-8 rounded-lg flex items-center justify-center shimmer-btn">
+         <span class="text-white font-bold text-sm">T</span>
         </div><span id="footer-brand" class="text-white font-bold">TaxPlay<span style="color:#ffd700;">Pro</span></span>
        </div>
        <p class="text-gray-600 text-xs leading-relaxed">The premier mini-game platform built exclusively for tax professionals and financial services.</p>
@@ -463,19 +445,22 @@
        © 2025 TaxPlay Pro. All rights reserved.
       </div>
       <div class="flex items-center gap-4">
-       <div class="flex items-center gap-2 text-xs text-gray-600">
-        <span>Powered by</span>
-        <svg width="50" height="20" viewbox="0 0 50 20"><rect width="50" height="20" rx="3" fill="#635bff" opacity="0.8" /><text x="25" y="14" text-anchor="middle" font-size="10" fill="white" font-weight="bold" font-family="sans-serif">
+       <div class="flex items-center gap-2 text-xs text-gray-600"><span>Powered by</span>
+        <svg width="50" height="20" viewbox="0 0 50 20">
+         <rect width="50" height="20" rx="3" fill="#635bff" opacity="0.8" /><text x="25" y="14" text-anchor="middle" font-size="10" fill="white" font-weight="bold" font-family="sans-serif">
           Stripe
          </text>
         </svg>
        </div>
        <div class="flex gap-3">
-        <div class="w-8 h-8 rounded-full glass flex items-center justify-center cursor-pointer hover:bg-white/10 transition-colors"><i data-lucide="facebook" class="w-3.5 h-3.5 text-gray-500"></i>
+        <div class="w-8 h-8 rounded-full glass flex items-center justify-center cursor-pointer hover:bg-white/10 transition-colors">
+         <i data-lucide="facebook" class="w-3.5 h-3.5 text-gray-500"></i>
         </div>
-        <div class="w-8 h-8 rounded-full glass flex items-center justify-center cursor-pointer hover:bg-white/10 transition-colors"><i data-lucide="linkedin" class="w-3.5 h-3.5 text-gray-500"></i>
+        <div class="w-8 h-8 rounded-full glass flex items-center justify-center cursor-pointer hover:bg-white/10 transition-colors">
+         <i data-lucide="linkedin" class="w-3.5 h-3.5 text-gray-500"></i>
         </div>
-        <div class="w-8 h-8 rounded-full glass flex items-center justify-center cursor-pointer hover:bg-white/10 transition-colors"><i data-lucide="mail" class="w-3.5 h-3.5 text-gray-500"></i>
+        <div class="w-8 h-8 rounded-full glass flex items-center justify-center cursor-pointer hover:bg-white/10 transition-colors">
+         <i data-lucide="mail" class="w-3.5 h-3.5 text-gray-500"></i>
         </div>
        </div>
       </div>
@@ -693,5 +678,5 @@
 
   lucide.createIcons();
 </script>
- <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9e00cdc7401927c9',t:'MTc3NDEzNjQ0OS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9e00db76223327c9',t:'MTc3NDEzNzAwOS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
