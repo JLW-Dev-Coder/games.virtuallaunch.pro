@@ -110,8 +110,15 @@
        <div class="w-10 h-10 rounded-lg flex items-center justify-center shimmer-btn"><span class="text-white font-bold text-lg">VLP</span>
        </div><span id="nav-brand" class="text-white font-bold text-xl tracking-tight">Games.Virtual Launch <span class="text-brand-gold">Pro</span></span>
       </div>
-      <div class="hidden md:flex items-center gap-8 text-sm"><a href="#games" class="text-gray-400 hover:text-brand-gold transition-colors">Games</a> <a href="#howitworks" class="text-gray-400 hover:text-brand-gold transition-colors">How It Works</a> <a href="#proof" class="text-gray-400 hover:text-brand-gold transition-colors">Reviews</a> <a href="#support" class="text-gray-400 hover:text-brand-gold transition-colors">Support</a>
-      </div><button class="hidden md:block shimmer-btn text-white font-bold px-6 py-2 rounded-lg hover:scale-105 transition-transform text-sm">Get Started</button>
+      <div class="hidden md:flex items-center gap-8 text-sm"><a href="#games" class="text-gray-400 hover:text-brand-gold transition-colors">Games</a> <a href="#howitworks" class="text-gray-400 hover:text-brand-gold transition-colors">How It Works</a> 
+        <a href="#proof" class="text-gray-400 hover:text-brand-gold transition-colors">Reviews</a> <a href="#support" class="text-gray-400 hover:text-brand-gold transition-colors">Support</a>
+      </div>
+      <button
+  class="hidden md:block shimmer-btn text-white font-bold px-6 py-2 rounded-lg hover:scale-105 transition-transform text-sm"
+  onclick="window.location.href='onboarding.html';"
+>
+  Get Started
+</button>
      </nav>
      <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-16"><!-- Left: Text -->
       <div class="flex-1 text-center lg:text-left">
@@ -119,8 +126,19 @@
        </div>
        <h1 id="hero-headline" class="text-4xl md:text-5xl lg:text-6xl font-900 text-white leading-tight mb-6 slide-up slide-up-d1">Add Mini-Games.<br><span class="neon-text" style="color:#ffd700;">Earn Passive Income.</span></h1>
        <p id="hero-sub" class="text-lg md:text-xl text-gray-400 leading-relaxed mb-10 max-w-lg mx-auto lg:mx-0 slide-up slide-up-d2">Transform your tax practice website into an engagement powerhouse. Clients play, you earn — it's that simple.</p>
-       <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start slide-up slide-up-d3"><button id="cta-btn" class="shimmer-btn text-white font-bold text-lg px-8 py-4 rounded-xl hover:scale-105 transition-transform shadow-lg shadow-brand-red/30"> Get Started Free → </button> <button class="glass text-white font-medium px-8 py-4 rounded-xl hover:bg-white/10 transition-colors flex items-center justify-center gap-2"> <i data-lucide="play-circle" class="w-5 h-5"></i> Watch Demo </button>
-       </div>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start slide-up slide-up-d3">
+        <button onclick="window.location.href='onboarding.html';" id="cta-btn" class="shimmer-btn text-white font-bold text-lg px-8 py-4 rounded-xl hover:scale-105 transition-transform shadow-lg shadow-brand-red/30">
+            Get Started Free →
+          </button>
+          <button onclick="window.location.href='#games';" class="glass text-white font-medium px-8 py-4 rounded-xl hover:bg-white/10 transition-colors flex items-center justify-center gap-2">
+            <!-- Play Circle SVG Icon -->
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" fill="none"/>
+              <polygon points="10,8 16,12 10,16" fill="currentColor"/>
+            </svg>
+            Try Games
+          </button>
+        </div>
        <div class="flex items-center gap-6 mt-8 justify-center lg:justify-start text-sm text-gray-500 slide-up slide-up-d3"><span class="flex items-center gap-1"><i data-lucide="check-circle" class="w-4 h-4 text-brand-gold"></i> No coding</span> <span class="flex items-center gap-1"><i data-lucide="check-circle" class="w-4 h-4 text-brand-gold"></i> Stripe integrated</span> <span class="flex items-center gap-1"><i data-lucide="check-circle" class="w-4 h-4 text-brand-gold"></i> IRS compliant</span>
        </div>
       </div><!-- Right: Illustration -->

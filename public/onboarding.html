@@ -8,10 +8,6 @@
   <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
   <script src="/_sdk/element_sdk.js"></script>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&amp;family=JetBrains+Mono:wght@400;600&amp;display=swap" rel="stylesheet">
-  <link rel="icon" href="https://virtuallaunch.pro/favicon.ico" sizes="any">
-  <link rel="icon" href="https://virtuallaunch.pro/assets/favicon.ico" sizes="any">
-  <link rel="icon" type="image/svg+xml" href="https://virtuallaunch.pro/assets/favicon.svg">
-  <link rel="apple-touch-icon" href="https://virtuallaunch.pro/assets/favicon.ico">
   <script>
 tailwind.config = {
   theme: {
@@ -248,8 +244,8 @@ html, body { height: 100%; margin: 0; }
     </nav><!-- STEP 1: Choose Your Tier -->
     <section id="step1" class="step-section visible mb-8">
      <div class="text-center mb-8">
-      <h2 class="text-2xl sm:text-3xl font-bold mb-2">Your Current Tier</h2>
-      <p style="color:rgba(255,255,255,0.5);">Enter your reference number then click Continue</p>
+      <h2 class="text-2xl sm:text-3xl font-bold mb-2">Select Your Tier</h2>
+      <p style="color:rgba(255,255,255,0.5);">Once purchased, enter your reference number then click Continue</p>
      </div>
      <div class="max-w-sm mx-auto mb-8">
       <div class="glass-gold rounded-xl p-4"><label class="block text-sm font-semibold mb-2" style="color:rgba(255,255,255,0.7);">Reference Number</label> <input type="text" id="refNumber" class="form-input w-full rounded-lg px-4 py-3 text-sm" placeholder="e.g., REF-123456" required oninput="validateStep1()">
@@ -268,7 +264,7 @@ html, body { height: 100%; margin: 0; }
         <li class="flex items-center gap-2"><i data-lucide="check" style="width:14px;height:14px;color:#ffd700;"></i>50 tokens monthly</li>
         <li class="flex items-center gap-2"><i data-lucide="check" style="width:14px;height:14px;color:#ffd700;"></i>Basic support</li>
        </ul>
-       <div class="btn-secondary rounded-lg py-2 px-4 text-sm font-semibold">
+       <div class="btn-secondary rounded-lg py-2 px-4 text-sm font-semibold" onclick="window.open('https://buy.stripe.com/eVq00d4Nn9wQfhN8FY73G02', '_blank', 'noopener,noreferrer')">
         Select Starter
        </div>
       </div><!-- Apprentice -->
@@ -284,7 +280,7 @@ html, body { height: 100%; margin: 0; }
         <li class="flex items-center gap-2"><i data-lucide="check" style="width:14px;height:14px;color:#ffd700;"></i>500 tokens monthly</li>
         <li class="flex items-center gap-2"><i data-lucide="check" style="width:14px;height:14px;color:#ffd700;"></i>Email support</li>
        </ul>
-       <div class="btn-secondary rounded-lg py-2 px-4 text-sm font-semibold">
+       <div class="btn-secondary rounded-lg py-2 px-4 text-sm font-semibold" onclick="window.open('https://buy.stripe.com/5kQ28l93DbEY7PlaO673G03', '_blank', 'noopener,noreferrer')">
         Select Apprentice
        </div>
       </div><!-- Strategist -->
@@ -303,7 +299,7 @@ html, body { height: 100%; margin: 0; }
         <li class="flex items-center gap-2"><i data-lucide="check" style="width:14px;height:14px;color:#ffd700;"></i>1,500 tokens monthly</li>
         <li class="flex items-center gap-2"><i data-lucide="check" style="width:14px;height:14px;color:#ffd700;"></i>Priority support</li>
        </ul>
-       <div class="btn-primary rounded-lg py-2 px-4 text-sm font-semibold text-white relative z-10">
+       <div class="btn-primary rounded-lg py-2 px-4 text-sm font-semibold text-white relative z-10" onclick="window.open('https://buy.stripe.com/28E4gtenXbEY9XtcWe73G04', '_blank', 'noopener,noreferrer')">
         Select Strategist
        </div>
       </div><!-- Firm Navigator -->
@@ -319,7 +315,7 @@ html, body { height: 100%; margin: 0; }
         <li class="flex items-center gap-2"><i data-lucide="check" style="width:14px;height:14px;color:#ffd700;"></i>750 tokens monthly</li>
         <li class="flex items-center gap-2"><i data-lucide="check" style="width:14px;height:14px;color:#ffd700;"></i>Dedicated support</li>
        </ul>
-       <div class="btn-secondary rounded-lg py-2 px-4 text-sm font-semibold">
+       <div class="btn-secondary rounded-lg py-2 px-4 text-sm font-semibold" onclick="window.open('https://buy.stripe.com/eVq14h5RrgZi2v16xQ73G05', '_blank', 'noopener,noreferrer')">
         Select Firm Navigator
        </div>
       </div>
@@ -674,5 +670,5 @@ if (window.elementSdk) {
 
 lucide.createIcons();
 </script>
- <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9e02939117a727c9',t:'MTc3NDE1NTAzNi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9e06e14116be27c9',t:'MTc3NDIwMDE2MS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
