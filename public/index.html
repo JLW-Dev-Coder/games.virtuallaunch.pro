@@ -80,8 +80,26 @@
     .card-hover { transition: transform 0.3s, box-shadow 0.3s; }
     .card-hover:hover { transform: translateY(-6px); box-shadow: 0 0 30px rgba(255,215,0,0.2); }
 
-    .star-btn { @apply text-white/30 transition-all; }
-    .star-btn.selected { @apply text-brand-gold bg-yellow-500/15; }
+    .star-btn {
+      color: #ffe066; /* Bright gold/yellow by default */
+      background: transparent;
+      transition: color 0.2s, background 0.2s;
+      font-size: 2rem;
+      opacity: 0.85;
+    }
+
+    .star-btn.selected,
+    .star-btn:hover,
+    .star-btn:focus {
+      color: #ffd700; /* Even brighter yellow on selection/hover */
+      background: rgba(255, 224, 102, 0.15); /* subtle yellow glow */
+      opacity: 1;
+    }
+
+    .star-btn:not(.selected):hover {
+      color: #ffe066;
+      opacity: 1;
+    }
   </style>
   <script>
     tailwind.config = {
