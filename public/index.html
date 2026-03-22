@@ -8,12 +8,6 @@
   <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
   <script src="/_sdk/element_sdk.js"></script>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&amp;family=JetBrains+Mono:wght@400;600&amp;display=swap" rel="stylesheet">
-    
-  <link rel="icon" href="https://virtuallaunch.pro/favicon.ico" sizes="any">
-  <link rel="icon" href="https://virtuallaunch.pro/assets/favicon.ico" sizes="any">
-  <link rel="icon" type="image/svg+xml" href="https://virtuallaunch.pro/assets/favicon.svg">
-  <link rel="apple-touch-icon" href="https://virtuallaunch.pro/assets/favicon.ico">
-  
   <style>
     html, body { height: 100%; margin: 0; }
     * { font-family: 'Outfit', sans-serif; }
@@ -110,7 +104,7 @@
      <nav class="flex items-center justify-between mb-16 slide-up">
       <div class="flex items-center gap-2">
        <div class="w-10 h-10 rounded-lg flex items-center justify-center shimmer-btn"><span class="text-white font-bold text-lg">VLP</span>
-       </div><span id="nav-brand" class="text-white font-bold text-xl tracking-tight">Games.Virtual Launch<span class="text-brand-gold">Pro</span></span>
+       </div><span id="nav-brand" class="text-white font-bold text-xl tracking-tight">Games.Virtual Launch <span class="text-brand-gold">Pro</span></span>
       </div>
       <div class="hidden md:flex items-center gap-8 text-sm"><a href="#games" class="text-gray-400 hover:text-brand-gold transition-colors">Games</a> <a href="#howitworks" class="text-gray-400 hover:text-brand-gold transition-colors">How It Works</a> <a href="#proof" class="text-gray-400 hover:text-brand-gold transition-colors">Reviews</a> <a href="#support" class="text-gray-400 hover:text-brand-gold transition-colors">Support</a>
       </div><button class="hidden md:block shimmer-btn text-white font-bold px-6 py-2 rounded-lg hover:scale-105 transition-transform text-sm">Get Started</button>
@@ -273,307 +267,279 @@
     </div>
    </section>
    
-   <!-- GAME LIBRARY SECTION -->
-   <section id="games" class="w-full py-20" style="background:#1a0a10;">
-    <div class="max-w-6xl mx-auto px-6">
-     <div class="text-center mb-16"><span class="inline-block mono text-xs tracking-widest uppercase px-3 py-1 rounded-full mb-4" style="background:rgba(255,215,0,0.15);color:#ffd700;border:1px solid rgba(255,215,0,0.3);">🎮 Playable Demo</span>
+<!-- GAME LIBRARY SECTION -->
+<section id="games" class="w-full py-20" style="background:#1a0a10;">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="text-center mb-16">
+      <span class="inline-block mono text-xs tracking-widest uppercase px-3 py-1 rounded-full mb-4" style="background:rgba(255,215,0,0.15);color:#ffd700;border:1px solid rgba(255,215,0,0.3);">🎮 Playable Demo</span>
       <h2 id="games-title" class="text-3xl md:text-4xl font-800 text-white mb-4">Play Tax Games</h2>
       <p id="games-subtitle" class="text-gray-500 max-w-xl mx-auto">Drop-in ready. Fully interactive. Your clients will actually want to visit your website.</p>
-     </div>
-     <div class="grid md:grid-cols-3 gap-8">
-      
+    </div>
+    <div class="grid md:grid-cols-3 gap-8">
       <!-- Game Card 1: Tax Spin Wheel -->
       <div class="glass rounded-2xl overflow-hidden card-hover relative group" style="border-color:rgba(255,215,0,0.2);">
-       <div class="absolute top-0 right-0 w-32 h-32 rounded-bl-full opacity-20 group-hover:opacity-40 transition-opacity" style="background:#fbbf24;"></div>
-       <div class="relative h-64 overflow-hidden bg-gray-900">
-        <div class="absolute inset-0 flex items-center justify-center text-6xl opacity-20">
-         🎡
+        <div class="absolute top-0 right-0 w-32 h-32 rounded-bl-full opacity-20 group-hover:opacity-40 transition-opacity" style="background:#fbbf24;"></div>
+        <div class="relative h-64 overflow-hidden bg-gray-900">
+          <div class="absolute inset-0 flex items-center justify-center text-6xl opacity-20">🎡</div>
+          <div class="absolute inset-0 flex flex-col items-center justify-center p-8 text-center z-10">
+            <div class="text-4xl mb-3">🎪</div>
+            <h3 class="font-800 text-white text-xl mb-2">Tax Spin Wheel</h3>
+            <p class="text-gray-400 text-sm">Vibrant spin wheel with 8 segments. Win tax discounts, bonuses, and IRS facts.</p>
+            <div class="flex items-center gap-2 mt-3 text-xs text-brand-gold">
+              <i data-lucide="zap" class="w-3 h-3"></i> Drop-in ready
+            </div>
+          </div>
         </div>
-        <div class="absolute inset-0 flex flex-col items-center justify-center p-8 text-center z-10">
-         <div class="text-4xl mb-3">
-          🎪
-         </div>
-         <h3 class="font-800 text-white text-xl mb-2">Tax Spin Wheel</h3>
-         <p class="text-gray-400 text-sm">Vibrant spin wheel with 8 segments. Win tax discounts, bonuses, and IRS facts.</p>
-         <div class="flex items-center gap-2 mt-3 text-xs text-brand-gold">
-          <i data-lucide="zap" class="w-3 h-3"></i> Drop-in ready
-         </div>
+        <div class="p-6">
+          <div class="flex items-center justify-between mb-4">
+            <div class="flex gap-2">
+              <span class="inline-block px-2 py-1 rounded text-xs font-600 mono" style="background:rgba(255,215,0,0.2);color:#fbbf24;">Interactive</span>
+              <span class="inline-block px-2 py-1 rounded text-xs font-600 mono" style="background:rgba(251,191,36,0.2);color:#fbbf24;">Mobile</span>
+            </div>
+            <span class="text-xs text-gray-600 mono">∞ Replayable</span>
+          </div>
+          <p class="text-xs text-gray-500 mb-4">Animated wheel with instant prizes and tax facts. Token-based gameplay with scoreboard.</p>
+          <div class="flex gap-3 justify-center">
+            <a href="/public/games/tax-spin-wheel.html" class="game-launch-btn bg-yellow-400 hover:bg-yellow-500 text-black font-bold py-2 px-4 rounded-lg transition-colors" data-game="spin"> Play Now </a>
+            <a href="/public/games/tax-spin-wheel.html" class="game-info-btn bg-gray-800 hover:bg-gray-700 text-gray-300 font-bold py-2 px-4 rounded-lg transition-colors" data-game="spin"> Details </a>
+          </div>
         </div>
-       </div>
-       <div class="p-6">
-        <div class="flex items-center justify-between mb-4">
-         <div class="flex gap-2">
-          <span class="inline-block px-2 py-1 rounded text-xs font-600 mono" style="background:rgba(255,215,0,0.2);color:#fbbf24;">Interactive</span> <span class="inline-block px-2 py-1 rounded text-xs font-600 mono" style="background:rgba(251,191,36,0.2);color:#fbbf24;">Mobile</span>
-         </div><span class="text-xs text-gray-600 mono">∞ Replayable</span>
-        </div>
-        <p class="text-xs text-gray-500 mb-4">Animated wheel with instant prizes and tax facts. Token-based gameplay with scoreboard.</p>
-        <div class="flex gap-3">
-     <a href="games/tax-spin-wheel.html" class="flex-1 game-launch-btn bg-yellow-400 hover:bg-yellow-500 text-black font-bold py-2 rounded-lg transition-colors"> Play Now </a>
-     <a href="games/tax-spin-wheel.html" class="flex-1 game-info-btn bg-gray-800 hover:bg-gray-700 text-gray-300 font-bold py-2 rounded-lg transition-colors"> Details </a>
-    </div>
-       </div>
       </div>
-      
       <!-- Game Card 2: Tax Match Mania -->
       <div class="glass rounded-2xl overflow-hidden card-hover relative group" style="border-color:rgba(168,85,247,0.2);">
-       <div class="absolute top-0 right-0 w-32 h-32 rounded-bl-full opacity-20 group-hover:opacity-40 transition-opacity" style="background:#a855f7;"></div>
-       <div class="relative h-64 overflow-hidden bg-gray-900">
-        <div class="absolute inset-0 flex items-center justify-center text-6xl opacity-20">
-         🃏
+        <div class="absolute top-0 right-0 w-32 h-32 rounded-bl-full opacity-20 group-hover:opacity-40 transition-opacity" style="background:#a855f7;"></div>
+        <div class="relative h-64 overflow-hidden bg-gray-900">
+          <div class="absolute inset-0 flex items-center justify-center text-6xl opacity-20">🃏</div>
+          <div class="absolute inset-0 flex flex-col items-center justify-center p-8 text-center z-10">
+            <div class="text-4xl mb-3">🎰</div>
+            <h3 class="font-800 text-white text-xl mb-2">Tax Match Mania</h3>
+            <p class="text-gray-400 text-sm">Fast-paced 4x4 matching game with tax forms and symbols.</p>
+            <div class="flex items-center gap-2 mt-3 text-xs text-brand-gold">
+              <i data-lucide="zap" class="w-3 h-3"></i> Drop-in ready
+            </div>
+          </div>
         </div>
-        <div class="absolute inset-0 flex flex-col items-center justify-center p-8 text-center z-10">
-         <div class="text-4xl mb-3">
-          🎰
-         </div>
-         <h3 class="font-800 text-white text-xl mb-2">Tax Match Mania</h3>
-         <p class="text-gray-400 text-sm">Fast-paced 4x4 matching game with tax forms and symbols.</p>
-         <div class="flex items-center gap-2 mt-3 text-xs text-brand-gold">
-          <i data-lucide="zap" class="w-3 h-3"></i> Drop-in ready
-         </div>
+        <div class="p-6">
+          <div class="flex items-center justify-between mb-4">
+            <div class="flex gap-2">
+              <span class="inline-block px-2 py-1 rounded text-xs font-600 mono" style="background:rgba(168,85,247,0.2);color:#c084fc;">Interactive</span>
+              <span class="inline-block px-2 py-1 rounded text-xs font-600 mono" style="background:rgba(168,85,247,0.2);color:#c084fc;">Mobile</span>
+            </div>
+            <span class="text-xs text-gray-600 mono">⏱️ Timed</span>
+          </div>
+          <p class="text-xs text-gray-500 mb-4">Match cards, unlock tax tips, and compete on the leaderboard with animated effects.</p>
+          <div class="flex gap-3 justify-center">
+            <a href="/public/games/tax-match-mania.html" class="game-launch-btn text-white font-bold py-2 px-4 rounded-lg transition-colors" data-game="match" style="background:#a855f7;"> Play Now </a>
+            <a href="/public/games/tax-match-mania.html" class="game-info-btn bg-gray-800 hover:bg-gray-700 text-gray-300 font-bold py-2 px-4 rounded-lg transition-colors" data-game="match"> Details </a>
+          </div>
         </div>
-       </div>
-       <div class="p-6">
-        <div class="flex items-center justify-between mb-4">
-         <div class="flex gap-2">
-          <span class="inline-block px-2 py-1 rounded text-xs font-600 mono" style="background:rgba(168,85,247,0.2);color:#c084fc;">Interactive</span> <span class="inline-block px-2 py-1 rounded text-xs font-600 mono" style="background:rgba(168,85,247,0.2);color:#c084fc;">Mobile</span>
-         </div><span class="text-xs text-gray-600 mono">⏱️ Timed</span>
-        </div>
-        <p class="text-xs text-gray-500 mb-4">Match cards, unlock tax tips, and compete on the leaderboard with animated effects.</p>
-        <div class="flex gap-3">
-     <a href="games/tax-match-mania.html" class="flex-1 game-launch-btn text-white font-bold py-2 rounded-lg transition-colors" style="background:#a855f7;"> Play Now </a>
-     <a href="games/tax-match-mania.html" class="flex-1 game-info-btn bg-gray-800 hover:bg-gray-700 text-gray-300 font-bold py-2 rounded-lg transition-colors"> Details </a>
-    </div>
-       </div>
       </div>
-      
       <!-- Game Card 3: Tax Trivia -->
       <div class="glass rounded-2xl overflow-hidden card-hover relative group" style="border-color:rgba(59,130,246,0.2);">
-       <div class="absolute top-0 right-0 w-32 h-32 rounded-bl-full opacity-20 group-hover:opacity-40 transition-opacity" style="background:#3b82f6;"></div>
-       <div class="relative h-64 overflow-hidden bg-gray-900">
-        <div class="absolute inset-0 flex items-center justify-center text-6xl opacity-20">
-         🧠
+        <div class="absolute top-0 right-0 w-32 h-32 rounded-bl-full opacity-20 group-hover:opacity-40 transition-opacity" style="background:#3b82f6;"></div>
+        <div class="relative h-64 overflow-hidden bg-gray-900">
+          <div class="absolute inset-0 flex items-center justify-center text-6xl opacity-20">🧠</div>
+          <div class="absolute inset-0 flex flex-col items-center justify-center p-8 text-center z-10">
+            <div class="text-4xl mb-3">🧠</div>
+            <h3 class="font-800 text-white text-xl mb-2">Tax Trivia</h3>
+            <p class="text-gray-400 text-sm">Quiz game with multiple-choice tax questions and illustrations.</p>
+            <div class="flex items-center gap-2 mt-3 text-xs text-brand-gold">
+              <i data-lucide="zap" class="w-3 h-3"></i> Drop-in ready
+            </div>
+          </div>
         </div>
-        <div class="absolute inset-0 flex flex-col items-center justify-center p-8 text-center z-10">
-         <div class="text-4xl mb-3">
-          🧠
-         </div>
-         <h3 class="font-800 text-white text-xl mb-2">Tax Trivia</h3>
-         <p class="text-gray-400 text-sm">Quiz game with multiple-choice tax questions and illustrations.</p>
-         <div class="flex items-center gap-2 mt-3 text-xs text-brand-gold">
-          <i data-lucide="zap" class="w-3 h-3"></i> Drop-in ready
-         </div>
+        <div class="p-6">
+          <div class="flex items-center justify-between mb-4">
+            <div class="flex gap-2">
+              <span class="inline-block px-2 py-1 rounded text-xs font-600 mono" style="background:rgba(59,130,246,0.2);color:#60a5fa;">Interactive</span>
+              <span class="inline-block px-2 py-1 rounded text-xs font-600 mono" style="background:rgba(59,130,246,0.2);color:#60a5fa;">Mobile</span>
+            </div>
+            <span class="text-xs text-gray-600 mono">⏱️ Timed</span>
+          </div>
+          <p class="text-xs text-gray-500 mb-4">4 answer options, progress bar, and fun explanations after each question.</p>
+          <div class="flex gap-3 justify-center">
+            <a href="/public/games/tax-trivia.html" class="game-launch-btn bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg transition-colors" data-game="trivia"> Play Now </a>
+            <a href="/public/games/tax-trivia.html" class="game-info-btn bg-gray-800 hover:bg-gray-700 text-gray-300 font-bold py-2 px-4 rounded-lg transition-colors" data-game="trivia"> Details </a>
+          </div>
         </div>
-       </div>
-       <div class="p-6">
-        <div class="flex items-center justify-between mb-4">
-         <div class="flex gap-2">
-          <span class="inline-block px-2 py-1 rounded text-xs font-600 mono" style="background:rgba(59,130,246,0.2);color:#60a5fa;">Interactive</span> <span class="inline-block px-2 py-1 rounded text-xs font-600 mono" style="background:rgba(59,130,246,0.2);color:#60a5fa;">Mobile</span>
-         </div><span class="text-xs text-gray-600 mono">⏱️ Timed</span>
-        </div>
-        <p class="text-xs text-gray-500 mb-4">4 answer options, progress bar, and fun explanations after each question.</p>
-        <div class="flex gap-3">
-     <a href="games/tax-trivia.html" class="flex-1 game-launch-btn bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 rounded-lg transition-colors"> Play Now </a>
-     <a href="games/tax-trivia.html" class="flex-1 game-info-btn bg-gray-800 hover:bg-gray-700 text-gray-300 font-bold py-2 rounded-lg transition-colors"> Details </a>
-    </div>
-       </div>
       </div>
-      
       <!-- Game Card 4: Deduction Dash -->
       <div class="glass rounded-2xl overflow-hidden card-hover relative group" style="border-color:rgba(52,211,153,0.2);">
-       <div class="absolute top-0 right-0 w-32 h-32 rounded-bl-full opacity-20 group-hover:opacity-40 transition-opacity" style="background:#22c55e;"></div>
-       <div class="relative h-64 overflow-hidden bg-gray-900">
-        <div class="absolute inset-0 flex items-center justify-center text-6xl opacity-20">
-         🏃
+        <div class="absolute top-0 right-0 w-32 h-32 rounded-bl-full opacity-20 group-hover:opacity-40 transition-opacity" style="background:#22c55e;"></div>
+        <div class="relative h-64 overflow-hidden bg-gray-900">
+          <div class="absolute inset-0 flex items-center justify-center text-6xl opacity-20">🏃</div>
+          <div class="absolute inset-0 flex flex-col items-center justify-center p-8 text-center z-10">
+            <div class="text-4xl mb-3">💨</div>
+            <h3 class="font-800 text-white text-xl mb-2">Deduction Dash</h3>
+            <p class="text-gray-400 text-sm">Side-scrolling runner collecting deductions and avoiding audits.</p>
+            <div class="flex items-center gap-2 mt-3 text-xs text-brand-gold">
+              <i data-lucide="zap" class="w-3 h-3"></i> Drop-in ready
+            </div>
+          </div>
         </div>
-        <div class="absolute inset-0 flex flex-col items-center justify-center p-8 text-center z-10">
-         <div class="text-4xl mb-3">
-          💨
-         </div>
-         <h3 class="font-800 text-white text-xl mb-2">Deduction Dash</h3>
-         <p class="text-gray-400 text-sm">Side-scrolling runner collecting deductions and avoiding audits.</p>
-         <div class="flex items-center gap-2 mt-3 text-xs text-brand-gold">
-          <i data-lucide="zap" class="w-3 h-3"></i> Drop-in ready
-         </div>
+        <div class="p-6">
+          <div class="flex items-center justify-between mb-4">
+            <div class="flex gap-2">
+              <span class="inline-block px-2 py-1 rounded text-xs font-600 mono" style="background:rgba(52,211,153,0.2);color:#22c55e;">Interactive</span>
+              <span class="inline-block px-2 py-1 rounded text-xs font-600 mono" style="background:rgba(251,191,36,0.2);color:#fbbf24;">Mobile</span>
+            </div>
+            <span class="text-xs text-gray-600 mono">∞ Replayable</span>
+          </div>
+          <p class="text-xs text-gray-500 mb-4">Collect receipts, charities, and expenses with power-ups and deduction facts.</p>
+          <div class="flex gap-3 justify-center">
+            <a href="/public/games/deduction-dash.html" class="game-launch-btn bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-lg transition-colors" data-game="dash"> Play Now </a>
+            <a href="/public/games/deduction-dash.html" class="game-info-btn bg-gray-800 hover:bg-gray-700 text-gray-300 font-bold py-2 px-4 rounded-lg transition-colors" data-game="dash"> Details </a>
+          </div>
         </div>
-       </div>
-       <div class="p-6">
-        <div class="flex items-center justify-between mb-4">
-         <div class="flex gap-2">
-          <span class="inline-block px-2 py-1 rounded text-xs font-600 mono" style="background:rgba(52,211,153,0.2);color:#22c55e;">Interactive</span> <span class="inline-block px-2 py-1 rounded text-xs font-600 mono" style="background:rgba(251,191,36,0.2);color:#fbbf24;">Mobile</span>
-         </div><span class="text-xs text-gray-600 mono">∞ Replayable</span>
-        </div>
-        <p class="text-xs text-gray-500 mb-4">Collect receipts, charities, and expenses with power-ups and deduction facts.</p>
-        <div class="flex gap-3">
-     <a href="games/deduction-dash.html" class="flex-1 game-launch-btn bg-green-500 hover:bg-green-600 text-white font-bold py-2 rounded-lg transition-colors"> Play Now </a>
-     <a href="games/deduction-dash.html" class="flex-1 game-info-btn bg-gray-800 hover:bg-gray-700 text-gray-300 font-bold py-2 rounded-lg transition-colors"> Details </a>
-    </div>
-       </div>
       </div>
-      
       <!-- Game Card 5: Refund Rush -->
       <div class="glass rounded-2xl overflow-hidden card-hover relative group" style="border-color:rgba(34,197,94,0.2);">
-       <div class="absolute top-0 right-0 w-32 h-32 rounded-bl-full opacity-20 group-hover:opacity-40 transition-opacity" style="background:#10b981;"></div>
-       <div class="relative h-64 overflow-hidden bg-gray-900">
-        <div class="absolute inset-0 flex items-center justify-center text-6xl opacity-20">
-         🧾
+        <div class="absolute top-0 right-0 w-32 h-32 rounded-bl-full opacity-20 group-hover:opacity-40 transition-opacity" style="background:#10b981;"></div>
+        <div class="relative h-64 overflow-hidden bg-gray-900">
+          <div class="absolute inset-0 flex items-center justify-center text-6xl opacity-20">🧾</div>
+          <div class="absolute inset-0 flex flex-col items-center justify-center p-8 text-center z-10">
+            <div class="text-4xl mb-3">💵</div>
+            <h3 class="font-800 text-white text-xl mb-2">Refund Rush</h3>
+            <p class="text-gray-400 text-sm">Sort documents into categories before time runs out.</p>
+            <div class="flex items-center gap-2 mt-3 text-xs text-brand-gold">
+              <i data-lucide="zap" class="w-3 h-3"></i> Drop-in ready
+            </div>
+          </div>
         </div>
-        <div class="absolute inset-0 flex flex-col items-center justify-center p-8 text-center z-10">
-         <div class="text-4xl mb-3">
-          💵
-         </div>
-         <h3 class="font-800 text-white text-xl mb-2">Refund Rush</h3>
-         <p class="text-gray-400 text-sm">Sort documents into categories before time runs out.</p>
-         <div class="flex items-center gap-2 mt-3 text-xs text-brand-gold">
-          <i data-lucide="zap" class="w-3 h-3"></i> Drop-in ready
-         </div>
+        <div class="p-6">
+          <div class="flex items-center justify-between mb-4">
+            <div class="flex gap-2">
+              <span class="inline-block px-2 py-1 rounded text-xs font-600 mono" style="background:rgba(34,197,94,0.2);color:#10b981;">Interactive</span>
+              <span class="inline-block px-2 py-1 rounded text-xs font-600 mono" style="background:rgba(34,197,94,0.2);color:#10b981;">Mobile</span>
+            </div>
+            <span class="text-xs text-gray-600 mono">∞ Replayable</span>
+          </div>
+          <p class="text-xs text-gray-500 mb-4">Build combos for bonus points and climb the leaderboard. Tax fact rewards.</p>
+          <div class="flex gap-3 justify-center">
+            <a href="/public/games/refund-rush.html" class="game-launch-btn text-white font-bold py-2 px-4 rounded-lg transition-colors" data-game="rush" style="background:#10b981;"> Play Now </a>
+            <a href="/public/games/refund-rush.html" class="game-info-btn bg-gray-800 hover:bg-gray-700 text-gray-300 font-bold py-2 px-4 rounded-lg transition-colors" data-game="rush"> Details </a>
+          </div>
         </div>
-       </div>
-       <div class="p-6">
-        <div class="flex items-center justify-between mb-4">
-         <div class="flex gap-2">
-          <span class="inline-block px-2 py-1 rounded text-xs font-600 mono" style="background:rgba(34,197,94,0.2);color:#10b981;">Interactive</span> <span class="inline-block px-2 py-1 rounded text-xs font-600 mono" style="background:rgba(34,197,94,0.2);color:#10b981;">Mobile</span>
-         </div><span class="text-xs text-gray-600 mono">∞ Replayable</span>
-        </div>
-        <p class="text-xs text-gray-500 mb-4">Build combos for bonus points and climb the leaderboard. Tax fact rewards.</p>
-        <div class="flex gap-3">
-     <a href="games/refund-rush.html" class="flex-1 game-launch-btn text-white font-bold py-2 rounded-lg transition-colors" style="background:#10b981;"> Play Now </a>
-     <a href="games/refund-rush.html" class="flex-1 game-info-btn bg-gray-800 hover:bg-gray-700 text-gray-300 font-bold py-2 rounded-lg transition-colors"> Details </a>
-    </div>
-       </div>
       </div>
-      
       <!-- Game Card 6: Audit Escape Room -->
       <div class="glass rounded-2xl overflow-hidden card-hover relative group" style="border-color:rgba(196,30,58,0.2);">
-       <div class="absolute top-0 right-0 w-32 h-32 rounded-bl-full opacity-20 group-hover:opacity-40 transition-opacity" style="background:#c41e3a;"></div>
-       <div class="relative h-64 overflow-hidden bg-gray-900">
-        <div class="absolute inset-0 flex items-center justify-center text-6xl opacity-20">
-         🕵️
+        <div class="absolute top-0 right-0 w-32 h-32 rounded-bl-full opacity-20 group-hover:opacity-40 transition-opacity" style="background:#c41e3a;"></div>
+        <div class="relative h-64 overflow-hidden bg-gray-900">
+          <div class="absolute inset-0 flex items-center justify-center text-6xl opacity-20">🕵️</div>
+          <div class="absolute inset-0 flex flex-col items-center justify-center p-8 text-center z-10">
+            <div class="text-4xl mb-3">🔓</div>
+            <h3 class="font-800 text-white text-xl mb-2">Audit Escape Room</h3>
+            <p class="text-gray-400 text-sm">Solve tax puzzles to unlock rooms and escape the audit.</p>
+            <div class="flex items-center gap-2 mt-3 text-xs text-brand-gold">
+              <i data-lucide="zap" class="w-3 h-3"></i> Drop-in ready
+            </div>
+          </div>
         </div>
-        <div class="absolute inset-0 flex flex-col items-center justify-center p-8 text-center z-10">
-         <div class="text-4xl mb-3">
-          🔓
-         </div>
-         <h3 class="font-800 text-white text-xl mb-2">Audit Escape Room</h3>
-         <p class="text-gray-400 text-sm">Solve tax puzzles to unlock rooms and escape the audit.</p>
-         <div class="flex items-center gap-2 mt-3 text-xs text-brand-gold">
-          <i data-lucide="zap" class="w-3 h-3"></i> Drop-in ready
-         </div>
+        <div class="p-6">
+          <div class="flex items-center justify-between mb-4">
+            <div class="flex gap-2">
+              <span class="inline-block px-2 py-1 rounded text-xs font-600 mono" style="background:rgba(196,30,58,0.2);color:#c41e3a;">Interactive</span>
+              <span class="inline-block px-2 py-1 rounded text-xs font-600 mono" style="background:rgba(34,197,94,0.2);color:#22c55e;">Mobile</span>
+            </div>
+            <span class="text-xs text-gray-600 mono">⏱️ 10 min</span>
+          </div>
+          <p class="text-xs text-gray-500 mb-4">Decode W-2s, find deductions, solve IRS riddles with hints and timer.</p>
+          <div class="flex gap-3 justify-center">
+            <a href="/public/games/audit-escape-room.html" class="game-launch-btn bg-brand-red hover:bg-brand-red/80 text-white font-bold py-2 px-4 rounded-lg transition-colors" data-game="audit"> Play Now </a>
+            <a href="/public/games/audit-escape-room.html" class="game-info-btn bg-gray-800 hover:bg-gray-700 text-gray-300 font-bold py-2 px-4 rounded-lg transition-colors" data-game="audit"> Details </a>
+          </div>
         </div>
-       </div>
-       <div class="p-6">
-        <div class="flex items-center justify-between mb-4">
-         <div class="flex gap-2">
-          <span class="inline-block px-2 py-1 rounded text-xs font-600 mono" style="background:rgba(196,30,58,0.2);color:#c41e3a;">Interactive</span> <span class="inline-block px-2 py-1 rounded text-xs font-600 mono" style="background:rgba(34,197,94,0.2);color:#22c55e;">Mobile</span>
-         </div><span class="text-xs text-gray-600 mono">⏱️ 10 min</span>
-        </div>
-        <p class="text-xs text-gray-500 mb-4">Decode W-2s, find deductions, solve IRS riddles with hints and timer.</p>
-        <div class="flex gap-3">
-     <a href="games/audit-escape-room.html" class="flex-1 game-launch-btn bg-brand-red hover:bg-brand-red/80 text-white font-bold py-2 rounded-lg transition-colors"> Play Now </a>
-     <a href="games/audit-escape-room.html" class="flex-1 game-info-btn bg-gray-800 hover:bg-gray-700 text-gray-300 font-bold py-2 rounded-lg transition-colors"> Details </a>
-    </div>
-       </div>
       </div>
-      
       <!-- Game Card 7: Tax Word Search -->
       <div class="glass rounded-2xl overflow-hidden card-hover relative group" style="border-color:rgba(245,158,11,0.2);">
-       <div class="absolute top-0 right-0 w-32 h-32 rounded-bl-full opacity-20 group-hover:opacity-40 transition-opacity" style="background:#f59e0b;"></div>
-       <div class="relative h-64 overflow-hidden bg-gray-900">
-        <div class="absolute inset-0 flex items-center justify-center text-6xl opacity-20">
-         📝
+        <div class="absolute top-0 right-0 w-32 h-32 rounded-bl-full opacity-20 group-hover:opacity-40 transition-opacity" style="background:#f59e0b;"></div>
+        <div class="relative h-64 overflow-hidden bg-gray-900">
+          <div class="absolute inset-0 flex items-center justify-center text-6xl opacity-20">📝</div>
+          <div class="absolute inset-0 flex flex-col items-center justify-center p-8 text-center z-10">
+            <div class="text-4xl mb-3">🔤</div>
+            <h3 class="font-800 text-white text-xl mb-2">Tax Word Search</h3>
+            <p class="text-gray-400 text-sm">Grid of tax terms to find and highlight with animations.</p>
+            <div class="flex items-center gap-2 mt-3 text-xs text-brand-gold">
+              <i data-lucide="zap" class="w-3 h-3"></i> Drop-in ready
+            </div>
+          </div>
         </div>
-        <div class="absolute inset-0 flex flex-col items-center justify-center p-8 text-center z-10">
-         <div class="text-4xl mb-3">
-          🔤
-         </div>
-         <h3 class="font-800 text-white text-xl mb-2">Tax Word Search</h3>
-         <p class="text-gray-400 text-sm">Grid of tax terms to find and highlight with animations.</p>
-         <div class="flex items-center gap-2 mt-3 text-xs text-brand-gold">
-          <i data-lucide="zap" class="w-3 h-3"></i> Drop-in ready
-         </div>
+        <div class="p-6">
+          <div class="flex items-center justify-between mb-4">
+            <div class="flex gap-2">
+              <span class="inline-block px-2 py-1 rounded text-xs font-600 mono" style="background:rgba(245,158,11,0.2);color:#f59e0b;">Interactive</span>
+              <span class="inline-block px-2 py-1 rounded text-xs font-600 mono" style="background:rgba(245,158,11,0.2);color:#f59e0b;">Mobile</span>
+            </div>
+            <span class="text-xs text-gray-600 mono">⏱️ Timed</span>
+          </div>
+          <p class="text-xs text-gray-500 mb-4">Find words like "deduction," "refund," "W-2" with tax tips for each.</p>
+          <div class="flex gap-3 justify-center">
+            <a href="/public/games/tax-word-search.html" class="game-launch-btn text-white font-bold py-2 px-4 rounded-lg transition-colors" data-game="word" style="background:#f59e0b;"> Play Now </a>
+            <a href="/public/games/tax-word-search.html" class="game-info-btn bg-gray-800 hover:bg-gray-700 text-gray-300 font-bold py-2 px-4 rounded-lg transition-colors" data-game="word"> Details </a>
+          </div>
         </div>
-       </div>
-       <div class="p-6">
-        <div class="flex items-center justify-between mb-4">
-         <div class="flex gap-2">
-          <span class="inline-block px-2 py-1 rounded text-xs font-600 mono" style="background:rgba(245,158,11,0.2);color:#f59e0b;">Interactive</span> <span class="inline-block px-2 py-1 rounded text-xs font-600 mono" style="background:rgba(245,158,11,0.2);color:#f59e0b;">Mobile</span>
-         </div><span class="text-xs text-gray-600 mono">⏱️ Timed</span>
-        </div>
-        <p class="text-xs text-gray-500 mb-4">Find words like "deduction," "refund," "W-2" with tax tips for each.</p>
-        <div class="flex gap-3">
-     <a href="games/tax-word-search.html" class="flex-1 game-launch-btn text-white font-bold py-2 rounded-lg transition-colors" style="background:#f59e0b;"> Play Now </a>
-     <a href="games/tax-word-search.html" class="flex-1 game-info-btn bg-gray-800 hover:bg-gray-700 text-gray-300 font-bold py-2 rounded-lg transition-colors"> Details </a>
-    </div>
-       </div>
       </div>
-      
       <!-- Game Card 8: Capital Gains Climb -->
       <div class="glass rounded-2xl overflow-hidden card-hover relative group" style="border-color:rgba(14,165,233,0.2);">
-       <div class="absolute top-0 right-0 w-32 h-32 rounded-bl-full opacity-20 group-hover:opacity-40 transition-opacity" style="background:#0ea5e9;"></div>
-       <div class="relative h-64 overflow-hidden bg-gray-900">
-        <div class="absolute inset-0 flex items-center justify-center text-6xl opacity-20">
-         📈
+        <div class="absolute top-0 right-0 w-32 h-32 rounded-bl-full opacity-20 group-hover:opacity-40 transition-opacity" style="background:#0ea5e9;"></div>
+        <div class="relative h-64 overflow-hidden bg-gray-900">
+          <div class="absolute inset-0 flex items-center justify-center text-6xl opacity-20">📈</div>
+          <div class="absolute inset-0 flex flex-col items-center justify-center p-8 text-center z-10">
+            <div class="text-4xl mb-3">📊</div>
+            <h3 class="font-800 text-white text-xl mb-2">Capital Gains Climb</h3>
+            <p class="text-gray-400 text-sm">Platformer collecting coins and avoiding tax penalties.</p>
+            <div class="flex items-center gap-2 mt-3 text-xs text-brand-gold">
+              <i data-lucide="zap" class="w-3 h-3"></i> Drop-in ready
+            </div>
+          </div>
         </div>
-        <div class="absolute inset-0 flex flex-col items-center justify-center p-8 text-center z-10">
-         <div class="text-4xl mb-3">
-          📊
-         </div>
-         <h3 class="font-800 text-white text-xl mb-2">Capital Gains Climb</h3>
-         <p class="text-gray-400 text-sm">Platformer collecting coins and avoiding tax penalties.</p>
-         <div class="flex items-center gap-2 mt-3 text-xs text-brand-gold">
-          <i data-lucide="zap" class="w-3 h-3"></i> Drop-in ready
-         </div>
+        <div class="p-6">
+          <div class="flex items-center justify-between mb-4">
+            <div class="flex gap-2">
+              <span class="inline-block px-2 py-1 rounded text-xs font-600 mono" style="background:rgba(14,165,233,0.2);color:#0ea5e9;">Interactive</span>
+              <span class="inline-block px-2 py-1 rounded text-xs font-600 mono" style="background:rgba(14,165,233,0.2);color:#0ea5e9;">Mobile</span>
+            </div>
+            <span class="text-xs text-gray-600 mono">∞ Replayable</span>
+          </div>
+          <p class="text-xs text-gray-500 mb-4">Jump between platforms, collect gains, avoid traps. Investment tips between levels.</p>
+          <div class="flex gap-3 justify-center">
+            <a href="/public/games/capital-gains-climb.html" class="game-launch-btn text-white font-bold py-2 px-4 rounded-lg transition-colors" data-game="cgc" style="background:#0ea5e9;"> Play Now </a>
+            <a href="/public/games/capital-gains-climb.html" class="game-info-btn bg-gray-800 hover:bg-gray-700 text-gray-300 font-bold py-2 px-4 rounded-lg transition-colors" data-game="cgc"> Details </a>
+          </div>
         </div>
-       </div>
-       <div class="p-6">
-        <div class="flex items-center justify-between mb-4">
-         <div class="flex gap-2">
-          <span class="inline-block px-2 py-1 rounded text-xs font-600 mono" style="background:rgba(14,165,233,0.2);color:#0ea5e9;">Interactive</span> <span class="inline-block px-2 py-1 rounded text-xs font-600 mono" style="background:rgba(14,165,233,0.2);color:#0ea5e9;">Mobile</span>
-         </div><span class="text-xs text-gray-600 mono">∞ Replayable</span>
-        </div>
-        <p class="text-xs text-gray-500 mb-4">Jump between platforms, collect gains, avoid traps. Investment tips between levels.</p>
-        <div class="flex gap-3">
-     <a href="games/capital-gains-climb.html" class="flex-1 game-launch-btn text-white font-bold py-2 rounded-lg transition-colors" style="background:#0ea5e9;"> Play Now </a>
-     <a href="games/capital-gains-climb.html" class="flex-1 game-info-btn bg-gray-800 hover:bg-gray-700 text-gray-300 font-bold py-2 rounded-lg transition-colors"> Details </a>
-    </div>
-   </div>
-
-       </div>
       </div>
-      
       <!-- Game Card 9: IRS Fact or Fiction -->
       <div class="glass rounded-2xl overflow-hidden card-hover relative group" style="border-color:rgba(250,204,21,0.2);">
-       <div class="absolute top-0 right-0 w-32 h-32 rounded-bl-full opacity-20 group-hover:opacity-40 transition-opacity" style="background:#facc15;"></div>
-       <div class="relative h-64 overflow-hidden bg-gray-900">
-        <div class="absolute inset-0 flex items-center justify-center text-6xl opacity-20">
-         🏛️
+        <div class="absolute top-0 right-0 w-32 h-32 rounded-bl-full opacity-20 group-hover:opacity-40 transition-opacity" style="background:#facc15;"></div>
+        <div class="relative h-64 overflow-hidden bg-gray-900">
+          <div class="absolute inset-0 flex items-center justify-center text-6xl opacity-20">🏛️</div>
+          <div class="absolute inset-0 flex flex-col items-center justify-center p-8 text-center z-10">
+            <div class="text-4xl mb-3">❓</div>
+            <h3 class="font-800 text-white text-xl mb-2">IRS: Fact or Fiction?</h3>
+            <p class="text-gray-400 text-sm">True/false game with streak bonuses and explanations.</p>
+            <div class="flex items-center gap-2 mt-3 text-xs text-brand-gold">
+              <i data-lucide="zap" class="w-3 h-3"></i> Drop-in ready
+            </div>
+          </div>
         </div>
-        <div class="absolute inset-0 flex flex-col items-center justify-center p-8 text-center z-10">
-         <div class="text-4xl mb-3">
-          ❓
-         </div>
-         <h3 class="font-800 text-white text-xl mb-2">IRS: Fact or Fiction?</h3>
-         <p class="text-gray-400 text-sm">True/false game with streak bonuses and explanations.</p>
-         <div class="flex items-center gap-2 mt-3 text-xs text-brand-gold">
-          <i data-lucide="zap" class="w-3 h-3"></i> Drop-in ready
-         </div>
+        <div class="p-6">
+          <div class="flex items-center justify-between mb-4">
+            <div class="flex gap-2">
+              <span class="inline-block px-2 py-1 rounded text-xs font-600 mono" style="background:rgba(250,204,21,0.2);color:#facc15;">Interactive</span>
+              <span class="inline-block px-2 py-1 rounded text-xs font-600 mono" style="background:rgba(96,165,250,0.2);color:#60a5fa;">Mobile</span>
+            </div>
+            <span class="text-xs text-gray-600 mono">∞ Replayable</span>
+          </div>
+          <p class="text-xs text-gray-500 mb-4">Real IRS statements with instant feedback and share score feature.</p>
+          <div class="flex gap-3 justify-center">
+            <a href="/public/games/irs-fact-or-fiction.html" class="game-launch-btn bg-yellow-400 hover:bg-yellow-500 text-black font-bold py-2 px-4 rounded-lg transition-colors" data-game="irs"> Play Now </a>
+            <a href="/public/games/irs-fact-or-fiction.html" class="game-info-btn bg-gray-800 hover:bg-gray-700 text-gray-300 font-bold py-2 px-4 rounded-lg transition-colors" data-game="irs"> Details </a>
+          </div>
         </div>
-       </div>
-       <div class="p-6">
-        <div class="flex items-center justify-between mb-4">
-         <div class="flex gap-2">
-          <span class="inline-block px-2 py-1 rounded text-xs font-600 mono" style="background:rgba(250,204,21,0.2);color:#facc15;">Interactive</span> <span class="inline-block px-2 py-1 rounded text-xs font-600 mono" style="background:rgba(96,165,250,0.2);color:#60a5fa;">Mobile</span>
-         </div><span class="text-xs text-gray-600 mono">∞ Replayable</span>
-        </div>
-        <p class="text-xs text-gray-500 mb-4">Real IRS statements with instant feedback and share score feature.</p>
-       <div class="flex gap-3">
-     <a href="games/irs-fact-or-fiction.html" class="flex-1 game-launch-btn bg-yellow-400 hover:bg-yellow-500 text-black font-bold py-2 rounded-lg transition-colors"> Play Now </a>
-     <a href="games/irs-fact-or-fiction.html" class="flex-1 game-info-btn bg-gray-800 hover:bg-gray-700 text-gray-300 font-bold py-2 rounded-lg transition-colors"> Details </a>
-    </div>
-       </div>
       </div>
-     </div>
     </div>
-   </section>  
+  </div>
+</section>
    
    <!-- Game Modal -->
    <div id="gameModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
@@ -593,9 +559,7 @@
      <h2 id="token-title" class="text-3xl md:text-4xl font-800 text-white mb-4">How Tokens Work</h2>
      <p class="text-gray-500 max-w-xl mx-auto">A seamless three-step system that turns your website visitors into revenue.</p>
     </div>
-    <div class="grid md:grid-cols-3 gap-8">
-      
-      <!-- Buy -->
+    <div class="grid md:grid-cols-3 gap-8"><!-- Buy -->
      <div class="glass rounded-2xl p-8 card-hover relative overflow-hidden group">
       <div class="absolute top-0 right-0 w-20 h-20 rounded-bl-full opacity-20 group-hover:opacity-40 transition-opacity" style="background:#ffd700;"></div>
       <div class="w-16 h-16 rounded-2xl flex items-center justify-center mb-6 text-3xl" style="background:linear-gradient(135deg,rgba(255,215,0,0.2),rgba(255,215,0,0.05));border:1px solid rgba(255,215,0,0.3);"><span class="coin-bounce inline-block">🪙</span>
@@ -633,9 +597,7 @@
       </div>
      </div>
     </div>
-   </div>
-   
-   <!-- FEATURES STRIP -->
+   </div><!-- FEATURES STRIP -->
    <section class="w-full py-16" style="background:linear-gradient(180deg,#2a0f1e,#1a0a10);">
     <div class="max-w-5xl mx-auto px-6">
      <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
@@ -676,14 +638,12 @@
         Custom Branding
        </div>
        <div class="text-gray-600 text-xs mt-1">
-        Increase SEO Engagement
+        Match your firm
        </div>
       </div>
      </div>
     </div>
-   </section>
-   
-   <!-- SOCIAL PROOF -->
+   </section><!-- SOCIAL PROOF -->
    <section id="proof" class="w-full py-20" style="background:#1a0a10;">
     <div class="max-w-4xl mx-auto px-6">
      <div class="text-center mb-12"><span class="inline-block mono text-xs tracking-widest uppercase px-3 py-1 rounded-full mb-4" style="background:rgba(255,215,0,0.15);color:#ffd700;border:1px solid rgba(255,215,0,0.3);">⭐ Social Proof</span>
@@ -762,16 +722,6 @@
       </div>
      </div>
     </div>
-   </section><!-- CTA BANNER -->
-   <section class="w-full py-16" style="background:linear-gradient(135deg,#2a0f1e 0%,#3d1528 50%,#2a0f1e 100%);border-top:1px solid rgba(255,215,0,0.1);border-bottom:1px solid rgba(255,215,0,0.1);">
-    <div class="max-w-3xl mx-auto px-6 text-center">
-     <div class="text-5xl mb-6 neon-flicker">
-      🎰
-     </div>
-     <h2 class="text-3xl md:text-4xl font-800 text-white mb-4">Ready to Gamify Your Practice?</h2>
-     <p class="text-gray-400 mb-8 max-w-lg mx-auto">Join 2,400+ tax professionals already earning passive income. Setup takes under 5 minutes.</p><button id="cta-btn-2" class="shimmer-btn text-white font-bold text-lg px-10 py-4 rounded-xl hover:scale-105 transition-transform shadow-lg shadow-brand-red/30"> Start Earning Today → </button>
-     <p class="text-gray-600 text-xs mt-4">Free tier available • No credit card required</p>
-    </div>
    </section><!-- SUPPORT SECTION -->
    <section id="support" class="w-full py-20" style="background:linear-gradient(180deg,#1a0a10,#2a0f1e);">
     <div class="max-w-4xl mx-auto px-6">
@@ -807,12 +757,25 @@
     </div>
    </section>
    
+   <!-- CTA BANNER -->
+   <section class="w-full py-16" style="background:linear-gradient(135deg,#2a0f1e 0%,#3d1528 50%,#2a0f1e 100%);border-top:1px solid rgba(255,215,0,0.1);border-bottom:1px solid rgba(255,215,0,0.1);">
+    <div class="max-w-3xl mx-auto px-6 text-center">
+     <div class="text-5xl mb-6 neon-flicker">
+      🎰
+     </div>
+     <h2 class="text-3xl md:text-4xl font-800 text-white mb-4">Ready to Gamify Your Practice?</h2>
+     <p class="text-gray-400 mb-8 max-w-lg mx-auto">Join 2,400+ tax professionals already earning passive income. Setup takes under 5 minutes.</p>
+     <button id="cta-btn-2" class="shimmer-btn text-white font-bold text-lg px-10 py-4 rounded-xl hover:scale-105 transition-transform shadow-lg shadow-brand-red/30"> Start Earning Today → </button>
+     <p class="text-gray-600 text-xs mt-4">Free tier available • No credit card required</p>
+    </div>
+   </section>
+   
    <!-- FOOTER -->
    <footer id="footer" class="w-full py-12" style="background:#0d0508;border-top:1px solid rgba(255,255,255,0.05);">
     <div class="max-w-6xl mx-auto px-6">
      <div class="grid md:grid-cols-4 gap-8 mb-12">
       <div><a href="#" class="flex items-center gap-3 hover:opacity-90 transition mb-4">
-        <div class="w-10 h-10 rounded-lg flex items-center justify-center shimmer-btn">-
+        <div class="w-10 h-10 rounded-lg flex items-center justify-center shimmer-btn">
          <span class="text-white font-bold text-sm">VLP</span>
         </div>
         <div class="flex flex-col leading-tight">
@@ -838,8 +801,7 @@
       <div>
        <h3 class="font-semibold text-gray-200 mb-4 text-sm">Support</h3>
        <ul class="space-y-2">
-        <li><a href="mailto:support@taxplaypro.com" class="text-xs text-gray-500 hover:text-brand-gold transition">support@virtuallaunch.pro</a></li>
-        <li><a href="tel:+16198005457" class="text-xs text-gray-500 hover:text-brand-gold transition">619-800-5457</a></li>
+        <li><a href="mailto:support@virtuallaunch.pro" class="text-xs text-gray-500 hover:text-brand-gold transition">support@virtuallaunch.pro</a></li>
         <li><a href="https://t.me/virtuallaunchpro" class="text-xs text-gray-500 hover:text-brand-gold transition">Live Chat</a></li>
        </ul>
       </div>
@@ -850,7 +812,6 @@
      </div>
     </div>
    </footer>
-
   </div>
   <script>
   // Money rain
@@ -1175,5 +1136,5 @@
 
   lucide.createIcons();
 </script>
- <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9e0258f2145b27c9',t:'MTc3NDE1MjYzNS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9e02deae276a27c9',t:'MTc3NDE1ODExMy4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
