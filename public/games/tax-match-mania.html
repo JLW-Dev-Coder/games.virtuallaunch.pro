@@ -42,7 +42,7 @@ html, body { height: 100%; font-family: 'Outfit', sans-serif; }
  <body class="h-full overflow-auto">
   <div id="app" class="w-full h-full flex flex-col items-center" style="background:#0f172a; color:#e2e8f0;">
    <!-- Header -->
-   <header class="w-full max-w-lg px-4 pt-8 pb-2 text-center">
+   <header class="w-full max-w-lg px-4 pt-32 pb-2 text-center">
     <h1 id="game-title" class="text-3xl font-extrabold tracking-tight" style="color:#facc15;">💰 Tax Match Mania</h1>
     <div class="flex justify-center gap-6 mt-3 text-sm font-semibold">
      <div class="flex items-center gap-1.5"><i data-lucide="trophy" style="width:16px;height:16px;color:#facc15;"></i> <span id="score-display">0</span>
@@ -53,13 +53,13 @@ html, body { height: 100%; font-family: 'Outfit', sans-serif; }
      </div>
     </div>
    </header><!-- Game Grid -->
-   <main id="game-area" class="w-full max-w-lg px-4 py-3 flex-1">
+   <main id="game-area" class="w-full max-w-lg px-4 py-1 flex-1">
     <div id="card-grid" class="grid grid-cols-4 gap-2.5" style="aspect-ratio:1/1;"></div><!-- Tax Tip Popup -->
-    <div id="tip-container" class="mt-3 hidden"></div>
-   </main><!-- Controls -->
-   <div class="w-full max-w-lg px-4 pb-2 pt-0 flex gap-2">
-    <button id="btn-start" onclick="startGame()" class="flex-1 py-2.5 rounded-xl font-bold text-sm transition-all hover:scale-105" style="background:#facc15;color:#0f172a;">New Game</button> <button id="btn-board" onclick="toggleLeaderboard()" class="flex-1 py-2.5 rounded-xl font-bold text-sm transition-all hover:scale-105" style="background:#1e293b;color:#e2e8f0;border:1px solid #334155;">🏆 Leaderboard</button>
-   </div><!-- Leaderboard Overlay -->
+    <div id="tip-container" class="mt-1 hidden"></div>
+    <div class="w-full flex gap-2 mt-8">
+     <button id="btn-start" onclick="startGame()" class="flex-1 py-2.5 rounded-xl font-bold text-sm transition-all hover:scale-105" style="background:#facc15;color:#0f172a;">New Game</button> <button id="btn-board" onclick="toggleLeaderboard()" class="flex-1 py-2.5 rounded-xl font-bold text-sm transition-all hover:scale-105" style="background:#1e293b;color:#e2e8f0;border:1px solid #334155;">🏆 Leaderboard</button>
+    </div>
+   </main><!-- Leaderboard Overlay -->
    <div id="leaderboard-overlay" class="hidden fixed inset-0 flex items-center justify-center p-4" style="background:rgba(0,0,0,0.7);z-index:50;">
     <div class="w-full max-w-sm rounded-2xl p-5 fade-in" style="background:#1e293b;border:1px solid #334155;">
      <div class="flex justify-between items-center mb-4">
@@ -305,5 +305,5 @@ window.dataSdk.init({
 buildGrid();
 lucide.createIcons();
 </script>
- <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9e01ebbd801027c9',t:'MTc3NDE0ODE2Mi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9e10d63997b8d93b',t:'MTc3NDMwNDU2Ny4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
