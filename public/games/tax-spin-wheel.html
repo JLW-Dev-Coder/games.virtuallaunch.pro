@@ -206,10 +206,7 @@ html, body { height: 100%; margin: 0; }
     <div class="wheel-pointer"></div>
     <canvas id="wheelCanvas" width="480" height="480"></canvas><button id="spinBtn" class="spin-btn" style="background: linear-gradient(135deg, #ffa500, #ff8800); color: #1a1a2e;"> <span id="spinBtnText">SPIN!</span> </button>
    </div><!-- Cost message below wheel -->
-   <p class="mt-32 text-xs font-semibold glow-text" style="color: rgba(255,255,255,0.6);">💰 Each Spin Costs 2 Tokens 💰</p><!-- No tokens message -->
-   <div id="noTokensMsg" class="hidden mt-4 px-6 py-3 rounded-xl text-center" style="background: rgba(255,80,80,0.15); color: #ff6b6b;">
-    <p class="font-bold text-sm">Out of tokens! <button id="refillBtn" class="underline font-black" style="color: #f0c040;">Get 5 more</button></p>
-   </div>
+   <p class="mt-32 text-xs font-semibold glow-text" style="color: rgba(255,255,255,0.6);">🎰 Spin to reveal your tax tip!</p>
   </div><!-- Modal -->
   <div id="modal" class="modal-overlay" role="dialog" aria-modal="true">
    <div class="modal-card rounded-2xl p-6 text-center" style="background: linear-gradient(135deg, #1e1e3a 0%, #2a2a4a 100%); border: 2px solid rgba(240,192,64,0.3);">
@@ -235,7 +232,13 @@ const segments = [
   { label: "Bonus Fact", emoji: "🦅", desc: "The 16th Amendment made income tax permanent in 1913!", points: 25, color: "#e84393", learnMore: "Before 1913, the federal government funded itself primarily through tariffs and excise taxes." }
 ];
 
-let tokens = 10, score = 0, spins = 0, spinning = false, currentAngle = 0;
+// Read URL params (set by embed page)
+const _params = new URLSearchParams(window.location.search);
+const _clientId = _params.get('client_id') || '';
+const _visitorId = _params.get('visitor_id') || '';
+const _tokensRemaining = parseInt(_params.get('tokens_remaining') || '0', 10);
+
+let score = 0, spins = 0, spinning = false, currentAngle = 0;
 const canvas = document.getElementById('wheelCanvas');
 const ctx = canvas.getContext('2d');
 const segAngle = (2 * Math.PI) / segments.length;
@@ -261,11 +264,10 @@ function drawWheel(angle) {
 }
 
 function updateUI() {
-  document.getElementById('tokenDisplay').textContent = tokens;
+  document.getElementById('tokenDisplay').textContent = _tokensRemaining;
   document.getElementById('scoreDisplay').textContent = score;
   document.getElementById('spinDisplay').textContent = spins;
-  document.getElementById('spinBtn').disabled = spinning || tokens < 2;
-  document.getElementById('noTokensMsg').classList.toggle('hidden', tokens >= 2);
+  document.getElementById('spinBtn').disabled = spinning;
 }
 
 function getWinningSegment(angle) {
@@ -276,8 +278,8 @@ function getWinningSegment(angle) {
 }
 
 function spinWheel() {
-  if (spinning || tokens < 2) return;
-  spinning = true; tokens -= 2; spins++; updateUI();
+  if (spinning) return;
+  spinning = true; spins++; updateUI();
 
   const totalRotation = (Math.random() * 4 + 5) * 2 * Math.PI; // 5-9 full rotations
   const target = currentAngle + totalRotation;
@@ -302,7 +304,6 @@ function showResult() {
   const idx = getWinningSegment(currentAngle);
   const seg = segments[idx];
   score += seg.points;
-  if (seg.tokenBonus) tokens += seg.tokenBonus;
   updateUI();
 
   document.getElementById('modalEmoji').textContent = seg.emoji;
@@ -321,8 +322,6 @@ function showResult() {
 document.getElementById('closeModal').onclick = () => document.getElementById('modal').classList.remove('active');
 document.getElementById('modal').onclick = (e) => { if (e.target === document.getElementById('modal')) document.getElementById('modal').classList.remove('active'); };
 document.getElementById('spinBtn').onclick = spinWheel;
-document.getElementById('refillBtn').onclick = () => { tokens += 5; updateUI(); };
-
 // Init
 drawWheel(currentAngle);
 updateUI();

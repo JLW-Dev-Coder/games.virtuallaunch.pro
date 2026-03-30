@@ -26,6 +26,18 @@ canvas{display:block}
   <style>body { box-sizing: border-box; }</style>
   <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js" type="text/javascript"></script>
   <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+  <script>
+// URL params injected by embed page
+(function(){
+  var p = new URLSearchParams(window.location.search);
+  window._gvlp = {
+    clientId: p.get('client_id') || '',
+    visitorId: p.get('visitor_id') || '',
+    tokensRemaining: parseInt(p.get('tokens_remaining') || '0', 10),
+    gameSlug: p.get('game') || ''
+  };
+})();
+  </script>
  </head>
  <body class="h-full w-full"><!-- Hub Screen -->
   <div id="hubScreen" class="overlay" style="background:linear-gradient(135deg,#0f172a 0%,#1a1f3a 100%);inset:0;z-index:20;display:flex;flex-direction:column;align-items:center;justify-content:center">
