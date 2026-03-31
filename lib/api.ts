@@ -126,3 +126,46 @@ export async function getPlays(
 export async function logout(): Promise<void> {
   await apiFetch('/v1/auth/logout', { method: 'POST' });
 }
+
+// ── Affiliate ──
+
+export interface Affiliate {
+  referral_code: string;
+  connect_status: string;
+  balance_pending: number;
+  balance_paid: number;
+  referral_url: string;
+}
+
+export interface AffiliateEvent {
+  platform: string;
+  gross_amount: number;
+  commission_amount: number;
+  status: 'pending' | 'paid';
+  created_at: string;
+}
+
+export interface PayoutResponse {
+  payout_id: string;
+  amount: number;
+  status: string;
+}
+
+export async function getAffiliate(account_id: string): Promise<Affiliate> {
+  return apiFetch<Affiliate>(`/v1/affiliates/${encodeURIComponent(account_id)}`);
+}
+
+export async function getAffiliateEvents(account_id: string): Promise<AffiliateEvent[]> {
+  return apiFetch<AffiliateEvent[]>(`/v1/affiliates/${encodeURIComponent(account_id)}/events`);
+}
+
+export async function startAffiliateOnboarding(): Promise<{ onboard_url: string }> {
+  return apiFetch<{ onboard_url: string }>('/v1/affiliates/connect/onboard', { method: 'POST' });
+}
+
+export async function requestPayout(amount: number): Promise<PayoutResponse> {
+  return apiFetch<PayoutResponse>('/v1/affiliates/payout/request', {
+    method: 'POST',
+    body: JSON.stringify({ amount }),
+  });
+}

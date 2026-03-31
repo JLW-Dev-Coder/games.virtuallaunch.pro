@@ -14,6 +14,7 @@ export default function Nav() {
           <Link href="/#how-it-works" className={styles.link}>How It Works</Link>
           <Link href="/reviews" className={styles.link}>Reviews</Link>
           <Link href="/support" className={styles.link}>Support</Link>
+          <Link href="/affiliate" className={styles.link}>Affiliate</Link>
         </nav>
         <Link href="/onboarding" className={styles.cta}>Get Started</Link>
       </div>
