@@ -1,6 +1,2 @@
-# Cloudflare Pages — Next.js (GVLP)
-pages_build_output_dir = ".next"
-
-# Secrets — set via: wrangler secret put SECRET_NAME
-# STRIPE_SECRET_KEY (shared with VLP)
-# STRIPE_WEBHOOK_SECRET (shared with VLP)
+name = "games-virtuallaunch-pro"
+pages_build_output_dir = "out"
