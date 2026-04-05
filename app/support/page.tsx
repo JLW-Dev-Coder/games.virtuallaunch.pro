@@ -1,5 +1,6 @@
 import Nav from '@/components/Nav';
 import Footer from '@/components/Footer';
+import CtaBanner from '@/components/CtaBanner';
 import styles from './page.module.css';
 
 const contactMethods = [
@@ -143,6 +144,7 @@ export default function SupportPage() {
           </div>
         </section>
       </main>
+      <CtaBanner />
       <Footer />
     </>
   );

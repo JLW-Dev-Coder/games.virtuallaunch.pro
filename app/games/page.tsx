@@ -1,5 +1,6 @@
 import Nav from '@/components/Nav';
 import Footer from '@/components/Footer';
+import CtaBanner from '@/components/CtaBanner';
 import styles from './page.module.css';
 
 interface Game {
@@ -71,6 +72,7 @@ export default function GamesPage() {
           <a href="/onboarding" className={styles.ctaBtn}>Get Started</a>
         </section>
       </main>
+      <CtaBanner />
       <Footer />
     </>
   );

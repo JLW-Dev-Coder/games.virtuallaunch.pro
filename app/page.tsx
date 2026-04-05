@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import Nav from '@/components/Nav';
 import Footer from '@/components/Footer';
+import CtaBanner from '@/components/CtaBanner';
 import styles from './page.module.css';
 
 /* -------------------------------------------------------
@@ -511,6 +512,9 @@ export default function HomePage() {
           <p className={styles.ctaBannerNote}>Free tier available • No credit card required</p>
         </div>
       </section>
+
+      {/* ── SEO CTA ── */}
+      <CtaBanner />
 
       {/* ── FOOTER ── */}
       <Footer />

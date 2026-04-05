@@ -1,5 +1,6 @@
 import Nav from '@/components/Nav';
 import Footer from '@/components/Footer';
+import CtaBanner from '@/components/CtaBanner';
 import styles from './page.module.css';
 
 const testimonials = [
@@ -91,6 +92,7 @@ export default function ReviewsPage() {
           </a>
         </section>
       </main>
+      <CtaBanner />
       <Footer />
     </>
   );
