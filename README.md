@@ -1,238 +1,138 @@
-# games.virtuallaunch.pro
+# Games VLP (GVLP)
 
-A collection of self-contained browser mini-games for tax professionals. Each game is a standalone **JS module** that can be embedded on any page via a simple `<script>` tag and connects to your Worker backend for **token balances, payouts, and tracking**.
-
-These games are designed for **tax pros to embed on their websites**, boosting engagement, SEO visibility, and client interaction while gamifying tax learning.
+> **games.virtuallaunch.pro**
+> Gamified tax education subscriptions for tax professionals
 
 ---
 
-## 1. Game JS Files
+## 1. System Overview
 
-Each game lives in its own file, e.g., `tax-spin-wheel.js`.
+**What it is:** JavaScript embed games that tax pros rent for their websites. Operators sign in, pick a subscription tier, and get embed codes for interactive mini-games to place on their client-facing sites.
 
-**Responsibilities:**
+**What it is NOT:** This repo has no backend, no Worker routes, no database, and no Stripe webhook handling. All API calls go to the VLP Worker at `api.virtuallaunch.pro` (separate repo).
 
-1. Render the interactive game (spin wheel, trivia, puzzle, etc.)
-2. Animate gameplay (e.g., spinning the wheel)
-3. Deduct tokens through your Worker (`/api/use-tokens`)
-4. Display results or prizes in a pop-up
-5. Update scoreboard (tokens, wins, prizes collected)
-6. Optional: “Learn More” links for additional info
+---
 
-**Embedding Example:**
+## 2. Architecture
 
-```html
-<script src="https://games.virtuallaunch.pro/games/tax-spin-wheel.js" data-client-id="CLIENT123"></script>
-```
+- **Framework:** Next.js 16, App Router, React 19
+- **Build output:** Static export to `out/`
+- **Hosting:** Cloudflare Pages
+- **API client:** `lib/api.ts` → `api.virtuallaunch.pro`
+- **Styling:** CSS Modules + global tokens (`app/globals.css`)
+- **Auth:** Cookie-based via VLP Worker (`credentials: 'include'`)
 
+---
 
-```
-│   README.md
-│   wrangler.toml
-│   
-├───contracts
-│       onboarding.contract.json
-│       price-free.json
-│       price-tier-1.json
-│       price-tier-2.json
-│       price-tier-3.json
-│       product.json
-│       token.contract.json
-│
-├───games
-├───public
-│   │   index.html
-│   │   onboarding.html
-│   │   operator.html
-│   │   reviews.html
-│   │   success.html
-│   │   support.html
-│   │
-│   └───games
-│       │   audit-escape-room.html
-│       │   capital-gains-climb.html
-│       │   deduction-dash.html
-│       │   irs-fact-or-fiction.html
-│       │   refund-rush.html
-│       │   tax-match-mania.html
-│       │   tax-spin-wheel.html
-│       │   tax-trivia.html
-│       │   tax-word-search.html
-│       │
-│       └───js
-│               audit-escape-room.js
-│               capital-gains-climb.js
-│               deduction-dash.js
-│               irs-fact-or-fiction.js
-│               refund-rush.js
-│               tax-match-mania.js
-│               tax-spin-wheel.js
-│               tax-trivia.js
-│               tax-word-search.js
-│
-└───workers
-    └───src
+## 3. Responsibilities
 
+| Owner | Owns |
+|---|---|
+| **This repo (GVLP)** | Frontend pages, game embed JS, static game HTML, CSS, marketing |
+| **VLP Worker** | Auth, billing, tokens, game data, Stripe, affiliates |
+
+---
+
+## 4. Repo Structure
 
 ```
----
-
-## 2. Token Integration
-
-Games read `data-client-id` from the script tag. Example usage:
-
-```javascript
-fetch('https://games.virtuallaunch.pro/api/use-tokens', {
-  method: 'POST',
-  headers: {'Content-Type':'application/json'},
-  body: JSON.stringify({
-    clientId: 'CLIENT123',
-    visitorId: 'VISITOR456',
-    tokensToUse: 5
-  })
-})
-.then(res => res.json())
-.then(data => {
-  if(data.ok){
-    startGame(); // start animation/game logic
-  } else {
-    alert('Not enough tokens! Buy more.');
-  }
-});
+app/
+  layout.tsx                — root layout
+  page.tsx                  — marketing home
+  affiliate/                — affiliate dashboard
+  dashboard/                — operator dashboard
+    components/             — EmbedCode, Overview, Settings, TokenUsage, Upgrade
+  embed/                    — embed snippet page
+  games/                    — game player page
+  onboarding/               — operator onboarding flow
+  reviews/                  — reviews page
+  sign-in/                  — auth (magic link + Google OAuth via VLP)
+  success/                  — post-payment success
+  support/                  — support page
+components/
+  AuthGuard.tsx             — route auth protection
+  Nav.tsx / Footer.tsx      — shared navigation
+lib/
+  api.ts                    — API client (calls api.virtuallaunch.pro)
+  constants.ts              — tiers, game unlocks, game metadata
+  visitor.ts                — visitor/session utilities
+public/games/
+  *.html                    — 9 static game HTML files
+  js/*.js                   — 9 game JS modules (embeddable)
+contracts/                  — local contract snapshots (source of truth in VLP repo)
 ```
 
-Your Worker handles **token deduction** and updates KV storage.
+---
+
+## 5. Core Workflows
+
+<!-- Future -->
 
 ---
 
-## 3. Scoreboard / Token Display
+## 6. Data Contracts
 
-* Each game maintains its own scoreboard:
-
-  * Tokens remaining
-  * Wins or prizes collected
-* Optional: Persist visitor session with Worker so balances stay accurate on reload
+Canonical contracts live in the VLP repo under `contracts/registries/gvlp-registry.json`. Local copies in `contracts/` are snapshots for reference only.
 
 ---
 
-## 4. Worker Responsibilities
+## 7. Setup / Local Development
 
-* **POST /api/use-tokens** – validate, deduct tokens, return updated balance
-* **POST /api/purchase-tokens** – called after Stripe checkout to add tokens
-* **POST /api/create-checkout-session** – create Stripe Checkout session
-* **POST /api/webhook** – listen for Stripe payment success events
-
----
-
-## 5. Stripe Integration
-
-**Frontend Flow:**
-
-```javascript
-fetch('https://games.virtuallaunch.pro/api/create-checkout-session', {
-  method: 'POST',
-  headers: {'Content-Type':'application/json'},
-  body: JSON.stringify({
-    clientId: 'CLIENT123',
-    visitorId: 'VISITOR456',
-    tokens: 50
-  })
-})
-.then(res => res.json())
-.then(data => {
-  if(data.url){
-    window.location.href = data.url;
-  }
-});
+```bash
+npm install
+npm run dev
 ```
 
-**Worker Flow:**
+---
 
-* Creates Checkout session with Stripe for token purchases
-* Updates visitor token balance on Stripe payment success
+## 8. Commands
+
+| Command | Purpose |
+|---|---|
+| `npm run build` | Static export to `out/` |
+| `npm run dev` | Local dev server |
 
 ---
 
----
+## 9. Environment / Config
 
-## 6. Adding New Games
-
-* Add a new JS module to `games/`
-* Register in `games/registry.js` (optional)
-* Use the same token + Stripe pattern
-* Keep each module **self-contained** for easy embedding
+No environment variables are required in this repo. Stripe keys and secrets are set in the Cloudflare dashboard and used by the VLP Worker only.
 
 ---
 
-## 7. Pricing Tiers
+## 10. Deployment
 
-| Tier Name                   | Price  | What’s Included                                                                              |
-| --------------------------- | ------ | -------------------------------------------------------------------------------------------- |
-| **Tax Play Starter**        | Free   | 1 game, 50 tokens/month                                                                      |
-| **Tax Play Apprentice**     | $9/mo  | 3 games, 500 tokens/month                                                                    |
-| **Tax Play Strategist**     | $19/mo | 5 games, 1,500 tokens/month                                                                  |
-| **Tax Play Navigator** | $39/mo | All games, 750 token/month |
-
-
-**Stripe Pricing Example (cents for Stripe API):**
-
-```json
-{
-  "products": [
-    {"name":"Starter Spin","prices":[{"unit_amount":0,"currency":"usd","recurring":{"interval":"month"}}]},
-    {"name":"Tax Apprentice","prices":[{"unit_amount":900,"currency":"usd","recurring":{"interval":"month"}}]},
-    {"name":"Tax Strategist","prices":[{"unit_amount":1900,"currency":"usd","recurring":{"interval":"month"}}]},
-    {"name":"Firm Navigator","prices":[{"unit_amount":3900,"currency":"usd","recurring":{"interval":"month"}}]}
-  ]
-}
-```
-
-## 8. Marketable Features / Slogans (for tax pros)
-
-1. **Gamify Tax Learning** – Interactive, educational mini-games for clients
-2. **Boost Taxpayer Engagement** – Encourage repeat visits and engagement on your site
-3. **Increase Tax Practice SEO Visibility** – Backlinks and embeds drive traffic and search rankings
-4. **Flexible Access, Pay as You Grow** – Free tier, individual, and firm-level subscriptions
-5. **Interactive Tax Fun Anywhere** – Fully browser-based, mobile-friendly, drop-in modules
+- **Platform:** Cloudflare Pages
+- **Build command:** `npm run build`
+- **Output directory:** `out/`
+- **Type:** Static export (no server-side rendering)
 
 ---
 
-## 9. Getting Started (client-facing)
+## 11. Constraints
 
-### How It Works
-Four simple steps to integrate games into your platform and start earning revenue.
-
-#### 1. Choose Your Tier
-Pick a subscription plan that fits your practice. Each tier determines how many games you can display and the token allocation for play. 
-
-Free, Starter, Pro, or Enterprise
-
-#### 2. Pick Your Games
-Mix and match from the available mini-games. Higher tiers unlock more games to embed or play on your site.
-
-9 games available with new games in development
-
-#### 3. Set Payout Details
-Add your affiliate payout details so you earn when clients play your games. Configure how and where you want to receive revenue.
-
-Secure setup
-
-#### 4. Launch & Engage
-Embed the games on your site, track player progress, and watch engagement grow while educating clients on tax topics.
-
-Go live instantly
+- No backend in this repo — all API routes live in the VLP Worker
+- No Worker bindings — this is a Pages-only deployment
+- No contracts authored here — canonical contracts live in the VLP repo
+- All API calls go through `lib/api.ts` using `API_BASE`
 
 ---
 
-Games are **drop-in**, fully interactive, mobile-friendly, and designed to help tax professionals **educate, engage, and grow their practice**.
+## 12. Related Systems
 
-`tax-spin-wheel.js` is the first example module ready to deploy.
+| System | Domain | Role |
+|---|---|---|
+| VLP (Worker + contracts) | `api.virtuallaunch.pro` | Backend API, auth, billing, tokens |
+| TMP (directory) | `taxmonitor.pro` | Sibling SaaS — cross-sell target |
+| TTMP (transcript tools) | `transcript.taxmonitor.pro` | Sibling tool — no dependency |
 
 ---
 
-## 10. Getting Started (Internal)
+## 13. Glossary
 
-1. Include the game script in your page
-2. Set `data-client-id` for the client
-3. Make sure Worker backend routes `/api/use-tokens`, `/api/purchase-tokens`, `/api/create-checkout-session`, `/api/webhook` are live
-4. Launch instantly with full token tracking, Stripe purchases, and scoreboard support
+| Term | Meaning |
+|---|---|
+| `vlp_session` | Auth cookie set by VLP Worker |
+| VLP Worker | Single backend for all VLP products (`api.virtuallaunch.pro`) |
+| Operator | Tax professional who subscribes and embeds games |
+| Visitor | End user (taxpayer) who plays games on operator's site |

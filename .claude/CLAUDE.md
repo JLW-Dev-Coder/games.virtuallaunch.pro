@@ -32,7 +32,7 @@
 
 - Frontend: ✅ Next.js 16 App Router (2026-03-29)
 - Backend: ✅ 8 routes live in VLP Worker (api.virtuallaunch.pro)
-- Legacy Worker: ✅ None existed — greenfield build
+- Legacy Worker: ✅ Deleted empty `workers/` directory (2026-04-04)
 - wrangler.toml: ✅ Pages-only configuration (no Worker binding)
 - Auth: Uses VLP shared auth via `credentials: 'include'` (cookie-based, cookie set by VLP Worker)
 
