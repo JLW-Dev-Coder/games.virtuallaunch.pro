@@ -1,0 +1,10 @@
+{
+  "hooks": {
+    "postToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "command": "echo '[GVLP] Remember: npm run build after structural changes'"
+      }
+    ]
+  }
+}
