@@ -60,6 +60,7 @@
   font-weight: 500;
   transition: background 0.18s, color 0.18s;
   text-align: left;
+  text-decoration: none;
 }
 
 .navItem:hover {

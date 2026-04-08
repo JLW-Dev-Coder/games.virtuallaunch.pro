@@ -127,6 +127,18 @@ export async function logout(): Promise<void> {
   await apiFetch('/v1/auth/logout', { method: 'POST' });
 }
 
+export async function requestMagicLink(email: string): Promise<{ ok: boolean }> {
+  return apiFetch('/v1/auth/magic-link/request', {
+    method: 'POST',
+    body: JSON.stringify({ email }),
+  });
+}
+
+export function googleAuthUrl(redirect?: string): string {
+  const qs = redirect ? `?redirect=${encodeURIComponent(redirect)}` : '';
+  return `${API_BASE}/v1/auth/google/start${qs}`;
+}
+
 // ── Affiliate ──
 
 export interface Affiliate {

@@ -3,6 +3,7 @@
 import { Suspense, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
+import { requestMagicLink, googleAuthUrl } from '@/lib/api';
 import styles from './page.module.css';
 
 function SignInForm() {
@@ -19,15 +20,7 @@ function SignInForm() {
     setError('');
     setLoading(true);
     try {
-      const res = await fetch('https://api.virtuallaunch.pro/v1/auth/magic-link/request', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email }),
-      });
-      if (!res.ok) {
-        const data = await res.json().catch(() => ({}));
-        throw new Error((data as { message?: string }).message ?? 'Something went wrong. Please try again.');
-      }
+      await requestMagicLink(email);
       setSent(true);
     } catch (err: unknown) {
       setError(err instanceof Error ? err.message : 'Something went wrong. Please try again.');
@@ -37,10 +30,7 @@ function SignInForm() {
   }
 
   function handleGoogle() {
-    const url =
-      'https://api.virtuallaunch.pro/v1/auth/google/start' +
-      (redirect ? `?redirect=${encodeURIComponent(redirect)}` : '');
-    window.location.href = url;
+    window.location.href = googleAuthUrl(redirect || undefined);
   }
 
   if (sent) {

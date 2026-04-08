@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import Link from 'next/link';
 import AuthGuard from '@/components/AuthGuard';
 import { Operator, getOperator } from '@/lib/api';
 import Overview from './components/Overview';
@@ -53,6 +54,10 @@ function DashboardInner({ session }: { session: { account_id: string; email: str
               <span>{item.label}</span>
             </button>
           ))}
+          <Link href="/calendar" className={styles.navItem}>
+            <span className={styles.navEmoji}>📅</span>
+            <span>Calendar</span>
+          </Link>
         </nav>
         <div className={styles.sidebarFooter}>
           <span className={styles.footerEmail}>{session.email}</span>
